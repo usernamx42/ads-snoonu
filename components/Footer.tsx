@@ -5,13 +5,14 @@ const footerLinks = {
     { label: "Acquire Customers", href: "#solutions" },
   ],
   Platform: [
-    { label: "Ad Placements", href: "#placements" },
+    { label: "Results & Placements", href: "#results" },
     { label: "How It Works", href: "#how-it-works" },
     { label: "Pricing", href: "#pricing" },
-    { label: "Measurement", href: "#analytics" },
+    { label: "Analytics", href: "#analytics" },
   ],
   Company: [
-    { label: "Case Studies", href: "#case-studies" },
+    { label: "Audience", href: "#audience" },
+    { label: "Brands", href: "#brands" },
     { label: "Contact", href: "#contact" },
   ],
 };

@@ -1,12 +1,11 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import BrandMarquee from "@/components/BrandMarquee";
-import Audience from "@/components/Audience";
 import Solutions from "@/components/Solutions";
+import Audience from "@/components/Audience";
+import BrandMarquee from "@/components/BrandMarquee";
+import Results from "@/components/Results";
 import Advantages from "@/components/Advantages";
-import Placements from "@/components/Placements";
 import Analytics from "@/components/Analytics";
-import CaseStudies from "@/components/CaseStudies";
 import HowItWorks from "@/components/HowItWorks";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
@@ -19,13 +18,12 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <BrandMarquee />
-        <Audience />
         <Solutions />
+        <Audience />
+        <BrandMarquee />
+        <Results />
         <Advantages />
-        <Placements />
         <Analytics />
-        <CaseStudies />
         <HowItWorks />
         <Pricing />
         <FAQ />

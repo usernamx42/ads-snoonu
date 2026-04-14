@@ -43,7 +43,7 @@ const steps: { num: string; icon: ReactNode; title: string; description: string 
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-20 md:py-32 bg-off-white">
+    <section id="how-it-works" className="py-16 md:py-24 bg-off-white">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <ScrollReveal>
           <SectionHeading

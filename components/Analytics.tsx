@@ -43,7 +43,7 @@ const features: { icon: ReactNode; title: string; description: string }[] = [
 
 export default function Analytics() {
   return (
-    <section id="analytics" className="py-20 md:py-32 bg-off-white">
+    <section id="analytics" className="py-16 md:py-24 bg-off-white">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <ScrollReveal>
           <SectionHeading

@@ -27,7 +27,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-20 md:py-32 bg-gradient-to-br from-brand-red to-brand-red-dark overflow-hidden"
+      className="relative py-16 md:py-24 bg-gradient-to-br from-brand-red to-brand-red-dark overflow-hidden"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_70%)]" />
 

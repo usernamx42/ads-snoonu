@@ -7,10 +7,9 @@ import Button from "@/components/ui/Button";
 
 const navItems = [
   { label: "Solutions", href: "#solutions" },
-  { label: "Placements", href: "#placements" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Audience", href: "#audience" },
+  { label: "Brands", href: "#brands" },
+  { label: "Results", href: "#results" },
 ];
 
 export default function Navigation() {
@@ -33,9 +32,9 @@ export default function Navigation() {
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 100, damping: 20 }}
+        transition={{ type: "spring" as const, stiffness: 100, damping: 20 }}
       >
-        <nav className="max-w-[1400px] mx-auto px-6 lg:px-10 flex items-center justify-between h-16 md:h-20">
+        <nav className="max-w-[1400px] mx-auto px-6 lg:px-10 flex items-center justify-between h-16 md:h-18">
           <a href="#" className="flex items-center gap-2 shrink-0">
             <div className="w-8 h-8 bg-brand-red rounded-lg flex items-center justify-center">
               <span className="text-white font-black text-lg leading-none">S</span>
@@ -85,7 +84,7 @@ export default function Navigation() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ type: "spring", stiffness: 200, damping: 25 }}
+            transition={{ type: "spring" as const, stiffness: 200, damping: 25 }}
           >
             <div className="flex flex-col gap-6 py-8">
               {navItems.map((item, i) => (
