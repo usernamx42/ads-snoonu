@@ -6,33 +6,24 @@ import { Megaphone, ShoppingCart, UsersThree, ArrowRight } from "@phosphor-icons
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
-const solutions: {
-  icon: ReactNode;
-  title: string;
-  benefit: string;
-  gradient: string;
-  iconBg: string;
-}[] = [
+const solutions: { icon: ReactNode; title: string; benefit: string; accent: string }[] = [
   {
-    icon: <Megaphone size={32} weight="fill" className="text-white" />,
+    icon: <Megaphone size={28} weight="fill" />,
     title: "Brand Awareness",
     benefit: "Get seen by millions of high-intent shoppers across every Snoonu surface.",
-    gradient: "from-brand-red to-brand-orange",
-    iconBg: "bg-brand-red",
+    accent: "text-brand-red bg-brand-red/[0.08] group-hover:bg-brand-red group-hover:text-white",
   },
   {
-    icon: <ShoppingCart size={32} weight="fill" className="text-white" />,
+    icon: <ShoppingCart size={28} weight="fill" />,
     title: "Drive Conversions",
     benefit: "Capture demand at the moment of search and turn browsers into buyers.",
-    gradient: "from-brand-blue to-brand-electric",
-    iconBg: "bg-brand-blue",
+    accent: "text-brand-blue bg-brand-blue/[0.08] group-hover:bg-brand-blue group-hover:text-white",
   },
   {
-    icon: <UsersThree size={32} weight="fill" className="text-white" />,
+    icon: <UsersThree size={28} weight="fill" />,
     title: "Acquire Customers",
     benefit: "Use first-party data to find and convert your ideal audience in Qatar.",
-    gradient: "from-brand-orange to-brand-yellow",
-    iconBg: "bg-brand-orange",
+    accent: "text-brand-orange bg-brand-orange/[0.08] group-hover:bg-brand-orange group-hover:text-white",
   },
 ];
 
@@ -49,35 +40,24 @@ export default function Solutions() {
           />
         </ScrollReveal>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-5">
           {solutions.map((sol, i) => (
             <ScrollReveal key={sol.title} delay={i * 0.1}>
-              <motion.div
-                className="group relative rounded-2xl bg-white border border-zinc-100 overflow-hidden h-full shadow-sm hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] transition-shadow"
+              <motion.a
+                href="#placements"
+                className="group block rounded-2xl bg-white border border-zinc-100 p-8 h-full shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] transition-shadow"
                 whileHover={{ y: -8 }}
-                transition={{ type: "spring" as const, stiffness: 300, damping: 25 }}
+                transition={{ type: "spring" as const, stiffness: 300, damping: 22 }}
               >
-                {/* Gradient top accent */}
-                <div className={`h-1.5 bg-gradient-to-r ${sol.gradient}`} />
-
-                <div className="p-8">
-                  <div className={`w-14 h-14 rounded-2xl ${sol.iconBg} flex items-center justify-center mb-6 shadow-lg`}>
-                    {sol.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-off-black tracking-tight">
-                    {sol.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-muted leading-relaxed">
-                    {sol.benefit}
-                  </p>
-                  <a
-                    href="#placements"
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand-red group-hover:gap-3 transition-all"
-                  >
-                    Learn More <ArrowRight size={14} weight="bold" />
-                  </a>
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300 ${sol.accent}`}>
+                  {sol.icon}
                 </div>
-              </motion.div>
+                <h3 className="text-xl font-bold text-off-black tracking-tight">{sol.title}</h3>
+                <p className="mt-3 text-sm text-muted leading-relaxed">{sol.benefit}</p>
+                <div className="mt-6 flex items-center gap-2 text-sm font-bold text-brand-red opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                  Learn More <ArrowRight size={14} weight="bold" />
+                </div>
+              </motion.a>
             </ScrollReveal>
           ))}
         </div>

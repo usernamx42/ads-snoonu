@@ -16,10 +16,7 @@ function MarqueeRow({ items, reverse = false, speed = 30 }: { items: string[]; r
         style={{ animation: `${reverse ? "marquee-reverse" : "marquee"} ${speed}s linear infinite` }}
       >
         {doubled.map((brand, i) => (
-          <div
-            key={`${brand}-${i}`}
-            className="flex items-center justify-center px-6 py-3 bg-white rounded-lg border border-zinc-100 min-w-[130px] shadow-sm"
-          >
+          <div key={`${brand}-${i}`} className="flex items-center justify-center px-7 py-3 bg-white rounded-xl border border-zinc-100 min-w-[140px] shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
             <span className="text-xs font-bold text-zinc-400 tracking-tight whitespace-nowrap">{brand}</span>
           </div>
         ))}
@@ -30,17 +27,17 @@ function MarqueeRow({ items, reverse = false, speed = 30 }: { items: string[]; r
 
 export default function BrandMarquee() {
   return (
-    <section id="brands" className="py-12 md:py-16 bg-off-white">
+    <section id="brands" className="py-14 md:py-16 bg-off-white border-b border-zinc-100">
       <ScrollReveal>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 mb-8 text-center">
-          <p className="text-sm font-bold text-off-black">
-            Trusted by <span className="text-brand-red">200+</span> brands in Qatar
+          <p className="text-sm text-muted">
+            Trusted by <span className="font-bold text-off-black">200+</span> brands in Qatar
           </p>
         </div>
       </ScrollReveal>
       <div className="space-y-3">
         <MarqueeRow items={brands.slice(0, 6)} speed={35} />
-        <MarqueeRow items={brands.slice(6)} reverse speed={40} />
+        <MarqueeRow items={brands.slice(6)} reverse speed={42} />
       </div>
     </section>
   );

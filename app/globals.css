@@ -13,7 +13,7 @@
   --color-brand-gold: #BEA037;
   --color-brand-electric: #00DFFF;
   --color-off-black: #0a0a0a;
-  --color-off-white: #fafafa;
+  --color-off-white: #f8f8f8;
   --color-muted: #71717a;
 
   --breakpoint-sm: 320px;
@@ -41,56 +41,12 @@
   }
 }
 
-@keyframes mesh-float {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  50% {
-    transform: translate(-20px, 20px) scale(0.95);
-  }
-  75% {
-    transform: translate(40px, 30px) scale(1.05);
-  }
-}
-
-@keyframes mesh-float-2 {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(-40px, 30px) scale(1.08);
-  }
-  66% {
-    transform: translate(20px, -40px) scale(0.92);
-  }
-}
-
-@keyframes mesh-float-3 {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(50px, -20px) scale(1.12);
-  }
-}
-
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 @keyframes marquee-reverse {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }
