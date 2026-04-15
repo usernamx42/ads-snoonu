@@ -29,8 +29,8 @@ export default function HowItWorks() {
         {/* Desktop */}
         <div className="hidden md:block">
           <div className="relative">
-            {/* Connecting line */}
-            <div className="absolute top-[52px] left-[12%] right-[12%] h-px">
+            {/* Connecting line — behind icons */}
+            <div className="absolute top-[52px] left-[12%] right-[12%] h-px z-0">
               <motion.div
                 className="h-full bg-gradient-to-r from-brand-red via-brand-yellow to-brand-green"
                 initial={{ scaleX: 0 }}
@@ -44,7 +44,7 @@ export default function HowItWorks() {
             <div className="grid grid-cols-4 gap-8">
               {stages.map((stage, i) => (
                 <ScrollReveal key={stage.label} delay={i * 0.12}>
-                  <div className="text-center">
+                  <div className="text-center relative z-10">
                     <motion.div
                       className="w-[104px] h-[104px] rounded-3xl bg-white/[0.06] border border-white/[0.08] mx-auto flex items-center justify-center text-white backdrop-blur-sm"
                       whileHover={{ scale: 1.1, backgroundColor: "rgba(217,2,23,0.15)", borderColor: "rgba(217,2,23,0.3)" }}
