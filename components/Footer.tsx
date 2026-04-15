@@ -1,18 +1,17 @@
 const footerLinks = {
   Solutions: [
-    { label: "Build Awareness", href: "#solutions" },
-    { label: "Drive Sales", href: "#solutions" },
+    { label: "Brand Awareness", href: "#solutions" },
+    { label: "Drive Conversions", href: "#solutions" },
     { label: "Acquire Customers", href: "#solutions" },
   ],
   Platform: [
-    { label: "Results & Placements", href: "#results" },
     { label: "How It Works", href: "#how-it-works" },
+    { label: "Ad Placements", href: "#placements" },
+    { label: "Results", href: "#results" },
     { label: "Pricing", href: "#pricing" },
-    { label: "Analytics", href: "#analytics" },
   ],
   Company: [
-    { label: "Audience", href: "#audience" },
-    { label: "Brands", href: "#brands" },
+    { label: "Audience Data", href: "#audience" },
     { label: "Contact", href: "#contact" },
   ],
 };

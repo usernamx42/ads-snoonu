@@ -7,8 +7,8 @@ import Button from "@/components/ui/Button";
 
 const navItems = [
   { label: "Solutions", href: "#solutions" },
-  { label: "Audience", href: "#audience" },
-  { label: "Brands", href: "#brands" },
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "Placements", href: "#placements" },
   { label: "Results", href: "#results" },
 ];
 
@@ -25,9 +25,9 @@ export default function Navigation() {
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-40 transition-colors duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? "bg-white/80 backdrop-blur-xl border-b border-zinc-200/50"
+            ? "bg-off-black/90 backdrop-blur-xl border-b border-white/10"
             : "bg-transparent"
         }`}
         initial={{ y: -100 }}
@@ -40,36 +40,26 @@ export default function Navigation() {
               <span className="text-white font-black text-lg leading-none">S</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-off-black text-sm leading-tight tracking-tight">
-                Snoonu
-              </span>
-              <span className="text-[10px] text-muted tracking-[0.2em] uppercase leading-tight">
-                Ads
-              </span>
+              <span className="font-bold text-white text-sm leading-tight tracking-tight">Snoonu</span>
+              <span className="text-[10px] text-white/50 tracking-[0.2em] uppercase leading-tight">Ads</span>
             </div>
           </a>
 
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-sm text-muted hover:text-off-black transition-colors"
-              >
+              <a key={item.href} href={item.href} className="text-sm text-white/60 hover:text-white transition-colors">
                 {item.label}
               </a>
             ))}
           </div>
 
           <div className="hidden md:block">
-            <Button href="#contact" variant="primary">
-              Start Advertising
-            </Button>
+            <Button href="#contact" variant="primary">Start Advertising</Button>
           </div>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 -mr-2 text-off-black"
+            className="md:hidden p-2 -mr-2 text-white"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={24} weight="bold" /> : <List size={24} weight="bold" />}
@@ -80,7 +70,7 @@ export default function Navigation() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-30 bg-white pt-20 px-6"
+            className="fixed inset-0 z-30 bg-off-black pt-20 px-6"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -91,7 +81,7 @@ export default function Navigation() {
                 <motion.a
                   key={item.href}
                   href={item.href}
-                  className="text-2xl font-bold text-off-black"
+                  className="text-2xl font-bold text-white"
                   onClick={() => setMobileOpen(false)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -101,12 +91,7 @@ export default function Navigation() {
                 </motion.a>
               ))}
               <div className="pt-4">
-                <Button
-                  href="#contact"
-                  variant="primary"
-                  className="w-full"
-                  onClick={() => setMobileOpen(false)}
-                >
+                <Button href="#contact" variant="primary" className="w-full" onClick={() => setMobileOpen(false)}>
                   Start Advertising
                 </Button>
               </div>

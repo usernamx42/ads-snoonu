@@ -1,169 +1,80 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  DeviceMobile,
-  MagnifyingGlass,
-  Bell,
-  VideoCamera,
-  Handshake,
-  MapPin,
-  Car,
-  Storefront,
-} from "@phosphor-icons/react";
-import SectionHeading from "@/components/ui/SectionHeading";
+import { motion } from "framer-motion";
+import { ArrowRight } from "@phosphor-icons/react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
-type PlacementItem = { icon: ReactNode; title: string; description: string };
-
-const onlinePlacements: PlacementItem[] = [
-  {
-    icon: <DeviceMobile size={20} weight="fill" className="text-brand-red" />,
-    title: "App Banners",
-    description: "Native banners across home, search, category, and checkout. 20M+ daily impressions.",
-  },
-  {
-    icon: <MagnifyingGlass size={20} weight="fill" className="text-brand-red" />,
-    title: "Sponsored Search",
-    description: "Top placement when users search your category. Pay per click from 1 QAR.",
-  },
-  {
-    icon: <Bell size={20} weight="fill" className="text-brand-red" />,
-    title: "Push Notifications",
-    description: "Targeted messages to opted-in users at the right moment.",
-  },
-  {
-    icon: <VideoCamera size={20} weight="fill" className="text-brand-red" />,
-    title: "Video Ads",
-    description: "Short-form video within the browsing experience.",
-  },
-  {
-    icon: <Handshake size={20} weight="fill" className="text-brand-red" />,
-    title: "Co-op Media",
-    description: "Joint campaigns across social and partner networks.",
-  },
-];
-
-const offlinePlacements: PlacementItem[] = [
-  {
-    icon: <MapPin size={20} weight="fill" className="text-brand-red" />,
-    title: "S-Charge Screens",
-    description: "Digital screens at 600+ S-Charge locations across Qatar.",
-  },
-  {
-    icon: <Car size={20} weight="fill" className="text-brand-red" />,
-    title: "Fleet Branding",
-    description: "Brand visibility on Snoonu's delivery fleet in high-traffic areas.",
-  },
-  {
-    icon: <Storefront size={20} weight="fill" className="text-brand-red" />,
-    title: "Sampling & Inserts",
-    description: "Product samples and promos delivered directly with orders.",
-  },
-];
-
-const performanceMetrics = [
-  { value: 3.8, suffix: "%", label: "Avg CTR", decimals: 1 },
-  { value: 0.92, suffix: "", prefix: "QAR ", label: "Avg CPC", decimals: 2 },
-  { value: 6.5, suffix: "%", label: "Conversion Rate", decimals: 1 },
-  { value: 4.7, suffix: "x", label: "Avg ROAS", decimals: 1 },
-];
-
-const tabs = [
-  { key: "online", label: "Online" },
-  { key: "offline", label: "Offline" },
-] as const;
-
 export default function Results() {
-  const [activeTab, setActiveTab] = useState<"online" | "offline">("online");
-  const items = activeTab === "online" ? onlinePlacements : offlinePlacements;
-
   return (
-    <section id="results" className="py-16 md:py-24">
+    <section id="results" className="py-20 md:py-28 bg-off-black overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <ScrollReveal>
-          <SectionHeading
-            tagline="Results"
-            headline="One Platform. Every Surface."
-            description="Online and offline placements that deliver measurable performance."
-          />
-        </ScrollReveal>
-
-        {/* Performance highlights */}
-        <ScrollReveal delay={0.1}>
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {performanceMetrics.map((m) => (
-              <div key={m.label} className="rounded-xl bg-off-white border border-zinc-100 px-5 py-4">
-                <div className="text-2xl md:text-3xl font-black text-brand-red tracking-tight">
-                  <AnimatedCounter
-                    target={m.value}
-                    suffix={m.suffix}
-                    prefix={m.prefix}
-                    decimals={m.decimals}
-                  />
-                </div>
-                <p className="mt-1 text-xs text-muted">{m.label}</p>
-              </div>
-            ))}
+          <div className="max-w-2xl">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-red mb-4">
+              Results
+            </p>
+            <h2 className="text-3xl md:text-5xl tracking-tighter leading-none font-bold text-white">
+              Real Performance, Real Revenue
+            </h2>
+            <p className="mt-4 text-base text-white/50">
+              Every campaign on Snoonu is measured against actual orders, not vanity metrics.
+            </p>
           </div>
         </ScrollReveal>
 
-        {/* Placement tabs */}
-        <div className="mt-12 flex gap-2">
-          {tabs.map((tab) => (
-            <button
-              key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
-              className={`relative px-5 py-2 text-sm font-bold rounded-full transition-colors cursor-pointer ${
-                activeTab === tab.key ? "text-white" : "text-muted hover:text-off-black"
-              }`}
-            >
-              {activeTab === tab.key && (
-                <motion.div
-                  layoutId="results-tab"
-                  className="absolute inset-0 bg-off-black rounded-full"
-                  transition={{ type: "spring" as const, stiffness: 300, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10">{tab.label}</span>
-            </button>
-          ))}
-        </div>
-
-        <AnimatePresence mode="wait">
+        {/* Featured case study */}
+        <ScrollReveal delay={0.1}>
           <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ type: "spring" as const, stiffness: 200, damping: 25 }}
-            className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"
+            className="mt-12 relative rounded-2xl border border-white/10 bg-white/5 overflow-hidden"
+            whileHover={{ borderColor: "rgba(255,255,255,0.15)" }}
+            transition={{ duration: 0.3 }}
           >
-            {items.map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.04 }}
-                className="flex gap-3.5 items-start p-5 rounded-xl border border-zinc-100 bg-white hover:border-zinc-200 transition-colors"
-              >
-                <div className="w-9 h-9 rounded-lg bg-brand-red/8 flex items-center justify-center shrink-0">
-                  {item.icon}
+            <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr]">
+              <div className="p-8 md:p-12">
+                <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-off-black bg-brand-red px-3 py-1 rounded-full mb-5">
+                  Search Ads
+                </span>
+                <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
+                  How a leading QSR brand drove 4.7x ROAS with Snoonu Ads
+                </h3>
+                <p className="mt-4 text-sm text-white/50 leading-relaxed max-w-lg">
+                  By targeting high-intent food searchers with sponsored listings and push notifications during peak hours, this brand turned Snoonu into their #1 digital acquisition channel.
+                </p>
+                <div className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand-red hover:gap-3 transition-all cursor-pointer">
+                  Read Full Story <ArrowRight size={14} weight="bold" />
+                </div>
+              </div>
+
+              <div className="p-8 md:p-12 flex flex-col justify-center gap-6 border-t lg:border-t-0 lg:border-l border-white/10">
+                <div>
+                  <div className="text-3xl font-black text-white tracking-tight">
+                    <AnimatedCounter target={3.8} suffix="%" decimals={1} />
+                  </div>
+                  <p className="text-xs text-white/40 mt-1">Click-through Rate</p>
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-off-black tracking-tight">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1 text-xs text-muted leading-relaxed">
-                    {item.description}
-                  </p>
+                  <div className="text-3xl font-black text-white tracking-tight">
+                    <AnimatedCounter target={6.5} suffix="%" decimals={1} />
+                  </div>
+                  <p className="text-xs text-white/40 mt-1">Conversion Rate</p>
                 </div>
-              </motion.div>
-            ))}
+                <div>
+                  <div className="text-3xl font-black text-brand-red tracking-tight">
+                    <AnimatedCounter target={4.7} suffix="x" decimals={1} />
+                  </div>
+                  <p className="text-xs text-white/40 mt-1">Return on Ad Spend</p>
+                </div>
+              </div>
+            </div>
           </motion.div>
-        </AnimatePresence>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.2}>
+          <p className="mt-8 text-sm text-white/30 text-center">
+            More case studies launching soon. Results above represent platform averages.
+          </p>
+        </ScrollReveal>
       </div>
     </section>
   );

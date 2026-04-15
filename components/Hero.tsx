@@ -17,7 +17,7 @@ const stagger = {
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
@@ -25,48 +25,119 @@ const fadeUp = {
   },
 };
 
-function MeshBackground() {
+function PhoneMockup() {
   return (
-    <div className="absolute inset-0 overflow-hidden -z-10">
-      <div
-        className="absolute -top-1/4 -right-1/4 w-[600px] h-[600px] md:w-[800px] md:h-[800px] rounded-full opacity-30 blur-[100px] [animation:mesh-float_12s_ease-in-out_infinite]"
-        style={{ background: "radial-gradient(circle, #D90217 0%, transparent 70%)" }}
-      />
-      <div
-        className="absolute -bottom-1/4 -left-1/4 w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full opacity-20 blur-[100px] [animation:mesh-float-2_15s_ease-in-out_infinite]"
-        style={{ background: "radial-gradient(circle, #FF4600 0%, transparent 70%)" }}
-      />
-      <div
-        className="absolute top-1/3 left-1/3 w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full opacity-15 blur-[120px] [animation:mesh-float-3_18s_ease-in-out_infinite]"
-        style={{ background: "radial-gradient(circle, #FFD700 0%, transparent 70%)" }}
-      />
-      <div className="absolute inset-0 bg-white/70" />
-    </div>
+    <motion.div
+      className="relative mx-auto w-[260px] md:w-[280px]"
+      animate={{ y: [0, -10, 0] }}
+      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {/* Phone frame */}
+      <div className="relative rounded-[2.5rem] border-[6px] border-zinc-700 bg-zinc-900 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)] overflow-hidden">
+        {/* Notch */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-zinc-900 rounded-b-2xl z-10" />
+
+        {/* Screen content */}
+        <div className="bg-white pt-8">
+          {/* App header */}
+          <div className="bg-brand-red px-4 py-3 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-md bg-white/20 flex items-center justify-center">
+                <span className="text-white text-[10px] font-black">S</span>
+              </div>
+              <span className="text-white text-xs font-bold">Snoonu</span>
+            </div>
+            <div className="flex gap-2">
+              <div className="w-5 h-5 rounded-full bg-white/20" />
+              <div className="w-5 h-5 rounded-full bg-white/20" />
+            </div>
+          </div>
+
+          {/* Search bar */}
+          <div className="px-3 py-2">
+            <div className="bg-zinc-100 rounded-xl px-3 py-2 flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full border border-zinc-400" />
+              <span className="text-[10px] text-zinc-400">Search restaurants, groceries...</span>
+            </div>
+          </div>
+
+          {/* Sponsored banner */}
+          <div className="px-3 pb-2">
+            <motion.div
+              className="relative rounded-xl overflow-hidden bg-gradient-to-r from-brand-red to-brand-orange p-3"
+              animate={{ opacity: [0.9, 1, 0.9] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
+              <span className="absolute top-1.5 right-1.5 text-[7px] bg-white/30 text-white px-1.5 py-0.5 rounded-full font-bold">
+                Sponsored
+              </span>
+              <div className="flex items-center gap-2 mt-1">
+                <div className="w-10 h-10 rounded-lg bg-white/20" />
+                <div>
+                  <div className="text-[9px] font-bold text-white">Limited Offer</div>
+                  <div className="text-[8px] text-white/80">Order now, 30% off first delivery</div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Product cards */}
+          <div className="px-3 pb-3 grid grid-cols-2 gap-2">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="rounded-xl bg-zinc-50 p-2">
+                <div className={`w-full h-12 rounded-lg ${i === 1 ? "bg-brand-red/10" : "bg-zinc-200"}`} />
+                <div className="mt-1.5">
+                  <div className="h-1.5 w-3/4 bg-zinc-200 rounded" />
+                  <div className="h-1.5 w-1/2 bg-zinc-100 rounded mt-1" />
+                  <div className="mt-1.5 flex items-center justify-between">
+                    <div className="h-2 w-8 bg-brand-red/20 rounded" />
+                    <div className="w-4 h-4 rounded-full bg-brand-red flex items-center justify-center">
+                      <span className="text-white text-[6px]">+</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom nav */}
+          <div className="border-t border-zinc-100 px-4 py-2 flex justify-between">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <div key={i} className={`w-5 h-5 rounded-full ${i === 1 ? "bg-brand-red" : "bg-zinc-200"}`} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Glow behind phone */}
+      <div className="absolute -inset-10 -z-10 bg-brand-red/20 blur-[60px] rounded-full" />
+    </motion.div>
   );
 }
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90dvh] flex flex-col justify-center overflow-hidden">
-      <MeshBackground />
+    <section className="relative overflow-hidden bg-gradient-to-br from-off-black via-zinc-900 to-brand-red-dark">
+      {/* Gradient overlays for depth */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(217,2,23,0.15),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,110,255,0.08),transparent_60%)]" />
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 w-full pt-24 md:pt-28 pb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-[7fr_5fr] gap-8 lg:gap-6 items-center">
+      <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 pt-28 md:pt-36 pb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           <motion.div
             variants={stagger}
             initial="hidden"
             animate="visible"
-            className="max-w-2xl"
           >
             <motion.div variants={fadeUp}>
-              <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-brand-red bg-brand-red/8 px-4 py-2 rounded-full mb-5">
-                Qatar&apos;s Retail Media Platform
+              <span className="inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-brand-red bg-brand-red/10 px-4 py-2 rounded-full mb-5">
+                Qatar&apos;s #1 Retail Media Platform
               </span>
             </motion.div>
 
             <motion.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl lg:text-[4.25rem] tracking-tighter leading-[0.95] font-black text-off-black"
+              className="text-4xl md:text-5xl lg:text-6xl tracking-tighter leading-[0.95] font-black text-white"
             >
               Turn Shoppers Into{" "}
               <span className="text-brand-red">Your Customers</span>
@@ -74,70 +145,46 @@ export default function Hero() {
 
             <motion.p
               variants={fadeUp}
-              className="mt-4 text-base md:text-lg text-muted leading-relaxed max-w-[50ch]"
+              className="mt-4 text-base text-white/60 leading-relaxed max-w-md"
             >
-              Advertise to 1.5M+ high-intent buyers on Qatar&apos;s #1 super app.
-              First-party data. AI targeting. Real ROAS.
+              Advertise to 1.5M+ high-intent buyers. First-party data. AI targeting. Real ROAS.
             </motion.p>
 
-            <motion.div variants={fadeUp} className="mt-6 flex flex-wrap gap-3">
+            <motion.div variants={fadeUp} className="mt-7 flex flex-wrap gap-3">
               <Button href="#solutions" variant="primary">
                 Explore Solutions
               </Button>
-              <Button href="#contact" variant="secondary">
+              <Button href="#contact" variant="secondary" className="border-white/20 text-white hover:bg-white/10 hover:border-white/30">
                 Start Advertising
               </Button>
             </motion.div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, x: 40 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{
-              type: "spring" as const,
-              stiffness: 60,
-              damping: 18,
-              delay: 0.3,
-            }}
-            className="hidden lg:flex items-center justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, type: "spring" as const, stiffness: 60, damping: 18 }}
+            className="hidden lg:block"
           >
-            <div className="relative w-full max-w-sm">
-              <motion.div
-                className="w-56 h-56 rounded-3xl bg-brand-red shadow-[0_30px_60px_-15px_rgba(217,2,23,0.3)]"
-                animate={{ y: [0, -12, 0], rotate: [0, 2, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.div
-                className="absolute -top-8 -right-8 w-28 h-28 rounded-2xl bg-brand-yellow/80 shadow-lg"
-                animate={{ y: [0, 8, 0], rotate: [0, -3, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              />
-              <motion.div
-                className="absolute -bottom-6 -left-6 w-20 h-20 rounded-full bg-brand-electric/60 shadow-lg"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              />
-              <motion.div
-                className="absolute top-1/2 -right-12 w-14 h-14 rounded-xl bg-brand-orange/50"
-                animate={{ y: [0, 6, 0], rotate: [0, 5, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-              />
-            </div>
+            <PhoneMockup />
           </motion.div>
         </div>
+      </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, type: "spring" as const, stiffness: 100, damping: 20 }}
-          className="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-y-6 border-t border-zinc-200/60 pt-8"
-        >
+      {/* Stats strip */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="relative border-t border-white/10 bg-white/5 backdrop-blur-sm"
+      >
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-6 grid grid-cols-2 md:grid-cols-4 gap-y-4">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
-              className={`${i > 0 ? "md:border-l md:border-zinc-200/60 md:pl-8" : ""}`}
+              className={`${i > 0 ? "md:border-l md:border-white/10 md:pl-8" : ""}`}
             >
-              <div className="text-2xl md:text-3xl font-black text-off-black tracking-tight">
+              <div className="text-2xl md:text-3xl font-black text-white tracking-tight">
                 <AnimatedCounter
                   target={stat.value}
                   suffix={stat.suffix}
@@ -145,11 +192,11 @@ export default function Hero() {
                   decimals={stat.decimals}
                 />
               </div>
-              <p className="mt-1 text-xs text-muted">{stat.label}</p>
+              <p className="mt-0.5 text-xs text-white/40">{stat.label}</p>
             </div>
           ))}
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   );
 }
