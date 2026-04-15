@@ -55,21 +55,9 @@ function RotatingWord() {
 function FloatingOrbs() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-      <motion.div
-        className="absolute top-[15%] right-[10%] w-72 h-72 rounded-full bg-brand-red/[0.04] blur-3xl"
-        animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-[20%] left-[5%] w-96 h-96 rounded-full bg-brand-blue/[0.03] blur-3xl"
-        animate={{ x: [0, -20, 0], y: [0, 25, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-      />
-      <motion.div
-        className="absolute top-[40%] right-[40%] w-48 h-48 rounded-full bg-brand-yellow/[0.04] blur-3xl"
-        animate={{ x: [0, 15, 0], y: [0, -15, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-      />
+      <div className="absolute top-[15%] right-[10%] w-72 h-72 rounded-full bg-brand-red/[0.04] blur-3xl animate-float-1" />
+      <div className="absolute bottom-[20%] left-[5%] w-96 h-96 rounded-full bg-brand-blue/[0.03] blur-3xl animate-float-2" />
+      <div className="absolute top-[40%] right-[40%] w-48 h-48 rounded-full bg-brand-yellow/[0.04] blur-3xl animate-float-3" />
     </div>
   );
 }

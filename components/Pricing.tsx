@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Check, ArrowRight } from "@phosphor-icons/react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -58,14 +57,12 @@ export default function Pricing() {
         <div className="mt-14 grid grid-cols-1 md:grid-cols-[1fr_1.15fr_1fr] gap-5 items-start">
           {tiers.map((tier, i) => (
             <ScrollReveal key={tier.name} delay={i * 0.1}>
-              <motion.div
-                className={`relative rounded-2xl p-7 md:p-8 h-full ${
+              <div
+                className={`relative rounded-2xl p-7 md:p-8 h-full hover:-translate-y-1.5 transition-transform duration-300 ${
                   tier.popular
                     ? "bg-white border-2 border-brand-red shadow-[0_25px_60px_-15px_rgba(217,2,23,0.12)]"
                     : "bg-white border border-zinc-200 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
                 }`}
-                whileHover={{ y: -6 }}
-                transition={{ type: "spring" as const, stiffness: 300, damping: 25 }}
               >
                 {tier.popular && (
                   <span className="absolute -top-3 left-7 inline-block px-3 py-1 rounded-full text-[10px] font-bold text-white bg-brand-red shadow-[0_4px_12px_rgba(217,2,23,0.3)]">
@@ -92,7 +89,7 @@ export default function Pricing() {
                 <div className="mt-7">
                   <Button href="#contact" variant={tier.ctaVariant} className="w-full">{tier.cta}</Button>
                 </div>
-              </motion.div>
+              </div>
             </ScrollReveal>
           ))}
         </div>

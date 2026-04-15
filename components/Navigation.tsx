@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { List, X } from "@phosphor-icons/react";
 import Button from "@/components/ui/Button";
@@ -15,24 +15,31 @@ const navItems = [
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const ticking = useRef(false);
+
+  const onScroll = useCallback(() => {
+    if (!ticking.current) {
+      ticking.current = true;
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 20);
+        ticking.current = false;
+      });
+    }
+  }, []);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [onScroll]);
 
   return (
     <>
-      <motion.header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      <header
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 animate-slide-down ${
           scrolled
             ? "bg-white/80 backdrop-blur-xl border-b border-zinc-200/50 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
             : "bg-transparent"
         }`}
-        initial={{ y: -80 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring" as const, stiffness: 120, damping: 20 }}
       >
         <nav className="max-w-[1400px] mx-auto px-6 lg:px-10 flex items-center justify-between h-16 md:h-[72px]">
           <a href="#" className="flex items-center gap-2.5 shrink-0">
@@ -47,15 +54,13 @@ export default function Navigation() {
 
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <motion.a
+              <a
                 key={item.href}
                 href={item.href}
-                className="text-[13px] font-medium text-muted hover:text-off-black transition-colors"
-                whileHover={{ y: -1 }}
-                transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
+                className="text-[13px] font-medium text-muted hover:text-off-black hover:-translate-y-px transition-all"
               >
                 {item.label}
-              </motion.a>
+              </a>
             ))}
           </div>
 
@@ -67,7 +72,7 @@ export default function Navigation() {
             {mobileOpen ? <X size={24} weight="bold" /> : <List size={24} weight="bold" />}
           </button>
         </nav>
-      </motion.header>
+      </header>
 
       <AnimatePresence>
         {mobileOpen && (

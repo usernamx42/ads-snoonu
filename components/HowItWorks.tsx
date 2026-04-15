@@ -1,7 +1,6 @@
 "use client";
 
 import { type ReactNode } from "react";
-import { motion } from "framer-motion";
 import { Eye, MagnifyingGlass, Crosshair, ShoppingBag } from "@phosphor-icons/react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
@@ -31,27 +30,20 @@ export default function HowItWorks() {
           <div className="relative">
             {/* Connecting line — behind icons */}
             <div className="absolute top-[52px] left-[12%] right-[12%] h-px z-0">
-              <motion.div
-                className="h-full bg-gradient-to-r from-brand-red via-brand-yellow to-brand-green"
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
-                style={{ transformOrigin: "left" }}
-              />
+              <ScrollReveal delay={0.3}>
+                <div className="h-px bg-gradient-to-r from-brand-red via-brand-yellow to-brand-green" />
+              </ScrollReveal>
             </div>
 
             <div className="grid grid-cols-4 gap-8">
               {stages.map((stage, i) => (
                 <ScrollReveal key={stage.label} delay={i * 0.12}>
                   <div className="text-center relative z-10">
-                    <motion.div
-                      className="w-[104px] h-[104px] rounded-3xl bg-white/[0.06] border border-white/[0.08] mx-auto flex items-center justify-center text-white backdrop-blur-sm"
-                      whileHover={{ scale: 1.1, backgroundColor: "rgba(217,2,23,0.15)", borderColor: "rgba(217,2,23,0.3)" }}
-                      transition={{ type: "spring" as const, stiffness: 300, damping: 20 }}
+                    <div
+                      className="w-[104px] h-[104px] rounded-3xl bg-white/[0.06] border border-white/[0.08] mx-auto flex items-center justify-center text-white backdrop-blur-sm hover:scale-110 hover:bg-brand-red/15 hover:border-brand-red/30 transition-all duration-300"
                     >
                       {stage.icon}
-                    </motion.div>
+                    </div>
                     <h3 className="mt-5 text-base font-bold text-white">{stage.label}</h3>
                     <p className="mt-2 text-xs text-white/35 leading-relaxed max-w-[180px] mx-auto">{stage.description}</p>
                   </div>

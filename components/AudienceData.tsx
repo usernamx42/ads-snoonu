@@ -1,56 +1,68 @@
 "use client";
 
-import { type ReactNode, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { type ReactNode, useRef, useEffect, useState } from "react";
 import { Database, ChartLineUp, Brain, Lightning } from "@phosphor-icons/react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
-function AnimatedBar({ value, delay = 0 }: { value: number; delay?: number }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
+function useInViewOnce(margin = "-50px") {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); obs.disconnect(); } },
+      { rootMargin: margin }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [margin]);
+  return { ref, inView };
+}
+
+function AnimatedBar({ value }: { value: number }) {
+  const { ref, inView } = useInViewOnce();
   return (
     <div ref={ref} className="h-2 bg-zinc-100 rounded-full overflow-hidden">
-      <motion.div
-        className="h-full rounded-full bg-brand-red"
-        initial={{ width: 0 }}
-        animate={inView ? { width: `${value}%` } : {}}
-        transition={{ duration: 1.2, delay, ease: "easeOut" }}
+      <div
+        className="h-full rounded-full bg-brand-red transition-[width] duration-1000 ease-out"
+        style={{ width: inView ? `${value}%` : "0%" }}
       />
     </div>
   );
 }
 
 function MiniBarChart() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const { ref, inView } = useInViewOnce();
   const bars = [40, 55, 48, 62, 58, 70, 65, 78, 72, 85, 80, 90];
   return (
     <div ref={ref} className="flex items-end gap-1 h-14">
       {bars.map((h, i) => (
-        <motion.div key={i} className="flex-1 rounded-t-sm bg-brand-red/15 relative overflow-hidden" style={{ height: `${h}%` }}>
-          <motion.div className="absolute bottom-0 left-0 right-0 bg-brand-red rounded-t-sm"
-            initial={{ height: 0 }} animate={inView ? { height: "100%" } : {}}
-            transition={{ duration: 0.6, delay: i * 0.04, ease: "easeOut" }} />
-        </motion.div>
+        <div key={i} className="flex-1 rounded-t-sm bg-brand-red/15 relative overflow-hidden" style={{ height: `${h}%` }}>
+          <div
+            className="absolute bottom-0 left-0 right-0 bg-brand-red rounded-t-sm transition-[height] duration-600 ease-out"
+            style={{ height: inView ? "100%" : "0%", transitionDelay: `${i * 40}ms` }}
+          />
+        </div>
       ))}
     </div>
   );
 }
 
 function DonutChart({ value }: { value: number }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const { ref, inView } = useInViewOnce();
   const c = 2 * Math.PI * 38;
   return (
     <div ref={ref} className="relative w-16 h-16">
       <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
         <circle cx="50" cy="50" r="38" fill="none" stroke="#f4f4f5" strokeWidth="8" />
-        <motion.circle cx="50" cy="50" r="38" fill="none" stroke="#D90217" strokeWidth="8" strokeLinecap="round"
-          strokeDasharray={c} initial={{ strokeDashoffset: c }}
-          animate={inView ? { strokeDashoffset: c - (value / 100) * c } : {}}
-          transition={{ duration: 1.5, ease: "easeOut" }} />
+        <circle cx="50" cy="50" r="38" fill="none" stroke="#D90217" strokeWidth="8" strokeLinecap="round"
+          strokeDasharray={c}
+          strokeDashoffset={inView ? c - (value / 100) * c : c}
+          style={{ transition: "stroke-dashoffset 1.5s ease-out" }}
+        />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
         <span className="text-xs font-black text-off-black">{value}%</span>
@@ -85,15 +97,13 @@ export default function AudienceData() {
             <div className="mt-10 grid grid-cols-2 gap-3">
               {whyCards.map((card, i) => (
                 <ScrollReveal key={card.title} delay={i * 0.06}>
-                  <motion.div className="flex items-start gap-3 p-4 rounded-xl bg-off-white border border-zinc-100 h-full"
-                    whileHover={{ y: -2, backgroundColor: "#f0f0f0" }}
-                    transition={{ type: "spring" as const, stiffness: 300, damping: 25 }}>
+                  <div className="flex items-start gap-3 p-4 rounded-xl bg-off-white border border-zinc-100 h-full hover:-translate-y-0.5 hover:bg-[#f0f0f0] transition-all duration-200">
                     <div className="w-8 h-8 rounded-lg bg-brand-red/[0.08] flex items-center justify-center shrink-0">{card.icon}</div>
                     <div>
                       <p className="text-xs font-bold text-off-black">{card.title}</p>
                       <p className="text-[11px] text-muted mt-0.5">{card.text}</p>
                     </div>
-                  </motion.div>
+                  </div>
                 </ScrollReveal>
               ))}
             </div>

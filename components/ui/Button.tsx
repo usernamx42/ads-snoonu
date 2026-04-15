@@ -1,7 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 type ButtonVariant = "primary" | "secondary" | "tertiary";
 
 interface ButtonProps {
@@ -30,30 +26,19 @@ export default function Button({
   className = "",
   type = "button",
 }: ButtonProps) {
-  const styles = `inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold tracking-tight min-h-[44px] transition-colors cursor-pointer ${variantStyles[variant]} ${className}`;
+  const styles = `inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold tracking-tight min-h-[44px] transition-all cursor-pointer active:scale-[0.98] active:translate-y-px ${variantStyles[variant]} ${className}`;
 
   if (href) {
     return (
-      <motion.a
-        href={href}
-        className={styles}
-        whileTap={{ scale: 0.98, y: 1 }}
-        transition={{ type: "spring", stiffness: 400, damping: 25 }}
-      >
+      <a href={href} className={styles}>
         {children}
-      </motion.a>
+      </a>
     );
   }
 
   return (
-    <motion.button
-      type={type}
-      onClick={onClick}
-      className={styles}
-      whileTap={{ scale: 0.98, y: 1 }}
-      transition={{ type: "spring", stiffness: 400, damping: 25 }}
-    >
+    <button type={type} onClick={onClick} className={styles}>
       {children}
-    </motion.button>
+    </button>
   );
 }

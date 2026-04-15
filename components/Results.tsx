@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRight } from "@phosphor-icons/react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
@@ -28,10 +27,8 @@ export default function Results() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <motion.div
-            className="mt-12 rounded-2xl border border-zinc-200 bg-white overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] transition-shadow"
-            whileHover={{ y: -4 }}
-            transition={{ type: "spring" as const, stiffness: 200, damping: 25 }}
+          <div
+            className="mt-12 rounded-2xl border border-zinc-200 bg-white overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300"
           >
             <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr]">
               <div className="p-8 md:p-12">
@@ -44,14 +41,12 @@ export default function Results() {
                 <p className="mt-4 text-sm text-muted leading-relaxed max-w-lg">
                   By targeting high-intent food searchers with sponsored listings and push notifications during peak hours, this brand turned Snoonu into their #1 digital acquisition channel.
                 </p>
-                <motion.a
+                <a
                   href="#contact"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand-red"
-                  whileHover={{ gap: "12px" }}
-                  transition={{ type: "spring" as const, stiffness: 300, damping: 20 }}
+                  className="mt-6 inline-flex items-center gap-2 hover:gap-3 text-sm font-bold text-brand-red transition-all duration-200"
                 >
                   Read Full Story <ArrowRight size={14} weight="bold" />
-                </motion.a>
+                </a>
               </div>
 
               <div className="p-8 md:p-12 flex flex-col justify-center gap-8 border-t lg:border-t-0 lg:border-l border-zinc-100 bg-off-white/50">
@@ -65,7 +60,7 @@ export default function Results() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>

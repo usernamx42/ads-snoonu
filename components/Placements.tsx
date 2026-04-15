@@ -1,7 +1,6 @@
 "use client";
 
 import { type ReactNode } from "react";
-import { motion } from "framer-motion";
 import { DeviceMobile, MagnifyingGlass, Bell, VideoCamera, Handshake, MapPin } from "@phosphor-icons/react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -61,10 +60,8 @@ export default function Placements() {
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {placements.map((p, i) => (
             <ScrollReveal key={p.title} delay={i * 0.06}>
-              <motion.div
-                className="group rounded-2xl bg-white border border-zinc-100 p-6 h-full shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.08)] transition-shadow"
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring" as const, stiffness: 300, damping: 25 }}
+              <div
+                className="group rounded-2xl bg-white border border-zinc-100 p-6 h-full shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-11 h-11 rounded-xl bg-brand-red/[0.06] group-hover:bg-brand-red/[0.1] flex items-center justify-center transition-colors">
@@ -74,7 +71,7 @@ export default function Placements() {
                 </div>
                 <h3 className="text-base font-bold text-off-black tracking-tight">{p.title}</h3>
                 <p className="mt-2 text-sm text-muted leading-relaxed">{p.description}</p>
-              </motion.div>
+              </div>
             </ScrollReveal>
           ))}
         </div>
