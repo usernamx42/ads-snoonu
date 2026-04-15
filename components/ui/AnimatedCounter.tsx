@@ -1,13 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import {
-  useMotionValue,
-  useTransform,
-  animate,
-  motion,
-  useInView,
-} from "framer-motion";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { animate, useInView } from "framer-motion";
 
 interface AnimatedCounterProps {
   target: number;
@@ -24,23 +18,35 @@ export default function AnimatedCounter({
   duration = 2,
   decimals = 0,
 }: AnimatedCounterProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const count = useMotionValue(0);
-  const display = useTransform(count, (v) => {
-    const val = decimals > 0 ? v.toFixed(decimals) : Math.round(v).toString();
-    return `${prefix}${val}${suffix}`;
-  });
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true });
+
+  const formatValue = useCallback(
+    (v: number) => {
+      const val = decimals > 0 ? v.toFixed(decimals) : Math.round(v).toString();
+      return `${prefix}${val}${suffix}`;
+    },
+    [decimals, prefix, suffix]
+  );
+
+  const [display, setDisplay] = useState(formatValue(0));
 
   useEffect(() => {
-    if (isInView) {
-      animate(count, target, { duration, ease: "easeOut" });
-    }
-  }, [isInView, target, duration, count]);
+    if (!isInView) return;
+
+    const controls = animate(0, target, {
+      duration,
+      ease: "easeOut",
+      onUpdate: (v) => setDisplay(formatValue(v)),
+      onComplete: () => setDisplay(formatValue(target)),
+    });
+
+    return () => controls.stop();
+  }, [isInView, target, duration, formatValue]);
 
   return (
-    <motion.span ref={ref} className="tabular-nums">
+    <span ref={ref} className="tabular-nums">
       {display}
-    </motion.span>
+    </span>
   );
 }
