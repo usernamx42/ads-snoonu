@@ -47,8 +47,8 @@ export default function Navigation() {
               <span className="text-white font-black text-lg leading-none">S</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-off-black text-sm leading-tight tracking-tight">Snoonu</span>
-              <span className="text-[9px] text-muted tracking-[0.25em] uppercase leading-tight">Ads</span>
+              <span className={`font-bold text-sm leading-tight tracking-tight transition-colors ${scrolled ? "text-off-black" : "text-white"}`}>Snoonu</span>
+              <span className={`text-[9px] tracking-[0.25em] uppercase leading-tight transition-colors ${scrolled ? "text-muted" : "text-white/50"}`}>Ads</span>
             </div>
           </a>
 
@@ -57,7 +57,7 @@ export default function Navigation() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[13px] font-medium text-muted hover:text-off-black hover:-translate-y-px transition-all"
+                className={`text-[13px] font-medium hover:-translate-y-px transition-all ${scrolled ? "text-muted hover:text-off-black" : "text-white/60 hover:text-white"}`}
               >
                 {item.label}
               </a>
@@ -68,7 +68,7 @@ export default function Navigation() {
             <Button href="#contact" variant="primary">Start Advertising</Button>
           </div>
 
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden p-2 -mr-2 text-off-black" aria-label="Toggle menu">
+          <button onClick={() => setMobileOpen(!mobileOpen)} className={`md:hidden p-2 -mr-2 transition-colors ${scrolled ? "text-off-black" : "text-white"}`} aria-label="Toggle menu">
             {mobileOpen ? <X size={24} weight="bold" /> : <List size={24} weight="bold" />}
           </button>
         </nav>

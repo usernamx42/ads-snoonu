@@ -64,31 +64,37 @@ function FloatingOrbs() {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[92dvh] flex flex-col justify-center overflow-hidden">
-      <FloatingOrbs />
+    <section className="relative min-h-[92dvh] flex flex-col justify-center overflow-hidden bg-off-black">
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
+        style={{ backgroundImage: "url('/website snoonu 2.png')" }}
+      />
+      {/* Gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-off-black/80 via-off-black/50 to-transparent" />
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 w-full pt-24 md:pt-28 pb-12">
+      <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 w-full pt-24 md:pt-28 pb-12">
         <motion.div variants={stagger} initial="hidden" animate="visible" className="max-w-3xl">
           <motion.div variants={fadeUp}>
-            <span className="inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-brand-red bg-brand-red/[0.06] px-4 py-2 rounded-full mb-6">
+            <span className="inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-brand-red bg-brand-red/10 px-4 py-2 rounded-full mb-6">
               Qatar&apos;s #1 Retail Media Platform
             </span>
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl lg:text-7xl tracking-tighter leading-[0.92] font-black text-off-black">
+          <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl lg:text-7xl tracking-tighter leading-[0.92] font-black text-white">
             Turn Shoppers Into{" "}
             <br className="hidden md:block" />
             Your <RotatingWord />
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="mt-5 text-base md:text-lg text-muted leading-relaxed max-w-lg">
+          <motion.p variants={fadeUp} className="mt-5 text-base md:text-lg text-white/60 leading-relaxed max-w-lg">
             Advertise to 1.5M+ high-intent buyers on Qatar&apos;s #1 super app.
             First-party data. AI targeting. Real ROAS.
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-3">
             <Button href="#solutions" variant="primary">Explore Solutions</Button>
-            <Button href="#contact" variant="secondary">Start Advertising</Button>
+            <Button href="#contact" variant="secondary" className="border-white/20 text-white hover:bg-white/10">Start Advertising</Button>
           </motion.div>
         </motion.div>
       </div>
@@ -98,15 +104,15 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, type: "spring" as const, stiffness: 100, damping: 20 }}
-        className="border-t border-zinc-100 bg-off-white/60"
+        className="relative border-t border-white/10 bg-white/5 backdrop-blur-sm"
       >
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-7 grid grid-cols-2 md:grid-cols-4 gap-y-5">
           {stats.map((stat, i) => (
-            <div key={stat.label} className={`${i > 0 ? "md:border-l md:border-zinc-200/60 md:pl-8" : ""}`}>
-              <div className="text-2xl md:text-3xl font-black text-off-black tracking-tight">
+            <div key={stat.label} className={`${i > 0 ? "md:border-l md:border-white/10 md:pl-8" : ""}`}>
+              <div className="text-2xl md:text-3xl font-black text-white tracking-tight">
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} decimals={stat.decimals} />
               </div>
-              <p className="mt-0.5 text-xs text-muted">{stat.label}</p>
+              <p className="mt-0.5 text-xs text-white/40">{stat.label}</p>
             </div>
           ))}
         </div>
