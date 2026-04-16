@@ -1,46 +1,83 @@
 "use client";
 
-import { type ReactNode } from "react";
-import { DeviceMobile, MagnifyingGlass, Bell, VideoCamera, Handshake, MapPin } from "@phosphor-icons/react";
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
-const placements: { icon: ReactNode; title: string; description: string; stat: string }[] = [
+interface Placement {
+  title: string;
+  image: string;
+  alt: string;
+  features: string[];
+  kpis: string[];
+}
+
+const placements: Placement[] = [
   {
-    icon: <DeviceMobile size={24} weight="fill" className="text-brand-red" />,
-    title: "App Banners",
-    description: "Native banners across home feed, search, category pages, and checkout.",
-    stat: "20M+ daily impressions",
+    title: "Checkout Banner",
+    image: "/ads-placement-images/checkout-banner.png",
+    alt: "Snoonu app checkout screen showing a promotional banner during order tracking",
+    features: [
+      "4M+ daily impressions in high-attention state",
+      "Maximize brand awareness and recall",
+      "Ensures your brand reaches many user profiles, especially those who make purchases on Snoonu",
+      "Optional Customized Landing Page Add-on",
+    ],
+    kpis: ["Impressions", "Reach", "Clicks", "Sales uplifts on Snoonu"],
   },
   {
-    icon: <MagnifyingGlass size={24} weight="fill" className="text-brand-red" />,
-    title: "Sponsored Search",
-    description: "Top placement when users search your category. Pay per click.",
-    stat: "From 1 QAR per click",
+    title: "Search Banner",
+    image: "/ads-placement-images/search-banner.png",
+    alt: "Snoonu app search screen with a promotional banner ad",
+    features: [
+      "20M+ daily high-intent impressions",
+      "Highest conversion rate of all formats due to active searching behaviors",
+      "Best to combine with awareness format to expand Marketing funnel",
+    ],
+    kpis: ["Impressions", "Reach", "Clicks", "Sales uplifts on Snoonu"],
   },
   {
-    icon: <Bell size={24} weight="fill" className="text-brand-red" />,
-    title: "Push Notifications",
-    description: "Targeted messages sent to opted-in users at the right moment.",
-    stat: "Opted-in users only",
+    title: "Category Banner",
+    image: "/ads-placement-images/category-banner.png",
+    alt: "Snoonu app groceries category page with store listings",
+    features: [
+      "Placement on category pages with 30K\u201335K daily impressions to increase brand awareness",
+      "Strategic campaign driving attention to your products and value propositions",
+      "Creative design support",
+    ],
+    kpis: ["Impressions", "Reach", "Clicks", "Sales uplifts on Snoonu"],
+  },
+  // {
+  //   title: "In-Store Banner",
+  //   image: "/ads-placement-images/in-store-banner.png",
+  //   alt: "Snoonu app Al Meera store page with a featured product banner",
+  //   features: [
+  //     "Positioned at the top of the merchant page to immediately drive user attention",
+  //     "Rotating banners showcasing your products",
+  //     "Ideal for new launches, trending items, or time-limited promotions",
+  //   ],
+  //   kpis: ["Impressions", "Reach", "Clicks", "Sales uplifts on Snoonu"],
+  // },
+  {
+    title: "Food Sliders",
+    image: "/ads-placement-images/food-sliders.png",
+    alt: "Snoonu app homepage showing food slider carousel with restaurant promotions",
+    features: [
+      "Prime placement on Snoonu homepage with up to 10M+ daily impressions",
+      "Highlights your specific products or bundles",
+      "Best for promoting high-margin SKUs, campaign heroes, or limited offers",
+    ],
+    kpis: ["Impressions", "Clicks", "Sales uplifts on Snoonu"],
   },
   {
-    icon: <VideoCamera size={24} weight="fill" className="text-brand-red" />,
-    title: "Video Ads",
-    description: "Short-form video spots within the browsing experience.",
-    stat: "High engagement rates",
-  },
-  {
-    icon: <Handshake size={24} weight="fill" className="text-brand-red" />,
-    title: "Co-op Media",
-    description: "Joint platform campaigns across social and partner networks.",
-    stat: "Cross-channel reach",
-  },
-  {
-    icon: <MapPin size={24} weight="fill" className="text-brand-red" />,
-    title: "S-Charge Screens",
-    description: "Digital screens at 600+ S-Charge locations across Qatar.",
-    stat: "Physical touchpoints",
+    title: "Search & Promoted Listings",
+    image: "/ads-placement-images/search-promoted-listings.png",
+    alt: "Snoonu app search results showing sponsored listings with Ad badges",
+    features: [
+      "Search Ads: Bid on keywords to appear in top 10 search results with Pay-per-Click model",
+      "Food Listing: allows you to reach up to 10M users browsing Snoonu on a daily basis",
+    ],
+    kpis: ["Impressions", "Auction Win rate", "Clicks / CTR", "Sales uplifts on Snoonu"],
   },
 ];
 
@@ -57,23 +94,55 @@ export default function Placements() {
           />
         </ScrollReveal>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {placements.map((p, i) => (
-            <ScrollReveal key={p.title} delay={i * 0.06}>
-              <div
-                className="group rounded-2xl bg-white border border-zinc-100 p-6 h-full shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-brand-red/[0.06] group-hover:bg-brand-red/[0.1] flex items-center justify-center transition-colors">
-                    {p.icon}
+        <div className="mt-16 flex flex-col gap-20 md:gap-28">
+          {placements.map((p, i) => {
+            const imageLeft = i % 2 === 0;
+            return (
+              <ScrollReveal key={p.title} delay={0.05}>
+                <div className={`flex flex-col ${imageLeft ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8 md:gap-14`}>
+                  {/* Image */}
+                  <div className="w-full md:w-1/2 flex justify-center">
+                    <div className="relative w-full max-w-[340px] aspect-[9/16] rounded-3xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)]">
+                      <Image
+                        src={p.image}
+                        alt={p.alt}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 768px) 80vw, 340px"
+                      />
+                    </div>
                   </div>
-                  <span className="text-[10px] font-medium text-muted bg-zinc-100 px-2.5 py-1 rounded-full">{p.stat}</span>
+
+                  {/* Content */}
+                  <div className="w-full md:w-1/2">
+                    <h3 className="text-2xl md:text-3xl font-black text-off-black tracking-tight">
+                      {p.title}
+                    </h3>
+
+                    <ul className="mt-6 space-y-3">
+                      {p.features.map((f) => (
+                        <li key={f} className="flex items-start gap-3 text-sm md:text-base text-off-black/80 leading-relaxed">
+                          <span className="mt-0.5 text-brand-red font-bold shrink-0">&#10003;</span>
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-6 pt-5 border-t border-zinc-200/60">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted mb-3">KPIs</p>
+                      <div className="flex flex-wrap gap-2">
+                        {p.kpis.map((kpi) => (
+                          <span key={kpi} className="text-xs font-medium text-off-black bg-zinc-100 px-3 py-1.5 rounded-full">
+                            {kpi}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-base font-bold text-off-black tracking-tight">{p.title}</h3>
-                <p className="mt-2 text-sm text-muted leading-relaxed">{p.description}</p>
-              </div>
-            </ScrollReveal>
-          ))}
+              </ScrollReveal>
+            );
+          })}
         </div>
       </div>
     </section>
