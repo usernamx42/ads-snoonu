@@ -64,7 +64,10 @@ function FloatingOrbs() {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[92dvh] flex flex-col justify-center overflow-hidden">
+    <section
+      className="relative min-h-[92dvh] flex flex-col justify-center overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/website%20snoonu%202.png')" }}
+    >
       <FloatingOrbs />
 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 w-full pt-24 md:pt-28 pb-12">
