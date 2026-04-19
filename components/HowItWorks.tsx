@@ -17,11 +17,11 @@ export default function HowItWorks() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <ScrollReveal>
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-red mb-4">How It Works</p>
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-red mb-4">How It Works</p>
             <h2 className="text-3xl md:text-5xl tracking-tighter leading-none font-bold text-white">
               From Discovery to Checkout
             </h2>
-            <p className="mt-4 text-sm text-white/40 leading-relaxed">Your ads follow the shopper journey at every touchpoint.</p>
+            <p className="mt-4 text-base text-white/50 leading-relaxed">Your ads follow the shopper journey at every touchpoint.</p>
           </div>
         </ScrollReveal>
 
@@ -44,8 +44,8 @@ export default function HowItWorks() {
                     >
                       {stage.icon}
                     </div>
-                    <h3 className="mt-5 text-base font-bold text-white">{stage.label}</h3>
-                    <p className="mt-2 text-xs text-white/35 leading-relaxed max-w-[180px] mx-auto">{stage.description}</p>
+                    <h3 className="mt-5 text-lg font-bold text-white">{stage.label}</h3>
+                    <p className="mt-2 text-base text-white/55 leading-relaxed max-w-[220px] mx-auto">{stage.description}</p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -65,8 +65,8 @@ export default function HowItWorks() {
                   {i < stages.length - 1 && <div className="w-px h-6 bg-white/10 mt-2" />}
                 </div>
                 <div className="pt-1.5">
-                  <h3 className="text-sm font-bold text-white">{stage.label}</h3>
-                  <p className="mt-1 text-xs text-white/35 leading-relaxed">{stage.description}</p>
+                  <h3 className="text-base font-bold text-white">{stage.label}</h3>
+                  <p className="mt-1 text-base text-white/55 leading-relaxed">{stage.description}</p>
                 </div>
               </div>
             </ScrollReveal>

@@ -88,3 +88,11 @@
     will-change: transform;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-1,
+  .animate-float-2,
+  .animate-float-3 {
+    animation: none !important;
+  }
+}

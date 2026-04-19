@@ -73,7 +73,7 @@ export default function Hero() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 w-full pt-24 md:pt-28 pb-12">
         <motion.div variants={stagger} initial="hidden" animate="visible" className="max-w-3xl">
           <motion.div variants={fadeUp}>
-            <span className="inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-brand-red bg-brand-red/[0.06] px-4 py-2 rounded-full mb-6">
+            <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-brand-red bg-brand-red/[0.06] px-4 py-2 rounded-full mb-6">
               Qatar&apos;s #1 Retail Media Platform
             </span>
           </motion.div>
@@ -109,7 +109,7 @@ export default function Hero() {
               <div className="text-2xl md:text-3xl font-black text-off-black tracking-tight">
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} decimals={stat.decimals} />
               </div>
-              <p className="mt-0.5 text-xs text-muted">{stat.label}</p>
+              <p className="mt-1 text-base text-muted">{stat.label}</p>
             </div>
           ))}
         </div>

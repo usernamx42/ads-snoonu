@@ -44,7 +44,7 @@ export default function Footer() {
                 </span>
               </div>
             </div>
-            <p className="mt-4 max-w-[35ch] text-sm leading-relaxed text-zinc-400">
+            <p className="mt-4 max-w-[35ch] text-base leading-relaxed text-zinc-400">
               Qatar&apos;s retail media platform connecting brands with high-intent
               shoppers across the country.
             </p>
@@ -52,30 +52,30 @@ export default function Footer() {
 
           {/* Contact Us + Follow Us */}
           <div>
-            <h3 className="mb-6 text-sm font-bold uppercase tracking-widest text-white">
+            <h3 className="mb-6 text-base font-bold uppercase tracking-widest text-white">
               Contact Us
             </h3>
             <ul className="flex flex-col gap-4">
               <li className="flex items-start gap-3">
-                <MapPin size={18} className="mt-0.5 shrink-0 text-zinc-500" />
-                <span className="text-sm text-zinc-400">
+                <MapPin size={20} className="mt-0.5 shrink-0 text-zinc-500" />
+                <span className="text-base text-zinc-400">
                   The 18th Tower, 14th Floor, Lusail, Qatar
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Envelope size={18} className="shrink-0 text-zinc-500" />
+                <Envelope size={20} className="shrink-0 text-zinc-500" />
                 <a
                   href="mailto:ads@snoonu.com"
-                  className="text-sm text-zinc-400 transition-colors hover:text-white"
+                  className="text-base text-zinc-400 transition-colors hover:text-white"
                 >
                   ads@snoonu.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={18} className="shrink-0 text-zinc-500" />
+                <Phone size={20} className="shrink-0 text-zinc-500" />
                 <a
                   href="tel:+97444302000"
-                  className="text-sm text-zinc-400 transition-colors hover:text-white"
+                  className="text-base text-zinc-400 transition-colors hover:text-white"
                   dir="ltr"
                 >
                   +974 4430 2000
@@ -83,7 +83,7 @@ export default function Footer() {
               </li>
             </ul>
 
-            <h3 className="mb-4 mt-8 text-sm font-bold uppercase tracking-widest text-white">
+            <h3 className="mb-4 mt-8 text-base font-bold uppercase tracking-widest text-white">
               Follow Us
             </h3>
             <div className="flex gap-3">
@@ -96,7 +96,7 @@ export default function Footer() {
                   aria-label={s.label}
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-800 text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white"
                 >
-                  <s.icon size={18} />
+                  <s.icon size={20} />
                 </a>
               ))}
             </div>
@@ -104,7 +104,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="mb-6 text-sm font-bold uppercase tracking-widest text-white">
+            <h3 className="mb-6 text-base font-bold uppercase tracking-widest text-white">
               Quick Links
             </h3>
             <ul className="flex flex-col">
@@ -114,7 +114,7 @@ export default function Footer() {
                     href={link.href}
                     target={link.href.startsWith("http") ? "_blank" : undefined}
                     rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="block py-1.5 text-sm text-zinc-400 transition-colors hover:text-white"
+                    className="block py-1.5 text-base text-zinc-400 transition-colors hover:text-white"
                   >
                     {link.label}
                   </a>

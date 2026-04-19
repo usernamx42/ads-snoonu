@@ -7,6 +7,7 @@ import Placements from "@/components/Placements";
 import AudienceData from "@/components/AudienceData";
 import Results from "@/components/Results";
 import Pricing from "@/components/Pricing";
+import CostCalculator from "@/components/CostCalculator";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -24,6 +25,7 @@ export default function Home() {
         <AudienceData />
         <Results />
         <Pricing />
+        <CostCalculator />
         <FAQ />
         <Contact />
       </main>

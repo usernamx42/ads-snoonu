@@ -31,7 +31,7 @@ export default function SectionHeading({
       </h2>
       {description && (
         <p
-          className={`mt-5 text-base leading-relaxed max-w-[65ch] ${
+          className={`mt-5 text-lg leading-relaxed max-w-[65ch] ${
             light ? "text-white/70" : "text-muted"
           }`}
         >

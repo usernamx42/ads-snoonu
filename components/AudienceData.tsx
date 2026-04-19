@@ -72,10 +72,10 @@ function DonutChart({ value }: { value: number }) {
 }
 
 const whyCards: { icon: ReactNode; title: string; text: string }[] = [
-  { icon: <Database size={18} weight="fill" className="text-brand-red" />, title: "First-Party Data", text: "Real purchase behavior, not guesswork" },
-  { icon: <ChartLineUp size={18} weight="fill" className="text-brand-red" />, title: "Closed-Loop", text: "Revenue tied to actual orders" },
-  { icon: <Brain size={18} weight="fill" className="text-brand-red" />, title: "AI Targeting", text: "ML-driven intent matching" },
-  { icon: <Lightning size={18} weight="fill" className="text-brand-red" />, title: "Real-Time", text: "Auto-optimized campaigns" },
+  { icon: <Database size={20} weight="fill" className="text-brand-red" />, title: "First-Party Data", text: "Real purchase behavior, not guesswork" },
+  { icon: <ChartLineUp size={20} weight="fill" className="text-brand-red" />, title: "Closed-Loop", text: "Revenue tied to actual orders" },
+  { icon: <Brain size={20} weight="fill" className="text-brand-red" />, title: "AI Targeting", text: "ML-driven intent matching" },
+  { icon: <Lightning size={20} weight="fill" className="text-brand-red" />, title: "Real-Time", text: "Auto-optimized campaigns" },
 ];
 
 const platformStats = [
@@ -100,8 +100,8 @@ export default function AudienceData() {
                   <div className="flex items-start gap-3 p-4 rounded-xl bg-off-white border border-zinc-100 h-full hover:-translate-y-0.5 hover:bg-[#f0f0f0] transition-all duration-200">
                     <div className="w-8 h-8 rounded-lg bg-brand-red/[0.08] flex items-center justify-center shrink-0">{card.icon}</div>
                     <div>
-                      <p className="text-xs font-bold text-off-black">{card.title}</p>
-                      <p className="text-[11px] text-muted mt-0.5">{card.text}</p>
+                      <p className="text-sm font-bold text-off-black">{card.title}</p>
+                      <p className="text-xs text-muted mt-0.5">{card.text}</p>
                     </div>
                   </div>
                 </ScrollReveal>
@@ -113,21 +113,21 @@ export default function AudienceData() {
             <ScrollReveal delay={0.1}>
               <div className="rounded-2xl bg-off-white border border-zinc-100 p-6">
                 <div className="flex items-baseline justify-between mb-3">
-                  <span className="text-3xl font-black text-brand-red tracking-tight">99%</span>
-                  <span className="text-xs text-muted">browse before ordering</span>
+                  <span className="text-4xl font-black text-brand-red tracking-tight">99%</span>
+                  <span className="text-base text-muted">browse before ordering</span>
                 </div>
                 <AnimatedBar value={99} />
-                <p className="mt-3 text-xs text-muted leading-relaxed">Users explore products before checkout. Your ad is part of that journey.</p>
+                <p className="mt-3 text-base text-muted leading-relaxed">Users explore products before checkout. Your ad is part of that journey.</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.15}>
               <div className="rounded-2xl bg-off-white border border-zinc-100 p-6">
                 <div className="flex items-baseline justify-between mb-3">
-                  <span className="text-3xl font-black text-brand-red tracking-tight">~30</span>
-                  <span className="text-xs text-muted">orders per user / year</span>
+                  <span className="text-4xl font-black text-brand-red tracking-tight">~30</span>
+                  <span className="text-base text-muted">orders per user / year</span>
                 </div>
                 <MiniBarChart />
-                <p className="mt-3 text-xs text-muted leading-relaxed">High repeat frequency means more touchpoints and chances to convert.</p>
+                <p className="mt-3 text-base text-muted leading-relaxed">High repeat frequency means more touchpoints and chances to convert.</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
@@ -135,8 +135,8 @@ export default function AudienceData() {
                 <div className="flex items-center gap-6">
                   <DonutChart value={20} />
                   <div>
-                    <span className="text-xs font-bold text-off-black">Premium subscribers</span>
-                    <p className="mt-1 text-xs text-muted leading-relaxed">High-spending users with elevated basket sizes.</p>
+                    <span className="text-sm font-bold text-off-black">Premium subscribers</span>
+                    <p className="mt-1 text-base text-muted leading-relaxed">High-spending users with elevated basket sizes.</p>
                   </div>
                 </div>
               </div>
@@ -151,7 +151,7 @@ export default function AudienceData() {
                 <div className="text-2xl font-black text-off-black tracking-tight">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                 </div>
-                <p className="mt-0.5 text-xs text-muted">{stat.label}</p>
+                <p className="mt-1 text-base text-muted">{stat.label}</p>
               </div>
             ))}
           </div>

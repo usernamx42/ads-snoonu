@@ -49,10 +49,10 @@ export default function Solutions() {
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300 ${sol.accent}`}>
                   {sol.icon}
                 </div>
-                <h3 className="text-xl font-bold text-off-black tracking-tight">{sol.title}</h3>
-                <p className="mt-3 text-sm text-muted leading-relaxed">{sol.benefit}</p>
-                <div className="mt-6 flex items-center gap-2 text-sm font-bold text-brand-red opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                  Learn More <ArrowRight size={14} weight="bold" />
+                <h3 className="text-2xl font-bold text-off-black tracking-tight">{sol.title}</h3>
+                <p className="mt-3 text-base text-muted leading-relaxed">{sol.benefit}</p>
+                <div className="mt-6 flex items-center gap-2 text-base font-bold text-brand-red opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                  Learn More <ArrowRight size={16} weight="bold" />
                 </div>
               </a>
             </ScrollReveal>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useEffect, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, Clock, Database, Headset } from "@phosphor-icons/react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -15,21 +15,30 @@ const budgetOptions = [
   { value: "discuss", label: "Let's discuss" },
 ];
 
+const validBudgetValues = new Set(budgetOptions.map((o) => o.value).filter(Boolean));
+
 const outcomes = [
-  { icon: <Clock size={18} weight="fill" />, text: "Custom media plan in 48 hours" },
-  { icon: <Database size={18} weight="fill" />, text: "First-party data targeting from day one" },
-  { icon: <Headset size={18} weight="fill" />, text: "Dedicated onboarding support" },
+  { icon: <Clock size={20} weight="fill" />, text: "Custom media plan in 48 hours" },
+  { icon: <Database size={20} weight="fill" />, text: "First-party data targeting from day one" },
+  { icon: <Headset size={20} weight="fill" />, text: "Dedicated onboarding support" },
 ];
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [budget, setBudget] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const value = params.get("budget");
+    if (value && validBudgetValues.has(value)) setBudget(value);
+  }, []);
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setSubmitted(true);
   }
 
-  const inputClass = "w-full bg-white/10 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:border-white/40 focus:outline-none transition-colors";
+  const inputClass = "w-full bg-white/10 border border-white/15 rounded-xl px-4 py-2.5 text-base text-white placeholder-white/30 focus:border-white/40 focus:outline-none transition-colors";
 
   return (
     <section id="contact" className="relative py-20 md:py-28 bg-gradient-to-br from-brand-red to-brand-red-dark overflow-hidden">
@@ -39,11 +48,11 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
           <ScrollReveal>
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-white/50 mb-4">Get Started</p>
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-white/60 mb-4">Get Started</p>
               <h2 className="text-3xl md:text-5xl tracking-tighter leading-[0.95] font-bold text-white">
                 Let&apos;s Build Your Growth Engine on Snoonu
               </h2>
-              <p className="mt-4 text-sm text-white/50 max-w-md leading-relaxed">
+              <p className="mt-4 text-base text-white/60 max-w-md leading-relaxed">
                 Get a custom media plan tailored to your goals and budget in under 48 hours.
               </p>
               <div className="mt-8 space-y-4">
@@ -53,12 +62,12 @@ export default function Contact() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 + i * 0.1, type: "spring" as const, stiffness: 100, damping: 20 }}>
-                    <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white/70 shrink-0">{item.icon}</div>
-                    <span className="text-sm text-white/70 font-medium">{item.text}</span>
+                    <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white/80 shrink-0">{item.icon}</div>
+                    <span className="text-base text-white/80 font-medium">{item.text}</span>
                   </motion.div>
                 ))}
               </div>
-              <p className="mt-8 text-xs text-white/30">ads@snoonu.com</p>
+              <p className="mt-8 text-base text-white/50">ads@snoonu.com</p>
             </div>
           </ScrollReveal>
 
@@ -69,7 +78,7 @@ export default function Contact() {
                   className="bg-white/10 backdrop-blur-sm rounded-2xl p-10 text-center border border-white/15">
                   <CheckCircle size={48} weight="fill" className="text-white mx-auto mb-4" />
                   <h3 className="text-xl font-bold text-white">Thanks for reaching out!</h3>
-                  <p className="mt-2 text-white/60 text-sm">Our team will send your custom media plan within 48 hours.</p>
+                  <p className="mt-2 text-white/70 text-base">Our team will send your custom media plan within 48 hours.</p>
                 </motion.div>
               ) : (
                 <motion.form key="form" onSubmit={handleSubmit}
@@ -77,34 +86,39 @@ export default function Contact() {
                   initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold text-white/60 uppercase tracking-wider">Full Name</label>
+                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">Full Name</label>
                       <input type="text" required className={inputClass} placeholder="Your name" />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold text-white/60 uppercase tracking-wider">Company</label>
+                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">Company</label>
                       <input type="text" required className={inputClass} placeholder="Company name" />
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold text-white/60 uppercase tracking-wider">Email</label>
+                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">Email</label>
                       <input type="email" required className={inputClass} placeholder="you@company.com" />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold text-white/60 uppercase tracking-wider">Phone</label>
+                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">Phone</label>
                       <input type="tel" className={inputClass} placeholder="+974" />
                     </div>
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold text-white/60 uppercase tracking-wider">Monthly Budget</label>
-                    <select required className={`${inputClass} appearance-none cursor-pointer`}>
+                    <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">Monthly Budget</label>
+                    <select
+                      required
+                      value={budget}
+                      onChange={(e) => setBudget(e.target.value)}
+                      className={`${inputClass} appearance-none cursor-pointer`}
+                    >
                       {budgetOptions.map((opt) => (
                         <option key={opt.value} value={opt.value} disabled={opt.value === ""} className="bg-off-black text-white">{opt.label}</option>
                       ))}
                     </select>
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold text-white/60 uppercase tracking-wider">Your Goals</label>
+                    <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">Your Goals</label>
                     <textarea rows={3} className={`${inputClass} resize-none`} placeholder="What do you want to achieve?" />
                   </div>
                   <Button type="submit" variant="secondary" className="w-full bg-white text-brand-red hover:bg-white/90 border-0">

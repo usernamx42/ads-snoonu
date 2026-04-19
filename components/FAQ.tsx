@@ -42,7 +42,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between py-5 text-left cursor-pointer group"
       >
-        <span className="text-base font-bold text-off-black pr-8 group-hover:text-brand-red transition-colors">
+        <span className="text-xl font-bold text-off-black pr-8 group-hover:text-brand-red transition-colors">
           {q}
         </span>
         <motion.div
@@ -50,7 +50,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
           className="shrink-0"
         >
-          <CaretDown size={18} weight="bold" className="text-muted" />
+          <CaretDown size={20} weight="bold" className="text-muted" />
         </motion.div>
       </button>
       <AnimatePresence>
@@ -62,7 +62,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
             transition={{ type: "spring", stiffness: 200, damping: 25 }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm text-muted leading-relaxed max-w-2xl">
+            <p className="pb-5 text-lg text-muted leading-relaxed max-w-2xl">
               {a}
             </p>
           </motion.div>

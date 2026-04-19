@@ -9,6 +9,7 @@ const navItems = [
   { label: "Solutions", href: "#solutions" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "Placements", href: "#placements" },
+  { label: "Calculator", href: "#calculator" },
   { label: "Results", href: "#results" },
 ];
 
@@ -47,8 +48,8 @@ export default function Navigation() {
               <span className="text-white font-black text-lg leading-none">S</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-off-black text-sm leading-tight tracking-tight">Snoonu</span>
-              <span className="text-[9px] text-muted tracking-[0.25em] uppercase leading-tight">Ads</span>
+              <span className="font-bold text-off-black text-base leading-tight tracking-tight">Snoonu</span>
+              <span className="text-xs text-muted tracking-[0.25em] uppercase leading-tight">Ads</span>
             </div>
           </a>
 
@@ -57,7 +58,7 @@ export default function Navigation() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[13px] font-medium text-muted hover:text-off-black hover:-translate-y-px transition-all"
+                className="text-base font-medium text-muted hover:text-off-black hover:-translate-y-px transition-all"
               >
                 {item.label}
               </a>

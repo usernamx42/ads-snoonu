@@ -65,24 +65,24 @@ export default function Pricing() {
                 }`}
               >
                 {tier.popular && (
-                  <span className="absolute -top-3 left-7 inline-block px-3 py-1 rounded-full text-[10px] font-bold text-white bg-brand-red shadow-[0_4px_12px_rgba(217,2,23,0.3)]">
+                  <span className="absolute -top-3 left-7 inline-block px-3 py-1 rounded-full text-[11px] font-bold tracking-wider text-white bg-brand-red shadow-[0_4px_12px_rgba(217,2,23,0.3)]">
                     Most Popular
                   </span>
                 )}
-                <h3 className="text-lg font-bold text-off-black">{tier.name}</h3>
+                <h3 className="text-xl font-bold text-off-black">{tier.name}</h3>
                 <div className="mt-3 flex items-baseline gap-0.5">
                   <span className="text-3xl font-black text-off-black tracking-tight">{tier.price}</span>
-                  <span className="text-sm text-muted">{tier.period}</span>
+                  <span className="text-base text-muted">{tier.period}</span>
                 </div>
                 <div className="mt-4 space-y-1.5">
-                  <p className="text-xs text-muted"><span className="font-bold text-off-black">Best for:</span> {tier.bestFor}</p>
-                  <p className="text-xs text-muted"><span className="font-bold text-off-black">Outcome:</span> {tier.outcome}</p>
+                  <p className="text-base text-muted"><span className="font-bold text-off-black">Best for:</span> {tier.bestFor}</p>
+                  <p className="text-base text-muted"><span className="font-bold text-off-black">Outcome:</span> {tier.outcome}</p>
                 </div>
-                <ul className="mt-6 space-y-2.5">
+                <ul className="mt-6 space-y-3">
                   {tier.features.map((feat) => (
                     <li key={feat} className="flex items-start gap-2.5">
-                      <Check size={14} weight="bold" className={`mt-0.5 shrink-0 ${tier.popular ? "text-brand-red" : "text-zinc-400"}`} />
-                      <span className="text-sm text-muted">{feat}</span>
+                      <Check size={20} weight="bold" className={`mt-0.5 shrink-0 ${tier.popular ? "text-brand-red" : "text-zinc-400"}`} />
+                      <span className="text-lg text-muted">{feat}</span>
                     </li>
                   ))}
                 </ul>
@@ -96,10 +96,10 @@ export default function Pricing() {
 
         <ScrollReveal delay={0.3}>
           <div className="mt-10 text-center max-w-xl mx-auto">
-            <p className="text-sm text-muted">
+            <p className="text-base text-muted">
               Not sure where to start?{" "}
               <a href="#contact" className="font-bold text-brand-red hover:underline inline-flex items-center gap-1">
-                Get a custom media plan <ArrowRight size={12} weight="bold" />
+                Get a custom media plan <ArrowRight size={18} weight="bold" />
               </a>{" "}
               tailored to your goals and budget in under 48 hours.
             </p>
