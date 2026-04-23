@@ -6,6 +6,18 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Button from "@/components/ui/Button";
 import { placements } from "@/components/Placements";
+import { useCurrency } from "@/lib/CurrencyContext";
+import { formatAmount, CURRENCIES } from "@/lib/currency";
+
+const zones = [
+  { id: "all",      label: "All Qatar" },
+  { id: "doha",     label: "Doha" },
+  { id: "lusail",   label: "Lusail" },
+  { id: "alrayyan", label: "Al Rayyan" },
+  { id: "alwakrah", label: "Al Wakrah" },
+] as const;
+
+type ZoneId = (typeof zones)[number]["id"];
 
 const targeting = [
   { id: "broad",      label: "Broad",      description: "Widest possible audience",          multiplier: 1.0 },
@@ -17,23 +29,42 @@ type TargetingId = (typeof targeting)[number]["id"];
 
 const MIN_BUDGET = 5000;
 
-function toBudgetBucket(midpoint: number): string {
-  if (midpoint < 5000) return "under-5k";
-  if (midpoint < 15000) return "5k-15k";
-  if (midpoint < 45000) return "15k-45k";
+// Buckets are always expressed in QAR (the canonical pricing currency) so
+// contact-form pre-fill works regardless of display currency.
+function toBudgetBucket(midpointQar: number): string {
+  if (midpointQar < 5000) return "under-5k";
+  if (midpointQar < 15000) return "5k-15k";
+  if (midpointQar < 45000) return "15k-45k";
   return "45k-plus";
 }
 
-function formatQar(value: number) {
-  return Math.round(value).toLocaleString("en-US");
-}
-
 export default function CostCalculator() {
+  const { currency } = useCurrency();
+  const [selectedZones, setSelectedZones] = useState<Set<ZoneId>>(() => new Set(["all"]));
   const [selected, setSelected] = useState<Set<string>>(() => new Set([placements[0].title, placements[1].title]));
   const [weeks, setWeeks] = useState(4);
   const [target, setTarget] = useState<TargetingId>("broad");
 
   const multiplier = targeting.find((t) => t.id === target)?.multiplier ?? 1;
+
+  function toggleZone(id: ZoneId) {
+    setSelectedZones((prev) => {
+      const next = new Set(prev);
+      if (id === "all") return new Set<ZoneId>(["all"]);
+      next.delete("all");
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      if (next.size === 0) next.add("all");
+      return next;
+    });
+  }
+
+  const zonesLabel = useMemo(() => {
+    if (selectedZones.has("all")) return "All Qatar";
+    const picked = zones.filter((z) => z.id !== "all" && selectedZones.has(z.id));
+    if (picked.length <= 2) return picked.map((z) => z.label).join(", ");
+    return `${picked.length} zones`;
+  }, [selectedZones]);
 
   const { low, high } = useMemo(() => {
     const chosen = placements.filter((p) => selected.has(p.title));
@@ -78,7 +109,38 @@ export default function CostCalculator() {
           {/* Steps */}
           <ScrollReveal delay={0.1}>
             <div className="space-y-12">
-              <Step number={1} title="Which placements?" hint="Pick as many as you like.">
+              <Step number={1} title="Where are your customers?" hint="Pick one or more zones. Defaults to all of Qatar.">
+                <div className="flex flex-wrap gap-3">
+                  {zones.map((z) => {
+                    const active = selectedZones.has(z.id);
+                    return (
+                      <button
+                        key={z.id}
+                        type="button"
+                        onClick={() => toggleZone(z.id)}
+                        aria-pressed={active}
+                        className={`inline-flex items-center gap-2.5 px-5 py-3 rounded-full text-base font-semibold transition-all ${
+                          active
+                            ? "bg-brand-red text-white shadow-[0_6px_20px_-6px_rgba(217,2,23,0.5)]"
+                            : "bg-white text-off-black border border-zinc-200 hover:border-zinc-400"
+                        }`}
+                      >
+                        <span
+                          aria-hidden
+                          className={`flex items-center justify-center w-5 h-5 rounded-full ${
+                            active ? "bg-white/25" : "bg-zinc-100"
+                          }`}
+                        >
+                          {active && <Check size={12} weight="bold" className="text-white" />}
+                        </span>
+                        {z.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </Step>
+
+              <Step number={2} title="Which placements?" hint="Pick as many as you like.">
                 <div className="flex flex-wrap gap-3">
                   {placements.map((p) => {
                     const active = selected.has(p.title);
@@ -110,7 +172,7 @@ export default function CostCalculator() {
               </Step>
 
               <Step
-                number={2}
+                number={3}
                 title="For how long?"
                 hint="Drag to set your campaign length."
                 trailing={
@@ -134,7 +196,7 @@ export default function CostCalculator() {
                 </div>
               </Step>
 
-              <Step number={3} title="Who do you want to reach?" hint="Tighter targeting usually converts better.">
+              <Step number={4} title="Who do you want to reach?" hint="Tighter targeting usually converts better.">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {targeting.map((t) => {
                     const active = target === t.id;
@@ -170,17 +232,18 @@ export default function CostCalculator() {
               {hasSelection ? (
                 <>
                   <div className="mt-5">
-                    <p className="text-sm text-white/50 mb-1">QAR</p>
+                    <p className="text-sm text-white/50 mb-1">{CURRENCIES[currency].code}</p>
                     <div className="text-4xl md:text-5xl font-black tracking-tight tabular-nums leading-none">
-                      {formatQar(low)}
+                      {formatAmount(low, currency)}
                     </div>
                     <div className="mt-1 text-2xl font-bold text-white/40 tabular-nums">
-                      – {formatQar(high)}
+                      – {formatAmount(high, currency)}
                     </div>
                     <p className="mt-3 text-sm text-white/50">total campaign spend</p>
                   </div>
 
                   <div className="mt-7 pt-7 border-t border-white/10 space-y-2.5 text-base">
+                    <Row label="Zones" value={zonesLabel} />
                     <Row label="Placements" value={`${selected.size}`} />
                     <Row label="Duration" value={`${weeks} ${weeks === 1 ? "week" : "weeks"}`} />
                     <Row label="Targeting" value={targeting.find((t) => t.id === target)?.label ?? "Broad"} />

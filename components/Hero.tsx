@@ -10,6 +10,7 @@ const rotatingWords = ["Customers", "Revenue", "Growth", "Results"];
 const stats = [
   { value: 1.5, suffix: "M+", label: "Registered Users", decimals: 1 },
   { value: 10, suffix: "M+", label: "Monthly Visits", decimals: 0 },
+  { value: 30, suffix: "M+", label: "Monthly Searches", decimals: 0 },
   { value: 2.5, suffix: "M+", label: "Monthly Deliveries", decimals: 1 },
   { value: 20, suffix: "%", prefix: "~", label: "Premium Shoppers", decimals: 0 },
 ];
@@ -103,7 +104,7 @@ export default function Hero() {
         transition={{ delay: 0.5, type: "spring" as const, stiffness: 100, damping: 20 }}
         className="border-t border-zinc-100 bg-off-white/60"
       >
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-7 grid grid-cols-2 md:grid-cols-4 gap-y-5">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-7 grid grid-cols-2 md:grid-cols-5 gap-y-5">
           {stats.map((stat, i) => (
             <div key={stat.label} className={`${i > 0 ? "md:border-l md:border-zinc-200/60 md:pl-8" : ""}`}>
               <div className="text-2xl md:text-3xl font-black text-off-black tracking-tight">

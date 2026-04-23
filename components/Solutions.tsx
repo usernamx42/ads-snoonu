@@ -32,8 +32,8 @@ export default function Solutions() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <ScrollReveal>
           <SectionHeading
-            tagline="Solutions"
-            headline="Built Around Your Goals"
+            tagline="Full-Funnel Solution"
+            headline="A Full-Funnel Solution to Meet All Your Needs"
             description="Three ways to grow on Qatar's largest retail media platform."
             align="center"
           />

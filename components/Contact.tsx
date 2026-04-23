@@ -1,21 +1,27 @@
 "use client";
 
-import { useState, useEffect, type FormEvent } from "react";
+import { useMemo, useState, useEffect, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, Clock, Database, Headset } from "@phosphor-icons/react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Button from "@/components/ui/Button";
+import { useCurrency } from "@/lib/CurrencyContext";
+import { formatCurrencyCompact, type CurrencyCode } from "@/lib/currency";
 
-const budgetOptions = [
-  { value: "", label: "Monthly Budget" },
-  { value: "under-5k", label: "Under 5K QAR" },
-  { value: "5k-15k", label: "5K to 15K QAR" },
-  { value: "15k-45k", label: "15K to 45K QAR" },
-  { value: "45k-plus", label: "45K+ QAR" },
-  { value: "discuss", label: "Let's discuss" },
-];
+// Bucket IDs are currency-agnostic (anchored to QAR thresholds) so the
+// calculator's ?budget=<id> handoff remains stable across currency changes.
+function buildBudgetOptions(currency: CurrencyCode) {
+  return [
+    { value: "", label: "Monthly Budget" },
+    { value: "under-5k", label: `Under ${formatCurrencyCompact(5000, currency)}` },
+    { value: "5k-15k", label: `${formatCurrencyCompact(5000, currency)} to ${formatCurrencyCompact(15000, currency)}` },
+    { value: "15k-45k", label: `${formatCurrencyCompact(15000, currency)} to ${formatCurrencyCompact(45000, currency)}` },
+    { value: "45k-plus", label: `${formatCurrencyCompact(45000, currency)}+` },
+    { value: "discuss", label: "Let's discuss" },
+  ];
+}
 
-const validBudgetValues = new Set(budgetOptions.map((o) => o.value).filter(Boolean));
+const validBudgetValues = new Set(["under-5k", "5k-15k", "15k-45k", "45k-plus", "discuss"]);
 
 const outcomes = [
   { icon: <Clock size={20} weight="fill" />, text: "Custom media plan in 48 hours" },
@@ -24,8 +30,10 @@ const outcomes = [
 ];
 
 export default function Contact() {
+  const { currency } = useCurrency();
   const [submitted, setSubmitted] = useState(false);
   const [budget, setBudget] = useState("");
+  const budgetOptions = useMemo(() => buildBudgetOptions(currency), [currency]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);

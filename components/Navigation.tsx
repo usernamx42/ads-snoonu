@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { List, X } from "@phosphor-icons/react";
 import Button from "@/components/ui/Button";
+import CurrencySwitcher from "@/components/ui/CurrencySwitcher";
 
 const navItems = [
   { label: "Solutions", href: "#solutions" },
@@ -65,7 +66,8 @@ export default function Navigation() {
             ))}
           </div>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
+            <CurrencySwitcher />
             <Button href="#contact" variant="primary">Start Advertising</Button>
           </div>
 
@@ -91,7 +93,10 @@ export default function Navigation() {
                   {item.label}
                 </motion.a>
               ))}
-              <div className="pt-4">
+              <div className="pt-4 flex items-center justify-between gap-3">
+                <CurrencySwitcher />
+              </div>
+              <div>
                 <Button href="#contact" variant="primary" className="w-full" onClick={() => setMobileOpen(false)}>Start Advertising</Button>
               </div>
             </div>

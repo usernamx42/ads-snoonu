@@ -27,7 +27,8 @@ export const placements: Placement[] = [
       "Optional Customized Landing Page Add-on",
     ],
     kpis: ["Impressions", "Reach", "Clicks", "Sales uplifts on Snoonu"],
-    indicativeWeeklyQar: [8000, 20000],
+    // source: Home Ads Homepage Banner (Position #2+) \u2014 40k/weekday, 50k/weekend; checkout tier scales lower
+    indicativeWeeklyQar: [20000, 60000],
   },
   {
     title: "Search Banner",
@@ -39,7 +40,8 @@ export const placements: Placement[] = [
       "Best to combine with awareness format to expand Marketing funnel",
     ],
     kpis: ["Impressions", "Reach", "Clicks", "Sales uplifts on Snoonu"],
-    indicativeWeeklyQar: [6000, 15000],
+    // source: Food Search Bar Banner \u2014 20k QAR/week per time segment \u00d7 1\u20133 segments
+    indicativeWeeklyQar: [20000, 60000],
   },
   {
     title: "Category Banner",
@@ -51,7 +53,8 @@ export const placements: Placement[] = [
       "Creative design support",
     ],
     kpis: ["Impressions", "Reach", "Clicks", "Sales uplifts on Snoonu"],
-    indicativeWeeklyQar: [4000, 10000],
+    // source: Snoomart In-Category Branded Banner (500/wk) \u2192 Groceries In-store Spotlight (5k/wk)
+    indicativeWeeklyQar: [2000, 10000],
   },
   // {
   //   title: "In-Store Banner",
@@ -75,7 +78,8 @@ export const placements: Placement[] = [
       "Best for promoting high-margin SKUs, campaign heroes, or limited offers",
     ],
     kpis: ["Impressions", "Clicks", "Sales uplifts on Snoonu"],
-    indicativeWeeklyQar: [5000, 12000],
+    // source: Food Product Sliders — position #1 800/day, #2 400/day, #3 200/day (7 days)
+    indicativeWeeklyQar: [2800, 5600],
   },
   {
     title: "Search & Promoted Listings",
@@ -86,7 +90,8 @@ export const placements: Placement[] = [
       "Food Listing: allows you to reach up to 10M users browsing Snoonu on a daily basis",
     ],
     kpis: ["Impressions", "Auction Win rate", "Clicks / CTR", "Sales uplifts on Snoonu"],
-    indicativeWeeklyQar: [7000, 18000],
+    // source: Food Main Ranking (Merchant Banner) + Search Terms CPC @ min 1.5 QAR/click, weekly spend range
+    indicativeWeeklyQar: [5000, 25000],
   },
 ];
 

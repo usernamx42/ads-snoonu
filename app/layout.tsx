@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { CurrencyProvider } from "@/lib/CurrencyContext";
 
 const altform = localFont({
   src: [
@@ -52,7 +53,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${altform.variable} ${estedad.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <CurrencyProvider>{children}</CurrencyProvider>
+      </body>
     </html>
   );
 }
