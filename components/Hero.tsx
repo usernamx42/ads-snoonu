@@ -62,11 +62,11 @@ export default function Hero() {
   const tStats = useTranslations("hero.stats");
 
   const stats = [
-    { value: 1.5, suffix: "M+", label: tStats("users"), decimals: 1 },
-    { value: 10, suffix: "M+", label: tStats("visits"), decimals: 0 },
-    { value: 30, suffix: "M+", label: tStats("searches"), decimals: 0 },
-    { value: 2.5, suffix: "M+", label: tStats("deliveries"), decimals: 1 },
-    { value: 20, suffix: "%", prefix: "~", label: tStats("premium"), decimals: 0 },
+    { value: 30, suffix: "M+", label: tStats("searches"), decimals: 0, featured: true },
+    { value: 1.5, suffix: "M+", label: tStats("users"), decimals: 1, featured: false },
+    { value: 10, suffix: "M+", label: tStats("visits"), decimals: 0, featured: false },
+    { value: 2.5, suffix: "M+", label: tStats("deliveries"), decimals: 1, featured: false },
+    { value: 20, suffix: "%", prefix: "~", label: tStats("premium"), decimals: 0, featured: false },
   ];
 
   return (
@@ -107,13 +107,25 @@ export default function Hero() {
         transition={{ delay: 0.5, type: "spring" as const, stiffness: 100, damping: 20 }}
         className="border-t border-zinc-100 bg-off-white/60"
       >
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-7 grid grid-cols-2 md:grid-cols-5 gap-y-5">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-8 md:py-10 grid grid-cols-2 md:grid-cols-5 gap-y-8">
           {stats.map((stat, i) => (
-            <div key={stat.label} className={`${i > 0 ? "md:border-l md:border-zinc-200/60 md:pl-8" : ""}`}>
-              <div className="text-2xl md:text-3xl font-black text-off-black tracking-tight">
+            <div
+              key={stat.label}
+              className={`group relative ${i > 0 ? "md:border-l md:border-zinc-200/50 md:ps-8" : ""}`}
+            >
+              <div
+                className={`mb-3 h-1 rounded-full transition-all duration-500 ${
+                  stat.featured ? "w-12 bg-brand-red" : "w-8 bg-off-black/15 group-hover:w-10 group-hover:bg-brand-red/60"
+                }`}
+              />
+              <div
+                className={`text-4xl md:text-5xl lg:text-6xl font-black tracking-tight tabular-nums leading-none ${
+                  stat.featured ? "text-brand-red" : "text-off-black"
+                }`}
+              >
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} decimals={stat.decimals} />
               </div>
-              <p className="mt-1 text-base text-muted">{stat.label}</p>
+              <p className="mt-3 text-xs font-bold uppercase tracking-[0.18em] text-muted">{stat.label}</p>
             </div>
           ))}
         </div>
