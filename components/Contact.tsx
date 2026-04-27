@@ -98,26 +98,26 @@ export default function Contact() {
                   initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-[13px] font-bold text-white/70 uppercase tracking-wider">{tForm("name")}</label>
+                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">{tForm("name")}</label>
                       <input type="text" required className={inputClass} placeholder={tForm("namePlaceholder")} />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[13px] font-bold text-white/70 uppercase tracking-wider">{tForm("company")}</label>
+                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">{tForm("company")}</label>
                       <input type="text" required className={inputClass} placeholder={tForm("companyPlaceholder")} />
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-[13px] font-bold text-white/70 uppercase tracking-wider">{tForm("email")}</label>
+                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">{tForm("email")}</label>
                       <input type="email" required className={inputClass} placeholder={tForm("emailPlaceholder")} />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[13px] font-bold text-white/70 uppercase tracking-wider">{tForm("phone")}</label>
+                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">{tForm("phone")}</label>
                       <input type="tel" className={inputClass} placeholder={tForm("phonePlaceholder")} />
                     </div>
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[13px] font-bold text-white/70 uppercase tracking-wider">{tForm("budget")}</label>
+                    <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">{tForm("budget")}</label>
                     <select
                       required
                       value={budget}
@@ -130,7 +130,7 @@ export default function Contact() {
                     </select>
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[13px] font-bold text-white/70 uppercase tracking-wider">{tForm("goals")}</label>
+                    <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">{tForm("goals")}</label>
                     <textarea rows={3} className={`${inputClass} resize-none`} placeholder={tForm("goalsPlaceholder")} />
                   </div>
                   <Button type="submit" variant="secondary" className="w-full bg-white text-brand-red hover:bg-white/90 border-0">

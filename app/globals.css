@@ -21,30 +21,6 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1440px;
-
-  /* Font scale +15% across the board (CEO request). */
-  --text-xs: 0.8625rem;
-  --text-xs--line-height: 1.15rem;
-  --text-sm: 1rem;
-  --text-sm--line-height: 1.4375rem;
-  --text-base: 1.15rem;
-  --text-base--line-height: 1.725rem;
-  --text-lg: 1.295rem;
-  --text-lg--line-height: 2.0125rem;
-  --text-xl: 1.4375rem;
-  --text-xl--line-height: 2.0125rem;
-  --text-2xl: 1.725rem;
-  --text-2xl--line-height: 2.3rem;
-  --text-3xl: 2.15625rem;
-  --text-3xl--line-height: 2.5875rem;
-  --text-4xl: 2.5875rem;
-  --text-4xl--line-height: 2.875rem;
-  --text-5xl: 3.45rem;
-  --text-5xl--line-height: 1;
-  --text-6xl: 4.3125rem;
-  --text-6xl--line-height: 1;
-  --text-7xl: 5.175rem;
-  --text-7xl--line-height: 1;
 }
 
 @layer base {

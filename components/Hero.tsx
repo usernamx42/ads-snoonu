@@ -79,7 +79,7 @@ export default function Hero() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 w-full pt-24 md:pt-28 pb-12">
         <motion.div variants={stagger} initial="hidden" animate="visible" className="max-w-3xl">
           <motion.div variants={fadeUp}>
-            <span className="inline-block text-[13px] font-bold uppercase tracking-[0.25em] text-brand-red bg-brand-red/[0.06] px-4 py-2 rounded-full mb-6">
+            <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-brand-red bg-brand-red/[0.06] px-4 py-2 rounded-full mb-6">
               {t("tagline")}
             </span>
           </motion.div>

@@ -67,14 +67,14 @@ export default function Pricing() {
             return (
               <ScrollReveal key={tier.key} delay={i * 0.1}>
                 <div
-                  className={`relative rounded-2xl h-full flex flex-col overflow-hidden hover:-translate-y-1.5 transition-transform duration-300 ${
+                  className={`relative rounded-2xl h-full flex flex-col hover:-translate-y-1.5 transition-transform duration-300 ${
                     tier.popular
                       ? "bg-white border-2 border-brand-red shadow-[0_25px_60px_-15px_rgba(217,2,23,0.18)]"
                       : "bg-white border border-zinc-200 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
                   }`}
                 >
                   {tier.popular && (
-                    <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-block px-4 py-1 rounded-full text-[13px] font-bold tracking-wider text-white bg-brand-red shadow-[0_4px_12px_rgba(217,2,23,0.3)]">
+                    <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-block px-4 py-1 rounded-full text-[11px] font-bold tracking-wider text-white bg-brand-red shadow-[0_4px_12px_rgba(217,2,23,0.3)]">
                       {t("popularBadge")}
                     </span>
                   )}
@@ -93,10 +93,10 @@ export default function Pricing() {
                   </div>
 
                   {/* CTA */}
-                  <div className="px-7 md:px-8">
+                  <div className="px-7 md:px-8 flex justify-center">
                     <a
                       href="#contact"
-                      className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3.5 text-base font-bold text-white tracking-tight min-h-[48px] transition-all cursor-pointer active:scale-[0.98] active:translate-y-px ${tier.buttonBg} ${tier.buttonHover}`}
+                      className={`inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-base font-bold text-white tracking-tight min-h-[48px] transition-all cursor-pointer active:scale-[0.98] active:translate-y-px ${tier.buttonBg} ${tier.buttonHover}`}
                     >
                       {tTiers(`${tier.key}.cta`)}
                     </a>
@@ -113,7 +113,7 @@ export default function Pricing() {
                   </ul>
 
                   {/* Best for / Outcome — grey block at the bottom */}
-                  <div className="bg-zinc-50 border-t border-zinc-100 px-7 md:px-8 py-5 space-y-2">
+                  <div className="bg-zinc-50 border-t border-zinc-100 px-7 md:px-8 py-5 space-y-2 rounded-b-2xl">
                     <p className="text-sm text-muted leading-relaxed">
                       <span className="font-bold text-off-black">{t("bestForLabel")}</span> {tTiers(`${tier.key}.bestFor`)}
                     </p>
