@@ -43,7 +43,7 @@ export default function Pricing() {
                   }`}
                 >
                   {tier.popular && (
-                    <span className="absolute -top-3 start-7 inline-block px-3 py-1 rounded-full text-[11px] font-bold tracking-wider text-white bg-brand-red shadow-[0_4px_12px_rgba(217,2,23,0.3)]">
+                    <span className="absolute -top-3 start-7 inline-block px-3 py-1 rounded-full text-[13px] font-bold tracking-wider text-white bg-brand-red shadow-[0_4px_12px_rgba(217,2,23,0.3)]">
                       {t("popularBadge")}
                     </span>
                   )}

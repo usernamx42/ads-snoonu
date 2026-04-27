@@ -33,7 +33,7 @@ export default function Results() {
           <div className="mt-12 rounded-2xl border border-zinc-200 bg-white overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr]">
               <div className="p-8 md:p-12">
-                <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-white bg-brand-red px-3 py-1 rounded-full mb-5">
+                <span className="inline-block text-[13px] font-bold uppercase tracking-wider text-white bg-brand-red px-3 py-1 rounded-full mb-5">
                   {t("caseStudy.tag")}
                 </span>
                 <h3 className="text-xl md:text-2xl font-bold text-off-black tracking-tight leading-tight">

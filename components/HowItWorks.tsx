@@ -155,8 +155,12 @@ function PhoneCard({
       className="flex flex-col items-center cursor-pointer"
       style={{
         opacity: isDimmed ? 0.4 : 1,
-        transform: isActive ? "translateY(-4px)" : "none",
-        transition: "opacity 200ms, transform 200ms",
+        transform: isActive ? "translateY(-32px) scale(1.35)" : "none",
+        transformOrigin: "center bottom",
+        transition: "opacity 220ms ease, transform 320ms cubic-bezier(0.22, 1, 0.36, 1)",
+        zIndex: isActive ? 20 : 1,
+        position: "relative",
+        willChange: "transform",
       }}
     >
       <div className="flex items-center gap-2 mb-3">
@@ -176,10 +180,10 @@ function PhoneCard({
           {String(index + 1).padStart(2, "0")}
         </div>
         <div className="text-start">
-          <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-white leading-none">
+          <div className="text-[13px] font-bold uppercase tracking-[0.18em] text-white leading-none">
             {label}
           </div>
-          <div className="text-[10px] text-white/55 mt-0.5 leading-tight max-w-[140px]">
+          <div className="text-[12px] text-white/55 mt-0.5 leading-tight max-w-[140px]">
             {description}
           </div>
         </div>
@@ -194,9 +198,9 @@ function PhoneCard({
           background: "#1a1a1a",
           padding: 5,
           boxShadow: isActive
-            ? "0 16px 48px rgba(217,2,23,0.35), 0 0 0 1.5px rgba(217,2,23,0.7)"
+            ? "0 40px 80px rgba(0,0,0,0.55), 0 16px 48px rgba(217,2,23,0.45), 0 0 0 2px rgba(217,2,23,0.85)"
             : "0 10px 28px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.08)",
-          transition: "box-shadow 200ms",
+          transition: "box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       >
         <div className="relative w-full h-full overflow-hidden bg-white" style={{ borderRadius: 17 }}>
@@ -226,7 +230,7 @@ function PhoneCard({
         <div className="text-xl font-black text-white tabular-nums tracking-tight leading-none">
           {audience}
         </div>
-        <div className="text-[10px] uppercase tracking-wider text-white/40 mt-1">
+        <div className="text-[12px] uppercase tracking-wider text-white/40 mt-1">
           {reachLabel.replace("{pct}", String(pct))}
         </div>
       </div>
@@ -274,7 +278,7 @@ export default function HowItWorks() {
                     style={{ opacity: isDimmed ? 0.4 : 1, transition: "opacity 200ms" }}
                   >
                     <div
-                      className="text-[13px] font-bold tracking-tight inline-block px-2 py-1 rounded"
+                      className="text-[15px] font-bold tracking-tight inline-block px-2 py-1 rounded"
                       style={{
                         color: isActive ? "#fff" : "rgba(255,255,255,0.85)",
                         background: isActive ? "rgba(217,2,23,0.2)" : "transparent",
@@ -364,7 +368,7 @@ export default function HowItWorks() {
 
                   <div className="pt-2 flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="rounded-full flex items-center justify-center font-black tabular-nums shrink-0 bg-white/10 text-white text-[10px] w-6 h-6 border border-white/15">
+                      <span className="rounded-full flex items-center justify-center font-black tabular-nums shrink-0 bg-white/10 text-white text-[12px] w-6 h-6 border border-white/15">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <h3 className="text-base font-bold text-white tracking-tight">{stage.label}</h3>
@@ -374,7 +378,7 @@ export default function HowItWorks() {
                       <span className="text-lg font-black text-white tabular-nums tracking-tight leading-none">
                         {stage.audience}
                       </span>
-                      <span className="text-[10px] uppercase tracking-wider text-white/40">
+                      <span className="text-[12px] uppercase tracking-wider text-white/40">
                         {reachLabel.replace("{pct}", String(stage.pct))}
                       </span>
                     </div>
