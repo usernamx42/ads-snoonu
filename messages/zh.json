@@ -1,0 +1,357 @@
+{
+  "_note": "MT — needs native Simplified Chinese review for marketing tone",
+  "metadata": {
+    "title": "Snoonu Ads — 卡塔尔零售媒体平台",
+    "description": "触达卡塔尔最活跃的购物者。在卡塔尔最常用的超级应用上连接超过150万用户,由真实购买数据和人工智能驱动。"
+  },
+  "nav": {
+    "solutions": "解决方案",
+    "howItWorks": "工作原理",
+    "placements": "广告位",
+    "calculator": "预算计算器",
+    "results": "效果",
+    "cta": "开始投放",
+    "menuOpen": "打开菜单",
+    "menuClose": "关闭菜单"
+  },
+  "hero": {
+    "tagline": "卡塔尔第一零售媒体平台",
+    "headlineBefore": "把购物者变成",
+    "headlineYour": "您的",
+    "rotating": {
+      "customers": "客户",
+      "revenue": "收入",
+      "growth": "增长",
+      "results": "成果"
+    },
+    "subhead": "在卡塔尔第一超级应用上,向150万+高意向买家投放广告。第一方数据。AI定向。真实ROAS。",
+    "ctaPrimary": "探索解决方案",
+    "ctaSecondary": "开始投放",
+    "stats": {
+      "users": "注册用户",
+      "visits": "月访问量",
+      "searches": "月搜索量",
+      "deliveries": "月配送量",
+      "premium": "高端购物者"
+    }
+  },
+  "brandMarquee": {
+    "trustedBy": "卡塔尔 <strong>200+</strong> 品牌信赖之选"
+  },
+  "solutions": {
+    "tagline": "全漏斗解决方案",
+    "headline": "满足您所有需求的全漏斗解决方案",
+    "description": "在卡塔尔最大的零售媒体平台上的三种增长方式。",
+    "learnMore": "了解更多",
+    "items": {
+      "awareness": {
+        "title": "品牌曝光",
+        "benefit": "在Snoonu的每一个触点上被数百万高意向购物者看到。"
+      },
+      "conversions": {
+        "title": "驱动转化",
+        "benefit": "在搜索的瞬间捕获需求,把浏览者变成买家。"
+      },
+      "acquisition": {
+        "title": "获取客户",
+        "benefit": "用第一方数据找到并转化您在卡塔尔的理想受众。"
+      }
+    }
+  },
+  "howItWorks": {
+    "tagline": "工作原理",
+    "headline": "从发现到结账",
+    "subhead": "您的广告跟随购物者旅程的每一个触点 — 在每个意向阶段触达客户。",
+    "reach": "{pct}% 覆盖率",
+    "stages": {
+      "discover": { "label": "发现", "description": "应用首页、DooH与外部媒体" },
+      "search": { "label": "搜索", "description": "赞助列表与情境广告" },
+      "influence": { "label": "影响", "description": "网红、视频与联合营销" },
+      "engage": { "label": "互动", "description": "推送、应用内与首页广告" },
+      "convert": { "label": "转化", "description": "结账广告与试用" }
+    }
+  },
+  "placements": {
+    "tagline": "广告位",
+    "headline": "您的广告,出现在每一个重要的地方",
+    "description": "在Snoonu的整个体验中提供原生广告位,线上线下都覆盖。",
+    "kpisLabel": "关键指标",
+    "items": {
+      "checkoutBanner": {
+        "title": "结账横幅",
+        "alt": "Snoonu应用结账界面在订单跟踪期间显示促销横幅",
+        "features": [
+          "高度专注状态下每日400万+曝光",
+          "最大化品牌知名度与回想率",
+          "确保您的品牌触达多种用户画像,尤其是在Snoonu上下单的用户",
+          "可选定制着陆页附加项"
+        ],
+        "kpis": ["曝光量", "覆盖率", "点击量", "Snoonu销售提升"]
+      },
+      "searchBanner": {
+        "title": "搜索横幅",
+        "alt": "Snoonu应用搜索界面带广告横幅",
+        "features": [
+          "每日2000万+高意向曝光",
+          "因主动搜索行为而带来所有格式中最高的转化率",
+          "最佳搭配品牌曝光格式以扩展营销漏斗"
+        ],
+        "kpis": ["曝光量", "覆盖率", "点击量", "Snoonu销售提升"]
+      },
+      "categoryBanner": {
+        "title": "分类横幅",
+        "alt": "Snoonu应用杂货分类页面与店铺列表",
+        "features": [
+          "在分类页面投放,每日3万-3.5万曝光,提升品牌知名度",
+          "战略性活动,引导关注您的产品和价值主张",
+          "提供创意设计支持"
+        ],
+        "kpis": ["曝光量", "覆盖率", "点击量", "Snoonu销售提升"]
+      },
+      "foodSliders": {
+        "title": "美食滑动横幅",
+        "alt": "Snoonu应用首页显示带有餐厅促销的美食滑动轮播",
+        "features": [
+          "Snoonu首页黄金位置,每日最高1000万+曝光",
+          "突出您的特定产品或套餐",
+          "最适合推广高利润SKU、活动主打或限时优惠"
+        ],
+        "kpis": ["曝光量", "点击量", "Snoonu销售提升"]
+      },
+      "searchPromotedListings": {
+        "title": "搜索与推广列表",
+        "alt": "Snoonu应用搜索结果显示带广告标签的赞助列表",
+        "features": [
+          "搜索广告:对关键词出价以按点击付费模型出现在前10位搜索结果中",
+          "美食列表:让您每天触达最多1000万浏览Snoonu的用户"
+        ],
+        "kpis": ["曝光量", "竞价胜出率", "点击 / CTR", "Snoonu销售提升"]
+      }
+    }
+  },
+  "audience": {
+    "tagline": "受众",
+    "headline": "为什么Snoonu受众更胜一筹",
+    "description": "高意向购物者,真实购买数据。无需第三方Cookie。",
+    "whyCards": {
+      "firstParty": { "title": "第一方数据", "text": "真实购买行为,不靠猜测" },
+      "closedLoop": { "title": "闭环测量", "text": "收入与真实订单挂钩" },
+      "ai": { "title": "AI定向", "text": "ML驱动的意向匹配" },
+      "realTime": { "title": "实时", "text": "自动优化的活动" }
+    },
+    "browse": {
+      "valueLabel": "在下单前浏览",
+      "body": "用户在结账前会探索产品。您的广告是这段旅程的一部分。"
+    },
+    "frequency": {
+      "valueLabel": "每用户每年订单",
+      "body": "高重复频率意味着更多触点和转化机会。"
+    },
+    "premium": {
+      "title": "高级订阅用户",
+      "body": "高消费用户,购物篮金额更高。"
+    },
+    "platformStats": {
+      "sessions": "应用会话 / 月",
+      "coverage": "配送范围",
+      "verticals": "行业类别",
+      "scharge": "S-Charge站点"
+    }
+  },
+  "results": {
+    "tagline": "效果",
+    "headline": "真实表现,真实收入",
+    "description": "Snoonu上的每一个活动都以真实订单衡量,而非虚荣指标。",
+    "caseStudy": {
+      "tag": "搜索广告",
+      "title": "一家领先QSR品牌如何用Snoonu Ads实现4.7倍ROAS",
+      "body": "通过在高峰时段用赞助列表和推送通知定向高意向美食搜索者,该品牌将Snoonu变成了其第一数字获客渠道。",
+      "cta": "阅读完整案例"
+    },
+    "metrics": {
+      "ctr": "点击率",
+      "cvr": "转化率",
+      "roas": "广告投入回报"
+    },
+    "footnote": "更多案例即将推出。以上结果代表平台平均水平。"
+  },
+  "pricing": {
+    "tagline": "套餐",
+    "headline": "为每个增长阶段量身打造的套餐",
+    "description": "每个套餐都包含第一方数据定向、闭环测量,以及对Snoonu高意向购物者的访问权限。",
+    "popularBadge": "最受欢迎",
+    "bestForLabel": "适合:",
+    "outcomeLabel": "结果:",
+    "perMonth": " / 月",
+    "tiers": {
+      "starter": {
+        "name": "Starter",
+        "bestFor": "首次试用Snoonu Ads",
+        "outcome": "验证表现,产生首次可衡量的销售",
+        "features": [
+          "应用与网页横幅广告",
+          "最多5万次曝光",
+          "基础地理定向",
+          "月度表现报告",
+          "自助仪表盘"
+        ],
+        "cta": "开始"
+      },
+      "growth": {
+        "name": "Growth",
+        "bestFor": "扩大表现并驱动稳定销售",
+        "outcome": "把Snoonu Ads变成可靠的收入渠道",
+        "features": [
+          "Starter的全部",
+          "赞助搜索(捕获高意向需求)",
+          "AI驱动的受众定向",
+          "推送通知",
+          "最多25万次曝光",
+          "周度表现分析"
+        ],
+        "cta": "开始"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "priceCustom": "定制",
+        "periodCustom": " 价格",
+        "bestFor": "希望主导其品类的市场领导者",
+        "outcome": "在Snoonu上最大化曝光、转化和市场份额",
+        "features": [
+          "Growth的全部",
+          "首页接管",
+          "视频广告位",
+          "自定义受众分群",
+          "专属客户经理",
+          "API访问与高级集成"
+        ],
+        "cta": "联系团队"
+      }
+    },
+    "footer": "不知道从哪里开始?",
+    "footerCta": "获取定制媒介计划",
+    "footerSuffix": "在48小时内根据您的目标和预算量身定制。"
+  },
+  "calculator": {
+    "tagline": "活动计算器",
+    "headline": "规划您的Snoonu Ads预算",
+    "description": "三个快速选择,一个清晰估算。最终报价考虑创意、日期与库存。",
+    "step1": { "title": "您的客户在哪里?", "hint": "选择一个或多个区域。默认覆盖整个卡塔尔。" },
+    "step2": { "title": "哪些广告位?", "hint": "想选多少选多少。" },
+    "step3": { "title": "持续多久?", "hint": "拖动以设置活动时长。" },
+    "step4": { "title": "想触达谁?", "hint": "更精准的定向通常转化更好。" },
+    "weeks": "{count, plural, other {周}}",
+    "weeksRange": { "min": "1周", "max": "12周" },
+    "durationAria": "活动持续周数",
+    "zones": {
+      "all": "整个卡塔尔",
+      "doha": "多哈",
+      "lusail": "卢塞尔",
+      "alrayyan": "赖扬",
+      "alwakrah": "瓦克拉",
+      "summary": "{count} 个区域"
+    },
+    "targeting": {
+      "broad": { "label": "宽泛", "description": "尽可能广泛的受众" },
+      "category": { "label": "品类", "description": "您所在垂直行业的购物者" },
+      "behavioral": { "label": "行为", "description": "AI匹配的高意向用户" }
+    },
+    "estimate": {
+      "label": "您的估算",
+      "totalSpend": "活动总投入",
+      "rows": {
+        "zones": "区域",
+        "placements": "广告位",
+        "duration": "时长",
+        "targeting": "定向"
+      },
+      "noSelectionTitle": "至少选择一个广告位",
+      "noSelectionHint": "您的估算将出现在这里。",
+      "cta": "获取定制报价",
+      "disclaimer": "指示性范围。最终报价取决于创意、日期、库存和季节性。"
+    }
+  },
+  "faq": {
+    "tagline": "FAQ",
+    "headline": "常见问题",
+    "items": [
+      {
+        "q": "什么是Snoonu Ads?",
+        "a": "Snoonu Ads是卡塔尔的零售媒体平台。它让品牌通过原生应用广告位、赞助搜索结果、推送通知、视频广告和S-Charge站点等线下表面触达150万+高意向购物者。"
+      },
+      {
+        "q": "我必须是Snoonu商家才能投放广告吗?",
+        "a": "不需要。任何在卡塔尔运营的品牌都可以在Snoonu上投放广告,无论您的产品是否在平台上架。我们支持平台内和平台外两种活动目标。"
+      },
+      {
+        "q": "定向是如何工作的?",
+        "a": "我们的AI驱动定向使用Snoonu的第一方购买数据,包括位置、过往订单、搜索行为和消费模式,以在用户购买意向峰值时触达正确的用户。无需第三方Cookie。"
+      },
+      {
+        "q": "我如何衡量表现?",
+        "a": "每个活动都获得实时仪表盘,包含曝光、点击、转化和ROAS。我们的闭环测量将广告曝光直接与真实Snoonu订单关联,因此您准确知道您的投入产生了什么。"
+      },
+      {
+        "q": "最低预算是多少?",
+        "a": "我们的Starter套餐起步价为QAR 15,000/月。对于赞助搜索列表,您可以从每点击1 QAR起按点击付费。联系我们讨论定制预算。"
+      },
+      {
+        "q": "我的数据是保密的吗?",
+        "a": "绝对保密。所有活动数据完全保密,绝不会与平台上的其他广告主分享。您的竞争洞察归您所有。"
+      }
+    ]
+  },
+  "contact": {
+    "tagline": "开始",
+    "headline": "在Snoonu上打造您的增长引擎",
+    "description": "在48小时内获取根据您的目标和预算定制的媒介计划。",
+    "outcomes": [
+      "48小时内提供定制媒介计划",
+      "首日起即用第一方数据定向",
+      "专属上手支持"
+    ],
+    "form": {
+      "name": "全名",
+      "namePlaceholder": "您的姓名",
+      "company": "公司",
+      "companyPlaceholder": "公司名称",
+      "email": "邮箱",
+      "emailPlaceholder": "you@company.com",
+      "phone": "电话",
+      "phonePlaceholder": "+974",
+      "budget": "月预算",
+      "goals": "您的目标",
+      "goalsPlaceholder": "您想实现什么?",
+      "submit": "联系我们"
+    },
+    "budgetOptions": {
+      "placeholder": "月预算",
+      "under": "少于 {amount}",
+      "between": "{from} 到 {to}",
+      "plus": "{amount}+",
+      "discuss": "再谈"
+    },
+    "success": {
+      "title": "感谢您的咨询!",
+      "body": "我们的团队将在48小时内发送您的定制媒介计划。"
+    }
+  },
+  "footer": {
+    "tagline": "卡塔尔零售媒体平台,连接品牌与全国高意向购物者。",
+    "contact": "联系我们",
+    "address": "The 18th Tower, 14楼, 卢塞尔, 卡塔尔",
+    "follow": "关注我们",
+    "quickLinks": "快速链接",
+    "links": {
+      "about": "关于我们",
+      "services": "服务",
+      "partner": "成为合作伙伴",
+      "privacy": "隐私政策",
+      "terms": "条款与条件",
+      "merchantTerms": "商家条款"
+    },
+    "rights": "© {year} Snoonu. 保留所有权利。"
+  },
+  "language": { "label": "语言" },
+  "currency": { "label": "货币" }
+}

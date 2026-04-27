@@ -2,38 +2,42 @@
 
 import { useMemo, useState, useEffect, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { CheckCircle, Clock, Database, Headset } from "@phosphor-icons/react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Button from "@/components/ui/Button";
 import { useCurrency } from "@/lib/CurrencyContext";
 import { formatCurrencyCompact, type CurrencyCode } from "@/lib/currency";
 
-// Bucket IDs are currency-agnostic (anchored to QAR thresholds) so the
-// calculator's ?budget=<id> handoff remains stable across currency changes.
-function buildBudgetOptions(currency: CurrencyCode) {
+function buildBudgetOptions(currency: CurrencyCode, t: ReturnType<typeof useTranslations<"contact.budgetOptions">>) {
   return [
-    { value: "", label: "Monthly Budget" },
-    { value: "under-5k", label: `Under ${formatCurrencyCompact(5000, currency)}` },
-    { value: "5k-15k", label: `${formatCurrencyCompact(5000, currency)} to ${formatCurrencyCompact(15000, currency)}` },
-    { value: "15k-45k", label: `${formatCurrencyCompact(15000, currency)} to ${formatCurrencyCompact(45000, currency)}` },
-    { value: "45k-plus", label: `${formatCurrencyCompact(45000, currency)}+` },
-    { value: "discuss", label: "Let's discuss" },
+    { value: "",          label: t("placeholder") },
+    { value: "under-5k",  label: t("under",   { amount: formatCurrencyCompact(5000, currency) }) },
+    { value: "5k-15k",    label: t("between", { from: formatCurrencyCompact(5000, currency), to: formatCurrencyCompact(15000, currency) }) },
+    { value: "15k-45k",   label: t("between", { from: formatCurrencyCompact(15000, currency), to: formatCurrencyCompact(45000, currency) }) },
+    { value: "45k-plus",  label: t("plus",    { amount: formatCurrencyCompact(45000, currency) }) },
+    { value: "discuss",   label: t("discuss") },
   ];
 }
 
 const validBudgetValues = new Set(["under-5k", "5k-15k", "15k-45k", "45k-plus", "discuss"]);
 
-const outcomes = [
-  { icon: <Clock size={20} weight="fill" />, text: "Custom media plan in 48 hours" },
-  { icon: <Database size={20} weight="fill" />, text: "First-party data targeting from day one" },
-  { icon: <Headset size={20} weight="fill" />, text: "Dedicated onboarding support" },
+const outcomeIcons = [
+  <Clock key="clock" size={20} weight="fill" />,
+  <Database key="db" size={20} weight="fill" />,
+  <Headset key="hs" size={20} weight="fill" />,
 ];
 
 export default function Contact() {
+  const t = useTranslations("contact");
+  const tForm = useTranslations("contact.form");
+  const tBudget = useTranslations("contact.budgetOptions");
+  const tSuccess = useTranslations("contact.success");
   const { currency } = useCurrency();
   const [submitted, setSubmitted] = useState(false);
   const [budget, setBudget] = useState("");
-  const budgetOptions = useMemo(() => buildBudgetOptions(currency), [currency]);
+  const budgetOptions = useMemo(() => buildBudgetOptions(currency, tBudget), [currency, tBudget]);
+  const outcomes = t.raw("outcomes") as string[];
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -56,22 +60,22 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
           <ScrollReveal>
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-white/60 mb-4">Get Started</p>
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-white/60 mb-4">{t("tagline")}</p>
               <h2 className="text-3xl md:text-5xl tracking-tighter leading-[0.95] font-bold text-white">
-                Let&apos;s Build Your Growth Engine on Snoonu
+                {t("headline")}
               </h2>
               <p className="mt-4 text-base text-white/60 max-w-md leading-relaxed">
-                Get a custom media plan tailored to your goals and budget in under 48 hours.
+                {t("description")}
               </p>
               <div className="mt-8 space-y-4">
-                {outcomes.map((item, i) => (
-                  <motion.div key={item.text} className="flex items-center gap-3"
+                {outcomes.map((text, i) => (
+                  <motion.div key={text} className="flex items-center gap-3"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 + i * 0.1, type: "spring" as const, stiffness: 100, damping: 20 }}>
-                    <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white/80 shrink-0">{item.icon}</div>
-                    <span className="text-base text-white/80 font-medium">{item.text}</span>
+                    <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white/80 shrink-0">{outcomeIcons[i]}</div>
+                    <span className="text-base text-white/80 font-medium">{text}</span>
                   </motion.div>
                 ))}
               </div>
@@ -85,8 +89,8 @@ export default function Contact() {
                 <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
                   className="bg-white/10 backdrop-blur-sm rounded-2xl p-10 text-center border border-white/15">
                   <CheckCircle size={48} weight="fill" className="text-white mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-white">Thanks for reaching out!</h3>
-                  <p className="mt-2 text-white/70 text-base">Our team will send your custom media plan within 48 hours.</p>
+                  <h3 className="text-xl font-bold text-white">{tSuccess("title")}</h3>
+                  <p className="mt-2 text-white/70 text-base">{tSuccess("body")}</p>
                 </motion.div>
               ) : (
                 <motion.form key="form" onSubmit={handleSubmit}
@@ -94,26 +98,26 @@ export default function Contact() {
                   initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">Full Name</label>
-                      <input type="text" required className={inputClass} placeholder="Your name" />
+                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">{tForm("name")}</label>
+                      <input type="text" required className={inputClass} placeholder={tForm("namePlaceholder")} />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">Company</label>
-                      <input type="text" required className={inputClass} placeholder="Company name" />
+                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">{tForm("company")}</label>
+                      <input type="text" required className={inputClass} placeholder={tForm("companyPlaceholder")} />
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">Email</label>
-                      <input type="email" required className={inputClass} placeholder="you@company.com" />
+                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">{tForm("email")}</label>
+                      <input type="email" required className={inputClass} placeholder={tForm("emailPlaceholder")} />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">Phone</label>
-                      <input type="tel" className={inputClass} placeholder="+974" />
+                      <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">{tForm("phone")}</label>
+                      <input type="tel" className={inputClass} placeholder={tForm("phonePlaceholder")} />
                     </div>
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">Monthly Budget</label>
+                    <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">{tForm("budget")}</label>
                     <select
                       required
                       value={budget}
@@ -126,11 +130,11 @@ export default function Contact() {
                     </select>
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">Your Goals</label>
-                    <textarea rows={3} className={`${inputClass} resize-none`} placeholder="What do you want to achieve?" />
+                    <label className="text-[11px] font-bold text-white/70 uppercase tracking-wider">{tForm("goals")}</label>
+                    <textarea rows={3} className={`${inputClass} resize-none`} placeholder={tForm("goalsPlaceholder")} />
                   </div>
                   <Button type="submit" variant="secondary" className="w-full bg-white text-brand-red hover:bg-white/90 border-0">
-                    Let&apos;s Talk
+                    {tForm("submit")}
                   </Button>
                 </motion.form>
               )}

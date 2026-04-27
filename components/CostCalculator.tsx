@@ -1,36 +1,28 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Check, ArrowRight } from "@phosphor-icons/react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Button from "@/components/ui/Button";
-import { placements } from "@/components/Placements";
+import { placements, type PlacementKey } from "@/components/Placements";
 import { useCurrency } from "@/lib/CurrencyContext";
 import { formatAmount, CURRENCIES } from "@/lib/currency";
 
-const zones = [
-  { id: "all",      label: "All Qatar" },
-  { id: "doha",     label: "Doha" },
-  { id: "lusail",   label: "Lusail" },
-  { id: "alrayyan", label: "Al Rayyan" },
-  { id: "alwakrah", label: "Al Wakrah" },
+const zoneIds = ["all", "doha", "lusail", "alrayyan", "alwakrah"] as const;
+type ZoneId = (typeof zoneIds)[number];
+
+const targetingDefs = [
+  { id: "broad",      multiplier: 1.0 },
+  { id: "category",   multiplier: 1.15 },
+  { id: "behavioral", multiplier: 1.3 },
 ] as const;
 
-type ZoneId = (typeof zones)[number]["id"];
-
-const targeting = [
-  { id: "broad",      label: "Broad",      description: "Widest possible audience",          multiplier: 1.0 },
-  { id: "category",   label: "Category",   description: "Shoppers in your vertical",          multiplier: 1.15 },
-  { id: "behavioral", label: "Behavioral", description: "AI-matched high-intent users",       multiplier: 1.3 },
-] as const;
-
-type TargetingId = (typeof targeting)[number]["id"];
+type TargetingId = (typeof targetingDefs)[number]["id"];
 
 const MIN_BUDGET = 5000;
 
-// Buckets are always expressed in QAR (the canonical pricing currency) so
-// contact-form pre-fill works regardless of display currency.
 function toBudgetBucket(midpointQar: number): string {
   if (midpointQar < 5000) return "under-5k";
   if (midpointQar < 15000) return "5k-15k";
@@ -39,13 +31,18 @@ function toBudgetBucket(midpointQar: number): string {
 }
 
 export default function CostCalculator() {
+  const t = useTranslations("calculator");
+  const tEst = useTranslations("calculator.estimate");
+  const tZones = useTranslations("calculator.zones");
+  const tTarg = useTranslations("calculator.targeting");
+  const tPlace = useTranslations("placements.items");
   const { currency } = useCurrency();
   const [selectedZones, setSelectedZones] = useState<Set<ZoneId>>(() => new Set(["all"]));
-  const [selected, setSelected] = useState<Set<string>>(() => new Set([placements[0].title, placements[1].title]));
+  const [selected, setSelected] = useState<Set<PlacementKey>>(() => new Set([placements[0].key, placements[1].key]));
   const [weeks, setWeeks] = useState(4);
   const [target, setTarget] = useState<TargetingId>("broad");
 
-  const multiplier = targeting.find((t) => t.id === target)?.multiplier ?? 1;
+  const multiplier = targetingDefs.find((td) => td.id === target)?.multiplier ?? 1;
 
   function toggleZone(id: ZoneId) {
     setSelectedZones((prev) => {
@@ -60,14 +57,14 @@ export default function CostCalculator() {
   }
 
   const zonesLabel = useMemo(() => {
-    if (selectedZones.has("all")) return "All Qatar";
-    const picked = zones.filter((z) => z.id !== "all" && selectedZones.has(z.id));
-    if (picked.length <= 2) return picked.map((z) => z.label).join(", ");
-    return `${picked.length} zones`;
-  }, [selectedZones]);
+    if (selectedZones.has("all")) return tZones("all");
+    const picked = zoneIds.filter((z) => z !== "all" && selectedZones.has(z));
+    if (picked.length <= 2) return picked.map((z) => tZones(z)).join(", ");
+    return tZones("summary", { count: picked.length });
+  }, [selectedZones, tZones]);
 
   const { low, high } = useMemo(() => {
-    const chosen = placements.filter((p) => selected.has(p.title));
+    const chosen = placements.filter((p) => selected.has(p.key));
     if (chosen.length === 0) return { low: 0, high: 0 };
     const lowSum = chosen.reduce((s, p) => s + p.indicativeWeeklyQar[0], 0);
     const highSum = chosen.reduce((s, p) => s + p.indicativeWeeklyQar[1], 0);
@@ -80,11 +77,11 @@ export default function CostCalculator() {
   const hasSelection = selected.size > 0;
   const midpoint = (low + high) / 2;
 
-  function togglePlacement(title: string) {
+  function togglePlacement(key: PlacementKey) {
     setSelected((prev) => {
       const next = new Set(prev);
-      if (next.has(title)) next.delete(title);
-      else next.add(title);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
       return next;
     });
   }
@@ -93,31 +90,32 @@ export default function CostCalculator() {
     ? `?budget=${toBudgetBucket(midpoint)}#contact`
     : "#contact";
 
+  const weeksWord = t("weeks", { count: weeks });
+
   return (
     <section id="calculator" className="py-20 md:py-28 bg-off-white">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
         <ScrollReveal>
           <SectionHeading
-            tagline="Campaign Calculator"
-            headline="Plan Your Snoonu Ads Budget"
-            description="Three quick choices, one clear estimate. Final quote factors in creative, dates, and inventory."
+            tagline={t("tagline")}
+            headline={t("headline")}
+            description={t("description")}
             align="center"
           />
         </ScrollReveal>
 
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,380px)] gap-10 lg:gap-14 items-start">
-          {/* Steps */}
           <ScrollReveal delay={0.1}>
             <div className="space-y-12">
-              <Step number={1} title="Where are your customers?" hint="Pick one or more zones. Defaults to all of Qatar.">
+              <Step number={1} title={t("step1.title")} hint={t("step1.hint")}>
                 <div className="flex flex-wrap gap-3">
-                  {zones.map((z) => {
-                    const active = selectedZones.has(z.id);
+                  {zoneIds.map((id) => {
+                    const active = selectedZones.has(id);
                     return (
                       <button
-                        key={z.id}
+                        key={id}
                         type="button"
-                        onClick={() => toggleZone(z.id)}
+                        onClick={() => toggleZone(id)}
                         aria-pressed={active}
                         className={`inline-flex items-center gap-2.5 px-5 py-3 rounded-full text-base font-semibold transition-all ${
                           active
@@ -133,22 +131,22 @@ export default function CostCalculator() {
                         >
                           {active && <Check size={12} weight="bold" className="text-white" />}
                         </span>
-                        {z.label}
+                        {tZones(id)}
                       </button>
                     );
                   })}
                 </div>
               </Step>
 
-              <Step number={2} title="Which placements?" hint="Pick as many as you like.">
+              <Step number={2} title={t("step2.title")} hint={t("step2.hint")}>
                 <div className="flex flex-wrap gap-3">
                   {placements.map((p) => {
-                    const active = selected.has(p.title);
+                    const active = selected.has(p.key);
                     return (
                       <button
-                        key={p.title}
+                        key={p.key}
                         type="button"
-                        onClick={() => togglePlacement(p.title)}
+                        onClick={() => togglePlacement(p.key)}
                         aria-pressed={active}
                         className={`inline-flex items-center gap-2.5 px-5 py-3 rounded-full text-base font-semibold transition-all ${
                           active
@@ -164,7 +162,7 @@ export default function CostCalculator() {
                         >
                           {active && <Check size={12} weight="bold" className="text-white" />}
                         </span>
-                        {p.title}
+                        {tPlace(`${p.key}.title`)}
                       </button>
                     );
                   })}
@@ -173,11 +171,11 @@ export default function CostCalculator() {
 
               <Step
                 number={3}
-                title="For how long?"
-                hint="Drag to set your campaign length."
+                title={t("step3.title")}
+                hint={t("step3.hint")}
                 trailing={
                   <span className="text-2xl font-black text-brand-red tabular-nums">
-                    {weeks} <span className="text-lg font-bold text-muted">{weeks === 1 ? "week" : "weeks"}</span>
+                    {weeks} <span className="text-lg font-bold text-muted">{weeksWord}</span>
                   </span>
                 }
               >
@@ -188,33 +186,33 @@ export default function CostCalculator() {
                   value={weeks}
                   onChange={(e) => setWeeks(Number(e.target.value))}
                   className="w-full accent-brand-red cursor-pointer h-2"
-                  aria-label="Campaign duration in weeks"
+                  aria-label={t("durationAria")}
                 />
                 <div className="flex justify-between mt-2 text-sm text-muted">
-                  <span>1 week</span>
-                  <span>12 weeks</span>
+                  <span>{t("weeksRange.min")}</span>
+                  <span>{t("weeksRange.max")}</span>
                 </div>
               </Step>
 
-              <Step number={4} title="Who do you want to reach?" hint="Tighter targeting usually converts better.">
+              <Step number={4} title={t("step4.title")} hint={t("step4.hint")}>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {targeting.map((t) => {
-                    const active = target === t.id;
+                  {targetingDefs.map((td) => {
+                    const active = target === td.id;
                     return (
                       <button
-                        key={t.id}
+                        key={td.id}
                         type="button"
-                        onClick={() => setTarget(t.id)}
+                        onClick={() => setTarget(td.id)}
                         aria-pressed={active}
-                        className={`p-5 rounded-2xl text-left transition-all ${
+                        className={`p-5 rounded-2xl text-start transition-all ${
                           active
                             ? "bg-brand-red text-white shadow-[0_10px_30px_-10px_rgba(217,2,23,0.5)]"
                             : "bg-white border border-zinc-200 hover:border-zinc-400 text-off-black"
                         }`}
                       >
-                        <p className="text-lg font-bold">{t.label}</p>
+                        <p className="text-lg font-bold">{tTarg(`${td.id}.label`)}</p>
                         <p className={`text-sm mt-1 leading-snug ${active ? "text-white/80" : "text-muted"}`}>
-                          {t.description}
+                          {tTarg(`${td.id}.description`)}
                         </p>
                       </button>
                     );
@@ -224,10 +222,9 @@ export default function CostCalculator() {
             </div>
           </ScrollReveal>
 
-          {/* Estimate — sticky on desktop */}
           <ScrollReveal delay={0.2} className="lg:sticky lg:top-24">
             <div className="rounded-3xl bg-off-black text-white p-8 shadow-[0_25px_60px_-20px_rgba(0,0,0,0.35)]">
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-white/50">Your estimate</p>
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-white/50">{tEst("label")}</p>
 
               {hasSelection ? (
                 <>
@@ -239,29 +236,29 @@ export default function CostCalculator() {
                     <div className="mt-1 text-2xl font-bold text-white/40 tabular-nums">
                       – {formatAmount(high, currency)}
                     </div>
-                    <p className="mt-3 text-sm text-white/50">total campaign spend</p>
+                    <p className="mt-3 text-sm text-white/50">{tEst("totalSpend")}</p>
                   </div>
 
                   <div className="mt-7 pt-7 border-t border-white/10 space-y-2.5 text-base">
-                    <Row label="Zones" value={zonesLabel} />
-                    <Row label="Placements" value={`${selected.size}`} />
-                    <Row label="Duration" value={`${weeks} ${weeks === 1 ? "week" : "weeks"}`} />
-                    <Row label="Targeting" value={targeting.find((t) => t.id === target)?.label ?? "Broad"} />
+                    <Row label={tEst("rows.zones")} value={zonesLabel} />
+                    <Row label={tEst("rows.placements")} value={`${selected.size}`} />
+                    <Row label={tEst("rows.duration")} value={`${weeks} ${weeksWord}`} />
+                    <Row label={tEst("rows.targeting")} value={tTarg(`${target}.label`)} />
                   </div>
                 </>
               ) : (
                 <div className="mt-6">
-                  <p className="text-xl font-bold text-white/80">Pick at least one placement</p>
-                  <p className="mt-2 text-base text-white/50">Your estimate will appear here.</p>
+                  <p className="text-xl font-bold text-white/80">{tEst("noSelectionTitle")}</p>
+                  <p className="mt-2 text-base text-white/50">{tEst("noSelectionHint")}</p>
                 </div>
               )}
 
               <div className="mt-8">
                 <Button href={quoteHref} variant="secondary" className="w-full border-0 text-base">
-                  Get Custom Quote <ArrowRight size={18} weight="bold" />
+                  {tEst("cta")} <ArrowRight size={18} weight="bold" />
                 </Button>
                 <p className="mt-4 text-xs text-white/40 leading-relaxed">
-                  Indicative range. Final quote depends on creative, dates, inventory, and seasonality.
+                  {tEst("disclaimer")}
                 </p>
               </div>
             </div>
@@ -299,7 +296,7 @@ function Step({
         </div>
         {trailing && <div className="shrink-0 pt-1">{trailing}</div>}
       </div>
-      <div className="pl-0 md:pl-14">{children}</div>
+      <div className="ps-0 md:ps-14">{children}</div>
     </div>
   );
 }

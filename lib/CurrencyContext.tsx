@@ -4,7 +4,6 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import { type CurrencyCode, isCurrencyCode } from "./currency";
 
 const STORAGE_KEY = "snoonu-ads-currency";
-const DEFAULT_CURRENCY: CurrencyCode = "QAR";
 
 type CurrencyContextValue = {
   currency: CurrencyCode;
@@ -13,15 +12,21 @@ type CurrencyContextValue = {
 
 const CurrencyContext = createContext<CurrencyContextValue | null>(null);
 
-export function CurrencyProvider({ children }: { children: ReactNode }) {
-  const [currency, setCurrencyState] = useState<CurrencyCode>(DEFAULT_CURRENCY);
+export function CurrencyProvider({
+  children,
+  initialCurrency = "QAR",
+}: {
+  children: ReactNode;
+  initialCurrency?: CurrencyCode;
+}) {
+  const [currency, setCurrencyState] = useState<CurrencyCode>(initialCurrency);
 
   useEffect(() => {
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY);
       if (isCurrencyCode(stored)) setCurrencyState(stored);
     } catch {
-      // ignore — localStorage may be unavailable (private mode, etc.)
+      // localStorage may be unavailable
     }
   }, []);
 

@@ -1,0 +1,360 @@
+{
+  "metadata": {
+    "title": "Snoonu Ads — Qatar's Retail Media Platform",
+    "description": "Reach Qatar's most active shoppers. Connect with 1.5M+ users on Qatar's most-used super app, powered by real purchase data and AI."
+  },
+  "nav": {
+    "solutions": "Solutions",
+    "howItWorks": "How It Works",
+    "placements": "Placements",
+    "calculator": "Calculator",
+    "results": "Results",
+    "cta": "Start Advertising",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
+  },
+  "hero": {
+    "tagline": "Qatar's #1 Retail Media Platform",
+    "headlineBefore": "Turn Shoppers Into",
+    "headlineYour": "Your",
+    "rotating": {
+      "customers": "Customers",
+      "revenue": "Revenue",
+      "growth": "Growth",
+      "results": "Results"
+    },
+    "subhead": "Advertise to 1.5M+ high-intent buyers on Qatar's #1 super app. First-party data. AI targeting. Real ROAS.",
+    "ctaPrimary": "Explore Solutions",
+    "ctaSecondary": "Start Advertising",
+    "stats": {
+      "users": "Registered Users",
+      "visits": "Monthly Visits",
+      "searches": "Monthly Searches",
+      "deliveries": "Monthly Deliveries",
+      "premium": "Premium Shoppers"
+    }
+  },
+  "brandMarquee": {
+    "trustedBy": "Trusted by <strong>200+</strong> brands in Qatar"
+  },
+  "solutions": {
+    "tagline": "Full-Funnel Solution",
+    "headline": "A Full-Funnel Solution to Meet All Your Needs",
+    "description": "Three ways to grow on Qatar's largest retail media platform.",
+    "learnMore": "Learn More",
+    "items": {
+      "awareness": {
+        "title": "Brand Awareness",
+        "benefit": "Get seen by millions of high-intent shoppers across every Snoonu surface."
+      },
+      "conversions": {
+        "title": "Drive Conversions",
+        "benefit": "Capture demand at the moment of search and turn browsers into buyers."
+      },
+      "acquisition": {
+        "title": "Acquire Customers",
+        "benefit": "Use first-party data to find and convert your ideal audience in Qatar."
+      }
+    }
+  },
+  "howItWorks": {
+    "tagline": "How It Works",
+    "headline": "From Discovery to Checkout",
+    "subhead": "Your ads follow the shopper journey at every touchpoint — reaching customers at every stage of intent.",
+    "reach": "{pct}% reach",
+    "stages": {
+      "discover": { "label": "Discover", "description": "App Home, DooH & External Media" },
+      "search": { "label": "Search", "description": "Sponsored Listings & Contextual Ads" },
+      "influence": { "label": "Influence", "description": "Influencers, Video & Co-op" },
+      "engage": { "label": "Engage", "description": "Push, In-App & Homepage Ads" },
+      "convert": { "label": "Convert", "description": "Checkout Ads & Sampling" }
+    }
+  },
+  "placements": {
+    "tagline": "Ad Placements",
+    "headline": "Your Ads, Everywhere That Matters",
+    "description": "Native placements across the entire Snoonu experience, online and offline.",
+    "kpisLabel": "KPIs",
+    "items": {
+      "checkoutBanner": {
+        "title": "Checkout Banner",
+        "alt": "Snoonu app checkout screen showing a promotional banner during order tracking",
+        "features": [
+          "4M+ daily impressions in high-attention state",
+          "Maximize brand awareness and recall",
+          "Ensures your brand reaches many user profiles, especially those who make purchases on Snoonu",
+          "Optional Customized Landing Page Add-on"
+        ],
+        "kpis": ["Impressions", "Reach", "Clicks", "Sales uplifts on Snoonu"]
+      },
+      "searchBanner": {
+        "title": "Search Banner",
+        "alt": "Snoonu app search screen with a promotional banner ad",
+        "features": [
+          "20M+ daily high-intent impressions",
+          "Highest conversion rate of all formats due to active searching behaviors",
+          "Best to combine with awareness format to expand Marketing funnel"
+        ],
+        "kpis": ["Impressions", "Reach", "Clicks", "Sales uplifts on Snoonu"]
+      },
+      "categoryBanner": {
+        "title": "Category Banner",
+        "alt": "Snoonu app groceries category page with store listings",
+        "features": [
+          "Placement on category pages with 30K–35K daily impressions to increase brand awareness",
+          "Strategic campaign driving attention to your products and value propositions",
+          "Creative design support"
+        ],
+        "kpis": ["Impressions", "Reach", "Clicks", "Sales uplifts on Snoonu"]
+      },
+      "foodSliders": {
+        "title": "Food Sliders",
+        "alt": "Snoonu app homepage showing food slider carousel with restaurant promotions",
+        "features": [
+          "Prime placement on Snoonu homepage with up to 10M+ daily impressions",
+          "Highlights your specific products or bundles",
+          "Best for promoting high-margin SKUs, campaign heroes, or limited offers"
+        ],
+        "kpis": ["Impressions", "Clicks", "Sales uplifts on Snoonu"]
+      },
+      "searchPromotedListings": {
+        "title": "Search & Promoted Listings",
+        "alt": "Snoonu app search results showing sponsored listings with Ad badges",
+        "features": [
+          "Search Ads: Bid on keywords to appear in top 10 search results with Pay-per-Click model",
+          "Food Listing: allows you to reach up to 10M users browsing Snoonu on a daily basis"
+        ],
+        "kpis": ["Impressions", "Auction Win rate", "Clicks / CTR", "Sales uplifts on Snoonu"]
+      }
+    }
+  },
+  "audience": {
+    "tagline": "Audience",
+    "headline": "Why Snoonu Audience Wins",
+    "description": "High-intent shoppers with real purchase data. No third-party cookies needed.",
+    "whyCards": {
+      "firstParty": { "title": "First-Party Data", "text": "Real purchase behavior, not guesswork" },
+      "closedLoop": { "title": "Closed-Loop", "text": "Revenue tied to actual orders" },
+      "ai": { "title": "AI Targeting", "text": "ML-driven intent matching" },
+      "realTime": { "title": "Real-Time", "text": "Auto-optimized campaigns" }
+    },
+    "browse": {
+      "valueLabel": "browse before ordering",
+      "body": "Users explore products before checkout. Your ad is part of that journey."
+    },
+    "frequency": {
+      "valueLabel": "orders per user / year",
+      "body": "High repeat frequency means more touchpoints and chances to convert."
+    },
+    "premium": {
+      "title": "Premium subscribers",
+      "body": "High-spending users with elevated basket sizes."
+    },
+    "platformStats": {
+      "sessions": "App Sessions / Month",
+      "coverage": "Delivery Coverage",
+      "verticals": "Verticals",
+      "scharge": "S-Charge Locations"
+    }
+  },
+  "results": {
+    "tagline": "Results",
+    "headline": "Real Performance, Real Revenue",
+    "description": "Every campaign on Snoonu is measured against actual orders, not vanity metrics.",
+    "caseStudy": {
+      "tag": "Search Ads",
+      "title": "How a leading QSR brand drove 4.7x ROAS with Snoonu Ads",
+      "body": "By targeting high-intent food searchers with sponsored listings and push notifications during peak hours, this brand turned Snoonu into their #1 digital acquisition channel.",
+      "cta": "Read Full Story"
+    },
+    "metrics": {
+      "ctr": "Click-through Rate",
+      "cvr": "Conversion Rate",
+      "roas": "Return on Ad Spend"
+    },
+    "footnote": "More case studies launching soon. Results above represent platform averages."
+  },
+  "pricing": {
+    "tagline": "Plans",
+    "headline": "Plans Built for Every Stage of Growth",
+    "description": "Every plan includes first-party data targeting, closed-loop measurement, and access to Snoonu's high-intent shoppers.",
+    "popularBadge": "Most Popular",
+    "bestForLabel": "Best for:",
+    "outcomeLabel": "Outcome:",
+    "perMonth": " / month",
+    "tiers": {
+      "starter": {
+        "name": "Starter",
+        "bestFor": "Testing Snoonu Ads for the first time",
+        "outcome": "Validate performance and generate your first measurable sales",
+        "features": [
+          "App & web banner ads",
+          "Up to 50,000 impressions",
+          "Basic geo-targeting",
+          "Monthly performance report",
+          "Self-serve dashboard"
+        ],
+        "cta": "Get Started"
+      },
+      "growth": {
+        "name": "Growth",
+        "bestFor": "Scaling performance and driving consistent sales",
+        "outcome": "Turn Snoonu Ads into a reliable revenue channel",
+        "features": [
+          "Everything in Starter",
+          "Sponsored search (capture high-intent demand)",
+          "AI-powered audience targeting",
+          "Push notifications",
+          "Up to 250,000 impressions",
+          "Weekly performance analytics"
+        ],
+        "cta": "Get Started"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "priceCustom": "Custom",
+        "periodCustom": " Pricing",
+        "bestFor": "Market leaders aiming to dominate their category",
+        "outcome": "Maximise visibility, conversions, and market share on Snoonu",
+        "features": [
+          "Everything in Growth",
+          "Homepage takeovers",
+          "Video ad placements",
+          "Custom audience segments",
+          "Dedicated account manager",
+          "API access & advanced integrations"
+        ],
+        "cta": "Talk to Our Team"
+      }
+    },
+    "footer": "Not sure where to start?",
+    "footerCta": "Get a custom media plan",
+    "footerSuffix": "tailored to your goals and budget in under 48 hours."
+  },
+  "calculator": {
+    "tagline": "Campaign Calculator",
+    "headline": "Plan Your Snoonu Ads Budget",
+    "description": "Three quick choices, one clear estimate. Final quote factors in creative, dates, and inventory.",
+    "step1": { "title": "Where are your customers?", "hint": "Pick one or more zones. Defaults to all of Qatar." },
+    "step2": { "title": "Which placements?", "hint": "Pick as many as you like." },
+    "step3": { "title": "For how long?", "hint": "Drag to set your campaign length." },
+    "step4": { "title": "Who do you want to reach?", "hint": "Tighter targeting usually converts better." },
+    "weeks": "{count, plural, one {week} other {weeks}}",
+    "weeksRange": { "min": "1 week", "max": "12 weeks" },
+    "durationAria": "Campaign duration in weeks",
+    "zones": {
+      "all": "All Qatar",
+      "doha": "Doha",
+      "lusail": "Lusail",
+      "alrayyan": "Al Rayyan",
+      "alwakrah": "Al Wakrah",
+      "summary": "{count} zones"
+    },
+    "targeting": {
+      "broad": { "label": "Broad", "description": "Widest possible audience" },
+      "category": { "label": "Category", "description": "Shoppers in your vertical" },
+      "behavioral": { "label": "Behavioral", "description": "AI-matched high-intent users" }
+    },
+    "estimate": {
+      "label": "Your estimate",
+      "totalSpend": "total campaign spend",
+      "rows": {
+        "zones": "Zones",
+        "placements": "Placements",
+        "duration": "Duration",
+        "targeting": "Targeting"
+      },
+      "noSelectionTitle": "Pick at least one placement",
+      "noSelectionHint": "Your estimate will appear here.",
+      "cta": "Get Custom Quote",
+      "disclaimer": "Indicative range. Final quote depends on creative, dates, inventory, and seasonality."
+    }
+  },
+  "faq": {
+    "tagline": "FAQ",
+    "headline": "Common Questions",
+    "items": [
+      {
+        "q": "What is Snoonu Ads?",
+        "a": "Snoonu Ads is Qatar's retail media platform. It lets brands reach 1.5M+ high-intent shoppers through native app placements, sponsored search results, push notifications, video ads, and offline surfaces like S-Charge stations."
+      },
+      {
+        "q": "Do I need to be a Snoonu merchant to advertise?",
+        "a": "No. Any brand operating in Qatar can advertise on Snoonu, whether or not your products are listed on the platform. We support both on-platform and off-platform campaign goals."
+      },
+      {
+        "q": "How does targeting work?",
+        "a": "Our AI-powered targeting uses Snoonu's first-party purchase data, including location, past orders, search behavior, and spending patterns, to reach the right users at peak buying intent. No third-party cookies needed."
+      },
+      {
+        "q": "How do I measure performance?",
+        "a": "Every campaign gets a real-time dashboard with impressions, clicks, conversions, and ROAS. Our closed-loop measurement ties ad exposure directly to actual Snoonu orders, so you know exactly what your spend drove."
+      },
+      {
+        "q": "What is the minimum budget?",
+        "a": "Our Starter plan begins at QAR 15,000/month. For sponsored search listings, you can start with pay-per-click from as little as 1 QAR per click. Contact us to discuss custom budgets."
+      },
+      {
+        "q": "Is my data confidential?",
+        "a": "Absolutely. All campaign data is fully confidential and never shared with other advertisers on the platform. Your competitive insights stay yours."
+      }
+    ]
+  },
+  "contact": {
+    "tagline": "Get Started",
+    "headline": "Let's Build Your Growth Engine on Snoonu",
+    "description": "Get a custom media plan tailored to your goals and budget in under 48 hours.",
+    "outcomes": [
+      "Custom media plan in 48 hours",
+      "First-party data targeting from day one",
+      "Dedicated onboarding support"
+    ],
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Your name",
+      "company": "Company",
+      "companyPlaceholder": "Company name",
+      "email": "Email",
+      "emailPlaceholder": "you@company.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+974",
+      "budget": "Monthly Budget",
+      "goals": "Your Goals",
+      "goalsPlaceholder": "What do you want to achieve?",
+      "submit": "Let's Talk"
+    },
+    "budgetOptions": {
+      "placeholder": "Monthly Budget",
+      "under": "Under {amount}",
+      "between": "{from} to {to}",
+      "plus": "{amount}+",
+      "discuss": "Let's discuss"
+    },
+    "success": {
+      "title": "Thanks for reaching out!",
+      "body": "Our team will send your custom media plan within 48 hours."
+    }
+  },
+  "footer": {
+    "tagline": "Qatar's retail media platform connecting brands with high-intent shoppers across the country.",
+    "contact": "Contact Us",
+    "address": "The 18th Tower, 14th Floor, Lusail, Qatar",
+    "follow": "Follow Us",
+    "quickLinks": "Quick Links",
+    "links": {
+      "about": "About Us",
+      "services": "Services",
+      "partner": "Become a Partner",
+      "privacy": "Privacy Policy",
+      "terms": "Terms & Conditions",
+      "merchantTerms": "Merchant Terms & Conditions"
+    },
+    "rights": "© {year} Snoonu. All rights reserved."
+  },
+  "language": {
+    "label": "Language"
+  },
+  "currency": {
+    "label": "Currency"
+  }
+}

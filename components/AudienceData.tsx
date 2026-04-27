@@ -1,6 +1,7 @@
 "use client";
 
-import { type ReactNode, useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Database, ChartLineUp, Brain, Lightning } from "@phosphor-icons/react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -71,41 +72,48 @@ function DonutChart({ value }: { value: number }) {
   );
 }
 
-const whyCards: { icon: ReactNode; title: string; text: string }[] = [
-  { icon: <Database size={20} weight="fill" className="text-brand-red" />, title: "First-Party Data", text: "Real purchase behavior, not guesswork" },
-  { icon: <ChartLineUp size={20} weight="fill" className="text-brand-red" />, title: "Closed-Loop", text: "Revenue tied to actual orders" },
-  { icon: <Brain size={20} weight="fill" className="text-brand-red" />, title: "AI Targeting", text: "ML-driven intent matching" },
-  { icon: <Lightning size={20} weight="fill" className="text-brand-red" />, title: "Real-Time", text: "Auto-optimized campaigns" },
-];
+const whyCardKeys = [
+  { key: "firstParty", icon: Database },
+  { key: "closedLoop", icon: ChartLineUp },
+  { key: "ai", icon: Brain },
+  { key: "realTime", icon: Lightning },
+] as const;
 
-const platformStats = [
-  { value: 3, suffix: "M+", label: "App Sessions / Month" },
-  { value: 60, suffix: "KM", label: "Delivery Coverage" },
-  { value: 12, suffix: "", label: "Verticals" },
-  { value: 600, suffix: "+", label: "S-Charge Locations" },
-];
+const platformStatKeys = [
+  { key: "sessions", value: 3, suffix: "M+" },
+  { key: "coverage", value: 60, suffix: "KM" },
+  { key: "verticals", value: 12, suffix: "" },
+  { key: "scharge", value: 600, suffix: "+" },
+] as const;
 
 export default function AudienceData() {
+  const t = useTranslations("audience");
+
   return (
     <section id="audience" className="py-20 md:py-28">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div>
             <ScrollReveal>
-              <SectionHeading tagline="Audience" headline="Why Snoonu Audience Wins" description="High-intent shoppers with real purchase data. No third-party cookies needed." />
+              <SectionHeading tagline={t("tagline")} headline={t("headline")} description={t("description")} />
             </ScrollReveal>
             <div className="mt-10 grid grid-cols-2 gap-3">
-              {whyCards.map((card, i) => (
-                <ScrollReveal key={card.title} delay={i * 0.06}>
-                  <div className="flex items-start gap-3 p-4 rounded-xl bg-off-white border border-zinc-100 h-full hover:-translate-y-0.5 hover:bg-[#f0f0f0] transition-all duration-200">
-                    <div className="w-8 h-8 rounded-lg bg-brand-red/[0.08] flex items-center justify-center shrink-0">{card.icon}</div>
-                    <div>
-                      <p className="text-sm font-bold text-off-black">{card.title}</p>
-                      <p className="text-xs text-muted mt-0.5">{card.text}</p>
+              {whyCardKeys.map((card, i) => {
+                const Icon = card.icon;
+                return (
+                  <ScrollReveal key={card.key} delay={i * 0.06}>
+                    <div className="flex items-start gap-3 p-4 rounded-xl bg-off-white border border-zinc-100 h-full hover:-translate-y-0.5 hover:bg-[#f0f0f0] transition-all duration-200">
+                      <div className="w-8 h-8 rounded-lg bg-brand-red/[0.08] flex items-center justify-center shrink-0">
+                        <Icon size={20} weight="fill" className="text-brand-red" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-off-black">{t(`whyCards.${card.key}.title`)}</p>
+                        <p className="text-xs text-muted mt-0.5">{t(`whyCards.${card.key}.text`)}</p>
+                      </div>
                     </div>
-                  </div>
-                </ScrollReveal>
-              ))}
+                  </ScrollReveal>
+                );
+              })}
             </div>
           </div>
 
@@ -114,20 +122,20 @@ export default function AudienceData() {
               <div className="rounded-2xl bg-off-white border border-zinc-100 p-6">
                 <div className="flex items-baseline justify-between mb-3">
                   <span className="text-4xl font-black text-brand-red tracking-tight">99%</span>
-                  <span className="text-base text-muted">browse before ordering</span>
+                  <span className="text-base text-muted">{t("browse.valueLabel")}</span>
                 </div>
                 <AnimatedBar value={99} />
-                <p className="mt-3 text-base text-muted leading-relaxed">Users explore products before checkout. Your ad is part of that journey.</p>
+                <p className="mt-3 text-base text-muted leading-relaxed">{t("browse.body")}</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.15}>
               <div className="rounded-2xl bg-off-white border border-zinc-100 p-6">
                 <div className="flex items-baseline justify-between mb-3">
                   <span className="text-4xl font-black text-brand-red tracking-tight">~30</span>
-                  <span className="text-base text-muted">orders per user / year</span>
+                  <span className="text-base text-muted">{t("frequency.valueLabel")}</span>
                 </div>
                 <MiniBarChart />
-                <p className="mt-3 text-base text-muted leading-relaxed">High repeat frequency means more touchpoints and chances to convert.</p>
+                <p className="mt-3 text-base text-muted leading-relaxed">{t("frequency.body")}</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
@@ -135,8 +143,8 @@ export default function AudienceData() {
                 <div className="flex items-center gap-6">
                   <DonutChart value={20} />
                   <div>
-                    <span className="text-sm font-bold text-off-black">Premium subscribers</span>
-                    <p className="mt-1 text-base text-muted leading-relaxed">High-spending users with elevated basket sizes.</p>
+                    <span className="text-sm font-bold text-off-black">{t("premium.title")}</span>
+                    <p className="mt-1 text-base text-muted leading-relaxed">{t("premium.body")}</p>
                   </div>
                 </div>
               </div>
@@ -146,12 +154,12 @@ export default function AudienceData() {
 
         <ScrollReveal delay={0.2}>
           <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {platformStats.map((stat) => (
-              <div key={stat.label} className="rounded-xl bg-off-white border border-zinc-100 px-5 py-4">
+            {platformStatKeys.map((stat) => (
+              <div key={stat.key} className="rounded-xl bg-off-white border border-zinc-100 px-5 py-4">
                 <div className="text-2xl font-black text-off-black tracking-tight">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                 </div>
-                <p className="mt-1 text-base text-muted">{stat.label}</p>
+                <p className="mt-1 text-base text-muted">{t(`platformStats.${stat.key}`)}</p>
               </div>
             ))}
           </div>

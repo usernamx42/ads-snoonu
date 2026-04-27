@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const brands = [
@@ -12,7 +13,7 @@ function MarqueeRow({ items, reverse = false, speed = 30 }: { items: string[]; r
   return (
     <div className="overflow-hidden group">
       <div
-        className="flex gap-4 whitespace-nowrap will-change-transform group-hover:[animation-play-state:paused]"
+        className="flex gap-4 whitespace-nowrap will-change-transform group-hover:[animation-play-state:paused] animate-marquee"
         style={{ animation: `${reverse ? "marquee-reverse" : "marquee"} ${speed}s linear infinite` }}
       >
         {doubled.map((brand, i) => (
@@ -26,12 +27,15 @@ function MarqueeRow({ items, reverse = false, speed = 30 }: { items: string[]; r
 }
 
 export default function BrandMarquee() {
+  const t = useTranslations("brandMarquee");
   return (
     <section id="brands" className="py-14 md:py-16 bg-off-white border-b border-zinc-100">
       <ScrollReveal>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 mb-8 text-center">
           <p className="text-base text-muted">
-            Trusted by <span className="font-bold text-off-black">200+</span> brands in Qatar
+            {t.rich("trustedBy", {
+              strong: (chunks) => <span className="font-bold text-off-black">{chunks}</span>,
+            })}
           </p>
         </div>
       </ScrollReveal>

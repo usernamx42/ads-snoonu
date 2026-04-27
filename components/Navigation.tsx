@@ -2,22 +2,25 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { List, X } from "@phosphor-icons/react";
 import Button from "@/components/ui/Button";
 import CurrencySwitcher from "@/components/ui/CurrencySwitcher";
-
-const navItems = [
-  { label: "Solutions", href: "#solutions" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Placements", href: "#placements" },
-  { label: "Calculator", href: "#calculator" },
-  { label: "Results", href: "#results" },
-];
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 export default function Navigation() {
+  const t = useTranslations("nav");
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const ticking = useRef(false);
+
+  const navItems = [
+    { label: t("solutions"), href: "#solutions" },
+    { label: t("howItWorks"), href: "#how-it-works" },
+    { label: t("placements"), href: "#placements" },
+    { label: t("calculator"), href: "#calculator" },
+    { label: t("results"), href: "#results" },
+  ];
 
   const onScroll = useCallback(() => {
     if (!ticking.current) {
@@ -66,12 +69,17 @@ export default function Navigation() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2">
+            <LanguageSwitcher />
             <CurrencySwitcher />
-            <Button href="#contact" variant="primary">Start Advertising</Button>
+            <Button href="#contact" variant="primary">{t("cta")}</Button>
           </div>
 
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden p-2 -mr-2 text-off-black" aria-label="Toggle menu">
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-2 -mr-2 text-off-black"
+            aria-label={mobileOpen ? t("menuClose") : t("menuOpen")}
+          >
             {mobileOpen ? <X size={24} weight="bold" /> : <List size={24} weight="bold" />}
           </button>
         </nav>
@@ -88,16 +96,26 @@ export default function Navigation() {
           >
             <div className="flex flex-col gap-6 py-8">
               {navItems.map((item, i) => (
-                <motion.a key={item.href} href={item.href} className="text-2xl font-bold text-off-black" onClick={() => setMobileOpen(false)}
-                  initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}>
+                <motion.a
+                  key={item.href}
+                  href={item.href}
+                  className="text-2xl font-bold text-off-black"
+                  onClick={() => setMobileOpen(false)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                >
                   {item.label}
                 </motion.a>
               ))}
-              <div className="pt-4 flex items-center justify-between gap-3">
+              <div className="pt-4 flex items-center gap-3">
+                <LanguageSwitcher />
                 <CurrencySwitcher />
               </div>
               <div>
-                <Button href="#contact" variant="primary" className="w-full" onClick={() => setMobileOpen(false)}>Start Advertising</Button>
+                <Button href="#contact" variant="primary" className="w-full" onClick={() => setMobileOpen(false)}>
+                  {t("cta")}
+                </Button>
               </div>
             </div>
           </motion.div>

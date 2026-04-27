@@ -2,18 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
-const rotatingWords = ["Customers", "Revenue", "Growth", "Results"];
-
-const stats = [
-  { value: 1.5, suffix: "M+", label: "Registered Users", decimals: 1 },
-  { value: 10, suffix: "M+", label: "Monthly Visits", decimals: 0 },
-  { value: 30, suffix: "M+", label: "Monthly Searches", decimals: 0 },
-  { value: 2.5, suffix: "M+", label: "Monthly Deliveries", decimals: 1 },
-  { value: 20, suffix: "%", prefix: "~", label: "Premium Shoppers", decimals: 0 },
-];
+const rotatingKeys = ["customers", "revenue", "growth", "results"] as const;
 
 const stagger = {
   hidden: {},
@@ -26,11 +19,12 @@ const fadeUp = {
 };
 
 function RotatingWord() {
+  const t = useTranslations("hero.rotating");
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % rotatingWords.length);
+      setIndex((prev) => (prev + 1) % rotatingKeys.length);
     }, 2500);
     return () => clearInterval(interval);
   }, []);
@@ -39,14 +33,14 @@ function RotatingWord() {
     <span className="inline-block relative">
       <AnimatePresence mode="wait">
         <motion.span
-          key={rotatingWords[index]}
+          key={rotatingKeys[index]}
           className="inline-block text-brand-red"
           initial={{ y: 30, opacity: 0, rotateX: -40 }}
           animate={{ y: 0, opacity: 1, rotateX: 0 }}
           exit={{ y: -30, opacity: 0, rotateX: 40 }}
           transition={{ type: "spring" as const, stiffness: 150, damping: 18 }}
         >
-          {rotatingWords[index]}
+          {t(rotatingKeys[index])}
         </motion.span>
       </AnimatePresence>
     </span>
@@ -64,6 +58,17 @@ function FloatingOrbs() {
 }
 
 export default function Hero() {
+  const t = useTranslations("hero");
+  const tStats = useTranslations("hero.stats");
+
+  const stats = [
+    { value: 1.5, suffix: "M+", label: tStats("users"), decimals: 1 },
+    { value: 10, suffix: "M+", label: tStats("visits"), decimals: 0 },
+    { value: 30, suffix: "M+", label: tStats("searches"), decimals: 0 },
+    { value: 2.5, suffix: "M+", label: tStats("deliveries"), decimals: 1 },
+    { value: 20, suffix: "%", prefix: "~", label: tStats("premium"), decimals: 0 },
+  ];
+
   return (
     <section
       className="relative min-h-[92dvh] flex flex-col justify-center overflow-hidden bg-cover bg-center bg-no-repeat"
@@ -75,29 +80,27 @@ export default function Hero() {
         <motion.div variants={stagger} initial="hidden" animate="visible" className="max-w-3xl">
           <motion.div variants={fadeUp}>
             <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-brand-red bg-brand-red/[0.06] px-4 py-2 rounded-full mb-6">
-              Qatar&apos;s #1 Retail Media Platform
+              {t("tagline")}
             </span>
           </motion.div>
 
           <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl lg:text-7xl tracking-tighter leading-[0.92] font-black text-off-black">
-            Turn Shoppers Into{" "}
+            {t("headlineBefore")}{" "}
             <br className="hidden md:block" />
-            Your <RotatingWord />
+            {t("headlineYour")} <RotatingWord />
           </motion.h1>
 
           <motion.p variants={fadeUp} className="mt-5 text-base md:text-lg text-muted leading-relaxed max-w-lg">
-            Advertise to 1.5M+ high-intent buyers on Qatar&apos;s #1 super app.
-            First-party data. AI targeting. Real ROAS.
+            {t("subhead")}
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-3">
-            <Button href="#solutions" variant="primary">Explore Solutions</Button>
-            <Button href="#contact" variant="secondary">Start Advertising</Button>
+            <Button href="#solutions" variant="primary">{t("ctaPrimary")}</Button>
+            <Button href="#contact" variant="secondary">{t("ctaSecondary")}</Button>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Stats strip */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

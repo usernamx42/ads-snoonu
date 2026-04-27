@@ -3,6 +3,7 @@
 @theme {
   --font-sans: var(--font-altform), system-ui, -apple-system, sans-serif;
   --font-arabic: var(--font-estedad), system-ui, sans-serif;
+  --font-cjk: var(--font-noto-sans-sc), system-ui, sans-serif;
 
   --color-brand-red: #D90217;
   --color-brand-red-dark: #640D37;
@@ -35,6 +36,14 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  body.font-locale-ar {
+    font-family: var(--font-arabic);
+  }
+
+  body.font-locale-zh {
+    font-family: var(--font-cjk);
+  }
+
   ::selection {
     background-color: #D90217;
     color: #ffffff;
@@ -49,6 +58,10 @@
 @keyframes marquee-reverse {
   from { transform: translateX(-50%); }
   to { transform: translateX(0); }
+}
+
+[dir="rtl"] .animate-marquee {
+  animation-direction: reverse;
 }
 
 @keyframes float-1 {

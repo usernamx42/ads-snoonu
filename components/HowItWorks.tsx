@@ -2,67 +2,16 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
-type Stage = {
-  key: string;
-  label: string;
-  description: string;
-  image: string;
-  imageAlt: string;
-  // illustrative — funnel-narrowing figures from the deck design,
-  // not measured reach. Swap to real numbers when analytics lands.
-  audience: string;
-  pct: number;
-};
-
-const stages: Stage[] = [
-  {
-    key: "discover",
-    label: "Discover",
-    description: "App Home, DooH & External Media",
-    image: "/ads-placement-images/category-banner.png",
-    imageAlt: "Snoonu app category page banner",
-    audience: "1.5M",
-    pct: 100,
-  },
-  {
-    key: "search",
-    label: "Search",
-    description: "Sponsored Listings & Contextual Ads",
-    image: "/ads-placement-images/search-banner.png",
-    imageAlt: "Snoonu app search results banner",
-    audience: "850K",
-    pct: 57,
-  },
-  {
-    key: "influence",
-    label: "Influence",
-    description: "Influencers, Video & Co-op",
-    image: "/ads-placement-images/food-sliders.png",
-    imageAlt: "Snoonu app food sliders carousel",
-    audience: "420K",
-    pct: 28,
-  },
-  {
-    key: "engage",
-    label: "Engage",
-    description: "Push, In-App & Homepage Ads",
-    image: "/ads-placement-images/search-promoted-listings.png",
-    imageAlt: "Snoonu app promoted listings",
-    audience: "210K",
-    pct: 14,
-  },
-  {
-    key: "convert",
-    label: "Convert",
-    description: "Checkout Ads & Sampling",
-    image: "/ads-placement-images/checkout-banner.png",
-    imageAlt: "Snoonu app checkout banner",
-    audience: "95K",
-    pct: 6.3,
-  },
-];
+const stageDefs = [
+  { key: "discover",  image: "/ads-placement-images/category-banner.png",          audience: "1.5M", pct: 100 },
+  { key: "search",    image: "/ads-placement-images/search-banner.png",            audience: "850K", pct: 57 },
+  { key: "influence", image: "/ads-placement-images/food-sliders.png",             audience: "420K", pct: 28 },
+  { key: "engage",    image: "/ads-placement-images/search-promoted-listings.png", audience: "210K", pct: 14 },
+  { key: "convert",   image: "/ads-placement-images/checkout-banner.png",          audience: "95K",  pct: 6.3 },
+] as const;
 
 const VBW = 1100;
 const VBH = 320;
@@ -91,6 +40,7 @@ function HorizontalRibbedCone({
     <svg
       viewBox={`0 0 ${VBW} ${VBH + 28}`}
       preserveAspectRatio="xMidYMid meet"
+      className="rtl:[transform:scaleX(-1)]"
       style={{ width: "100%", height: "auto", display: "block", overflow: "visible" }}
     >
       <defs>
@@ -171,17 +121,29 @@ function HorizontalRibbedCone({
 }
 
 function PhoneCard({
-  stage,
+  stageKey,
+  image,
+  label,
+  description,
+  audience,
+  pct,
   index,
   active,
   onMouseEnter,
   onMouseLeave,
+  reachLabel,
 }: {
-  stage: Stage;
+  stageKey: string;
+  image: string;
+  label: string;
+  description: string;
+  audience: string;
+  pct: number;
   index: number;
   active: boolean | null;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
+  reachLabel: string;
 }) {
   const isActive = active === true;
   const isDimmed = active === false;
@@ -213,12 +175,12 @@ function PhoneCard({
         >
           {String(index + 1).padStart(2, "0")}
         </div>
-        <div className="text-left">
+        <div className="text-start">
           <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-white leading-none">
-            {stage.label}
+            {label}
           </div>
           <div className="text-[10px] text-white/55 mt-0.5 leading-tight max-w-[140px]">
-            {stage.description}
+            {description}
           </div>
         </div>
       </div>
@@ -237,13 +199,10 @@ function PhoneCard({
           transition: "box-shadow 200ms",
         }}
       >
-        <div
-          className="relative w-full h-full overflow-hidden bg-white"
-          style={{ borderRadius: 17 }}
-        >
+        <div className="relative w-full h-full overflow-hidden bg-white" style={{ borderRadius: 17 }}>
           <Image
-            src={stage.image}
-            alt={stage.imageAlt}
+            src={image}
+            alt={label}
             fill
             sizes="132px"
             className="object-cover object-top"
@@ -263,12 +222,12 @@ function PhoneCard({
         />
       </div>
 
-      <div className="mt-4 text-center">
+      <div className="mt-4 text-center" data-stage={stageKey}>
         <div className="text-xl font-black text-white tabular-nums tracking-tight leading-none">
-          {stage.audience}
+          {audience}
         </div>
         <div className="text-[10px] uppercase tracking-wider text-white/40 mt-1">
-          {stage.pct}% reach
+          {reachLabel.replace("{pct}", String(pct))}
         </div>
       </div>
     </div>
@@ -276,24 +235,32 @@ function PhoneCard({
 }
 
 export default function HowItWorks() {
+  const t = useTranslations("howItWorks");
   const [hovered, setHovered] = useState<number | null>(null);
+
+  const stages = stageDefs.map((def) => ({
+    ...def,
+    label: t(`stages.${def.key}.label`),
+    description: t(`stages.${def.key}.description`),
+  }));
+
+  const reachLabel = t.raw("reach") as string;
 
   return (
     <section id="how-it-works" className="py-20 md:py-28 bg-off-black overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <ScrollReveal>
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-red mb-4">How It Works</p>
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-red mb-4">{t("tagline")}</p>
             <h2 className="text-3xl md:text-5xl tracking-tighter leading-none font-bold text-white">
-              From Discovery to Checkout
+              {t("headline")}
             </h2>
             <p className="mt-4 text-base text-white/50 leading-relaxed">
-              Your ads follow the shopper journey at every touchpoint — reaching customers at every stage of intent.
+              {t("subhead")}
             </p>
           </div>
         </ScrollReveal>
 
-        {/* Desktop */}
         <div className="hidden md:block">
           <div className="relative max-w-5xl mx-auto">
             <div className="grid grid-cols-5 gap-0 mb-2 px-[60px]">
@@ -330,18 +297,23 @@ export default function HowItWorks() {
               return (
                 <PhoneCard
                   key={stage.key}
-                  stage={stage}
+                  stageKey={stage.key}
+                  image={stage.image}
+                  label={stage.label}
+                  description={stage.description}
+                  audience={stage.audience}
+                  pct={stage.pct}
                   index={i}
                   active={active}
                   onMouseEnter={() => setHovered(i)}
                   onMouseLeave={() => setHovered(null)}
+                  reachLabel={reachLabel}
                 />
               );
             })}
           </div>
         </div>
 
-        {/* Mobile */}
         <div className="md:hidden space-y-6">
           {stages.map((stage, i) => {
             const gutterW = 4 - i * 0.5;
@@ -360,13 +332,10 @@ export default function HowItWorks() {
                         boxShadow: "0 10px 28px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.08)",
                       }}
                     >
-                      <div
-                        className="relative w-full h-full overflow-hidden bg-white"
-                        style={{ borderRadius: 14 }}
-                      >
+                      <div className="relative w-full h-full overflow-hidden bg-white" style={{ borderRadius: 14 }}>
                         <Image
                           src={stage.image}
-                          alt={stage.imageAlt}
+                          alt={stage.label}
                           fill
                           sizes="96px"
                           className="object-cover object-top"
@@ -406,7 +375,7 @@ export default function HowItWorks() {
                         {stage.audience}
                       </span>
                       <span className="text-[10px] uppercase tracking-wider text-white/40">
-                        {stage.pct}% reach
+                        {reachLabel.replace("{pct}", String(stage.pct))}
                       </span>
                     </div>
                   </div>
