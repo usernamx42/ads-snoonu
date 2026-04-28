@@ -71,9 +71,7 @@
       "convert": { "label": "转化", "description": "结账广告与试用" }
     },
     "modal": {
-      "close": "关闭",
-      "audienceLabel": "受众",
-      "openLabel": "查看{label}广告位详情"
+      "openLabel": "展开{label}广告位"
     }
   },
   "placements": {

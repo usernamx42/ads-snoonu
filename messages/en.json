@@ -70,9 +70,7 @@
       "convert": { "label": "Convert", "description": "Checkout Ads & Sampling" }
     },
     "modal": {
-      "close": "Close",
-      "audienceLabel": "Audience",
-      "openLabel": "View {label} placement details"
+      "openLabel": "Expand {label} placement"
     }
   },
   "placements": {

@@ -71,9 +71,7 @@
       "convert": { "label": "Конверсия", "description": "Реклама на чекауте и сэмплинг" }
     },
     "modal": {
-      "close": "Закрыть",
-      "audienceLabel": "Аудитория",
-      "openLabel": "Открыть подробности размещения {label}"
+      "openLabel": "Развернуть размещение {label}"
     }
   },
   "placements": {

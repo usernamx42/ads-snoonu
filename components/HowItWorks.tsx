@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import PlacementModal from "@/components/PlacementModal";
 
 const stageDefs = [
   { key: "discover",  image: "/ads-placement-images/category-banner.png",          audience: "1.5M", pct: 100 },
@@ -129,7 +128,9 @@ function PhoneCard({
   audience,
   pct,
   index,
-  active,
+  hover,
+  clicked,
+  dimmed,
   onMouseEnter,
   onMouseLeave,
   onClick,
@@ -143,21 +144,30 @@ function PhoneCard({
   audience: string;
   pct: number;
   index: number;
-  active: boolean | null;
+  hover: boolean;
+  clicked: boolean;
+  dimmed: boolean;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   onClick: () => void;
   openLabel: string;
   reachLabel: string;
 }) {
-  const isActive = active === true;
-  const isDimmed = active === false;
+  const isHighlighted = hover || clicked;
+
+  let transform: string;
+  if (clicked) transform = "translateX(-50%) translateY(-20px) scale(1.9)";
+  else if (hover) transform = "translateY(-32px) scale(1.35)";
+  else transform = "none";
 
   return (
     <div
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onClick={onClick}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick();
+      }}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -167,14 +177,17 @@ function PhoneCard({
       role="button"
       tabIndex={0}
       aria-label={openLabel}
+      aria-expanded={clicked}
       className="flex flex-col items-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 focus-visible:ring-offset-off-black rounded-lg"
       style={{
-        opacity: isDimmed ? 0.4 : 1,
-        transform: isActive ? "translateY(-32px) scale(1.35)" : "none",
-        transformOrigin: "center bottom",
-        transition: "opacity 220ms ease, transform 320ms cubic-bezier(0.22, 1, 0.36, 1)",
-        zIndex: isActive ? 20 : 1,
-        position: "relative",
+        opacity: dimmed ? 0.25 : 1,
+        transform,
+        transformOrigin: "center top",
+        transition: "opacity 220ms ease, transform 360ms cubic-bezier(0.22, 1, 0.36, 1)",
+        zIndex: clicked ? 40 : isHighlighted ? 20 : 1,
+        position: clicked ? "absolute" : "relative",
+        left: clicked ? "50%" : undefined,
+        top: clicked ? 0 : undefined,
         willChange: "transform",
       }}
     >
@@ -184,11 +197,11 @@ function PhoneCard({
           style={{
             width: 28,
             height: 28,
-            background: isActive ? "#D90217" : "rgba(255,255,255,0.08)",
+            background: isHighlighted ? "#D90217" : "rgba(255,255,255,0.08)",
             color: "#fff",
             fontSize: 12,
-            border: isActive ? "2px solid #D90217" : "2px solid rgba(255,255,255,0.15)",
-            boxShadow: isActive ? "0 0 0 5px rgba(217,2,23,0.18)" : "none",
+            border: isHighlighted ? "2px solid #D90217" : "2px solid rgba(255,255,255,0.15)",
+            boxShadow: isHighlighted ? "0 0 0 5px rgba(217,2,23,0.18)" : "none",
             transition: "all 200ms",
           }}
         >
@@ -212,7 +225,7 @@ function PhoneCard({
           borderRadius: 22,
           background: "#1a1a1a",
           padding: 5,
-          boxShadow: isActive
+          boxShadow: isHighlighted
             ? "0 40px 80px rgba(0,0,0,0.55), 0 16px 48px rgba(217,2,23,0.45), 0 0 0 2px rgba(217,2,23,0.85)"
             : "0 10px 28px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.08)",
           transition: "box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1)",
@@ -256,7 +269,7 @@ function PhoneCard({
 export default function HowItWorks() {
   const t = useTranslations("howItWorks");
   const [hovered, setHovered] = useState<number | null>(null);
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [clickedIndex, setClickedIndex] = useState<number | null>(null);
 
   const stages = stageDefs.map((def) => ({
     ...def,
@@ -265,14 +278,22 @@ export default function HowItWorks() {
   }));
 
   const reachLabel = t.raw("reach") as string;
-  const closeLabel = t("modal.close");
-  const audienceLabel = t("modal.audienceLabel");
   const openLabelTpl = t.raw("modal.openLabel") as string;
-  const activeStage = openIndex !== null ? stages[openIndex] : null;
+
+  useEffect(() => {
+    if (clickedIndex === null) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setClickedIndex(null);
+    }
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [clickedIndex]);
+
+  const activeIndex = clickedIndex ?? hovered;
 
   return (
-    <section id="how-it-works" className="py-20 md:py-28 bg-off-black overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+    <section id="how-it-works" className="relative py-20 md:py-28 bg-off-black">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative">
         <ScrollReveal>
           <div className="text-center max-w-2xl mx-auto mb-14">
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-red mb-4">{t("tagline")}</p>
@@ -289,8 +310,8 @@ export default function HowItWorks() {
           <div className="relative max-w-5xl mx-auto">
             <div className="grid grid-cols-5 gap-0 mb-2 px-[60px]">
               {stages.map((stage, i) => {
-                const isActive = hovered === i;
-                const isDimmed = hovered !== null && hovered !== i;
+                const isActive = activeIndex === i;
+                const isDimmed = activeIndex !== null && activeIndex !== i;
                 return (
                   <div
                     key={stage.key}
@@ -312,31 +333,48 @@ export default function HowItWorks() {
               })}
             </div>
 
-            <HorizontalRibbedCone activeIndex={hovered} onHover={setHovered} />
+            <HorizontalRibbedCone activeIndex={activeIndex} onHover={setHovered} />
           </div>
 
-          <div className="mt-12 max-w-5xl mx-auto grid grid-cols-5 gap-4">
-            {stages.map((stage, i) => {
-              const active = hovered === null ? null : hovered === i;
-              return (
-                <PhoneCard
-                  key={stage.key}
-                  stageKey={stage.key}
-                  image={stage.image}
-                  label={stage.label}
-                  description={stage.description}
-                  audience={stage.audience}
-                  pct={stage.pct}
-                  index={i}
-                  active={active}
-                  onMouseEnter={() => setHovered(i)}
-                  onMouseLeave={() => setHovered(null)}
-                  onClick={() => setOpenIndex(i)}
-                  openLabel={openLabelTpl.replace("{label}", stage.label)}
-                  reachLabel={reachLabel}
-                />
-              );
-            })}
+          <div className="relative mt-12 max-w-5xl mx-auto">
+            {clickedIndex !== null && (
+              <button
+                type="button"
+                aria-label="Close expanded view"
+                onClick={() => setClickedIndex(null)}
+                className="fixed inset-0 z-30 bg-off-black/70 backdrop-blur-sm cursor-zoom-out"
+              />
+            )}
+
+            <div className="relative grid grid-cols-5 gap-4 pt-24 pb-32">
+              {stages.map((stage, i) => {
+                const hover = clickedIndex === null && hovered === i;
+                const clicked = clickedIndex === i;
+                const dimmed =
+                  (clickedIndex !== null && clickedIndex !== i) ||
+                  (clickedIndex === null && hovered !== null && hovered !== i);
+                return (
+                  <PhoneCard
+                    key={stage.key}
+                    stageKey={stage.key}
+                    image={stage.image}
+                    label={stage.label}
+                    description={stage.description}
+                    audience={stage.audience}
+                    pct={stage.pct}
+                    index={i}
+                    hover={hover}
+                    clicked={clicked}
+                    dimmed={dimmed}
+                    onMouseEnter={() => clickedIndex === null && setHovered(i)}
+                    onMouseLeave={() => clickedIndex === null && setHovered(null)}
+                    onClick={() => setClickedIndex(clickedIndex === i ? null : i)}
+                    openLabel={openLabelTpl.replace("{label}", stage.label)}
+                    reachLabel={reachLabel}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -345,19 +383,7 @@ export default function HowItWorks() {
             const gutterW = 4 - i * 0.5;
             return (
               <ScrollReveal key={stage.key} delay={i * 0.05}>
-                <div
-                  className="flex gap-4 items-stretch cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red rounded-lg"
-                  role="button"
-                  tabIndex={0}
-                  aria-label={openLabelTpl.replace("{label}", stage.label)}
-                  onClick={() => setOpenIndex(i)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
-                      setOpenIndex(i);
-                    }
-                  }}
-                >
+                <div className="flex gap-4 items-stretch">
                   <div className="flex flex-col items-center shrink-0">
                     <div
                       className="relative shrink-0"
@@ -423,19 +449,6 @@ export default function HowItWorks() {
           })}
         </div>
       </div>
-
-      <PlacementModal
-        open={activeStage !== null}
-        onClose={() => setOpenIndex(null)}
-        label={activeStage?.label ?? ""}
-        description={activeStage?.description ?? ""}
-        image={activeStage?.image ?? ""}
-        audience={activeStage?.audience ?? ""}
-        pct={activeStage?.pct ?? 0}
-        reachLabel={reachLabel}
-        audienceLabel={audienceLabel}
-        closeLabel={closeLabel}
-      />
     </section>
   );
 }

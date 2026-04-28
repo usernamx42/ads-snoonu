@@ -71,9 +71,7 @@
       "convert": { "label": "تحويل", "description": "إعلانات الدفع وأخذ العينات" }
     },
     "modal": {
-      "close": "إغلاق",
-      "audienceLabel": "الجمهور",
-      "openLabel": "عرض تفاصيل موضع {label}"
+      "openLabel": "توسيع موضع {label}"
     }
   },
   "placements": {

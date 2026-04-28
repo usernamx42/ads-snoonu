@@ -71,9 +71,7 @@
       "convert": { "label": "Convertir", "description": "Publicités au checkout et échantillonnage" }
     },
     "modal": {
-      "close": "Fermer",
-      "audienceLabel": "Audience",
-      "openLabel": "Voir les détails de l'emplacement {label}"
+      "openLabel": "Agrandir l'emplacement {label}"
     }
   },
   "placements": {

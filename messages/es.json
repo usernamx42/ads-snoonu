@@ -71,9 +71,7 @@
       "convert": { "label": "Convierte", "description": "Anuncios en checkout y muestreo" }
     },
     "modal": {
-      "close": "Cerrar",
-      "audienceLabel": "Audiencia",
-      "openLabel": "Ver detalles del emplazamiento {label}"
+      "openLabel": "Expandir el emplazamiento {label}"
     }
   },
   "placements": {
