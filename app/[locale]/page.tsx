@@ -5,6 +5,7 @@ import Solutions from "@/components/Solutions";
 import HowItWorks from "@/components/HowItWorks";
 import Placements from "@/components/Placements";
 import AudienceData from "@/components/AudienceData";
+import AISmartTargeting from "@/components/AISmartTargeting";
 import Results from "@/components/Results";
 import Pricing from "@/components/Pricing";
 import CostCalculator from "@/components/CostCalculator";
@@ -23,6 +24,7 @@ export default function Home() {
         <HowItWorks />
         <Placements />
         <AudienceData />
+        <AISmartTargeting />
         <Results />
         <Pricing />
         <CostCalculator />

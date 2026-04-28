@@ -69,6 +69,11 @@
       "influence": { "label": "Influencer", "description": "Influenceurs, vidéo et co-marketing" },
       "engage": { "label": "Engager", "description": "Push, in-app et publicités homepage" },
       "convert": { "label": "Convertir", "description": "Publicités au checkout et échantillonnage" }
+    },
+    "modal": {
+      "close": "Fermer",
+      "audienceLabel": "Audience",
+      "openLabel": "Voir les détails de l'emplacement {label}"
     }
   },
   "placements": {
@@ -156,6 +161,33 @@
       "coverage": "Couverture Livraison",
       "verticals": "Verticales",
       "scharge": "Emplacements S-Charge"
+    }
+  },
+  "aiTargeting": {
+    "tagline": "Ciblage Intelligent IA",
+    "headline": "La bonne pub, à la bonne personne, au bon moment",
+    "description": "Snoonu Ads utilise le machine learning pour servir la bonne publicité à la bonne personne au bon moment, générant plus d'engagement et un ROI supérieur.",
+    "features": {
+      "locationTargeting": {
+        "letter": "L",
+        "label": "Ciblage Géographique",
+        "description": "Géo-ciblage au niveau quartier, ville ou pays avec une précision hyperlocale pour le Qatar et le Golfe."
+      },
+      "behavioralData": {
+        "letter": "B",
+        "label": "Données Comportementales",
+        "description": "Reciblez les utilisateurs selon ce qu'ils ont consulté, commandé ou recherché sur Snoonu."
+      },
+      "demographics": {
+        "letter": "D",
+        "label": "Démographie",
+        "description": "Âge, langue, type d'appareil et plus : atteignez votre profil client exact dans notre audience."
+      },
+      "purchaseIntent": {
+        "letter": "I",
+        "label": "IA d'Intention d'Achat",
+        "description": "Le machine learning identifie les utilisateurs au pic d'intention d'achat à partir de signaux comportementaux en temps réel."
+      }
     }
   },
   "results": {

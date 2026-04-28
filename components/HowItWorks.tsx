@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import PlacementModal from "@/components/PlacementModal";
 
 const stageDefs = [
   { key: "discover",  image: "/ads-placement-images/category-banner.png",          audience: "1.5M", pct: 100 },
@@ -131,6 +132,8 @@ function PhoneCard({
   active,
   onMouseEnter,
   onMouseLeave,
+  onClick,
+  openLabel,
   reachLabel,
 }: {
   stageKey: string;
@@ -143,6 +146,8 @@ function PhoneCard({
   active: boolean | null;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
+  onClick: () => void;
+  openLabel: string;
   reachLabel: string;
 }) {
   const isActive = active === true;
@@ -152,7 +157,17 @@ function PhoneCard({
     <div
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className="flex flex-col items-center cursor-pointer"
+      onClick={onClick}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label={openLabel}
+      className="flex flex-col items-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 focus-visible:ring-offset-off-black rounded-lg"
       style={{
         opacity: isDimmed ? 0.4 : 1,
         transform: isActive ? "translateY(-32px) scale(1.35)" : "none",
@@ -241,6 +256,7 @@ function PhoneCard({
 export default function HowItWorks() {
   const t = useTranslations("howItWorks");
   const [hovered, setHovered] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const stages = stageDefs.map((def) => ({
     ...def,
@@ -249,6 +265,10 @@ export default function HowItWorks() {
   }));
 
   const reachLabel = t.raw("reach") as string;
+  const closeLabel = t("modal.close");
+  const audienceLabel = t("modal.audienceLabel");
+  const openLabelTpl = t.raw("modal.openLabel") as string;
+  const activeStage = openIndex !== null ? stages[openIndex] : null;
 
   return (
     <section id="how-it-works" className="py-20 md:py-28 bg-off-black overflow-hidden">
@@ -311,6 +331,8 @@ export default function HowItWorks() {
                   active={active}
                   onMouseEnter={() => setHovered(i)}
                   onMouseLeave={() => setHovered(null)}
+                  onClick={() => setOpenIndex(i)}
+                  openLabel={openLabelTpl.replace("{label}", stage.label)}
                   reachLabel={reachLabel}
                 />
               );
@@ -323,7 +345,19 @@ export default function HowItWorks() {
             const gutterW = 4 - i * 0.5;
             return (
               <ScrollReveal key={stage.key} delay={i * 0.05}>
-                <div className="flex gap-4 items-stretch">
+                <div
+                  className="flex gap-4 items-stretch cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red rounded-lg"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={openLabelTpl.replace("{label}", stage.label)}
+                  onClick={() => setOpenIndex(i)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setOpenIndex(i);
+                    }
+                  }}
+                >
                   <div className="flex flex-col items-center shrink-0">
                     <div
                       className="relative shrink-0"
@@ -389,6 +423,19 @@ export default function HowItWorks() {
           })}
         </div>
       </div>
+
+      <PlacementModal
+        open={activeStage !== null}
+        onClose={() => setOpenIndex(null)}
+        label={activeStage?.label ?? ""}
+        description={activeStage?.description ?? ""}
+        image={activeStage?.image ?? ""}
+        audience={activeStage?.audience ?? ""}
+        pct={activeStage?.pct ?? 0}
+        reachLabel={reachLabel}
+        audienceLabel={audienceLabel}
+        closeLabel={closeLabel}
+      />
     </section>
   );
 }

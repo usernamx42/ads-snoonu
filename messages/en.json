@@ -68,6 +68,11 @@
       "influence": { "label": "Influence", "description": "Influencers, Video & Co-op" },
       "engage": { "label": "Engage", "description": "Push, In-App & Homepage Ads" },
       "convert": { "label": "Convert", "description": "Checkout Ads & Sampling" }
+    },
+    "modal": {
+      "close": "Close",
+      "audienceLabel": "Audience",
+      "openLabel": "View {label} placement details"
     }
   },
   "placements": {
@@ -155,6 +160,33 @@
       "coverage": "Delivery Coverage",
       "verticals": "Verticals",
       "scharge": "S-Charge Locations"
+    }
+  },
+  "aiTargeting": {
+    "tagline": "AI-Powered Smart Targeting",
+    "headline": "The right ad, the right person, the right moment",
+    "description": "Snoonu Ads uses machine learning to serve the right ad to the right person at the right moment — driving higher engagement and superior ROI.",
+    "features": {
+      "locationTargeting": {
+        "letter": "L",
+        "label": "Location Targeting",
+        "description": "Neighbourhood, city, or country-level geo-targeting with hyperlocal precision for Qatar & GCC."
+      },
+      "behavioralData": {
+        "letter": "B",
+        "label": "Behavioural Data",
+        "description": "Retarget users based on what they've browsed, ordered, or searched for previously on Snoonu."
+      },
+      "demographics": {
+        "letter": "D",
+        "label": "Demographics",
+        "description": "Age, language, device type and more — reach your exact customer profile within our app audience."
+      },
+      "purchaseIntent": {
+        "letter": "I",
+        "label": "Purchase Intent AI",
+        "description": "Machine learning identifies users at peak purchase-intent based on real-time behavioural signals."
+      }
     }
   },
   "results": {

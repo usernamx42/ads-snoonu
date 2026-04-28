@@ -69,6 +69,11 @@
       "influence": { "label": "影响", "description": "网红、视频与联合营销" },
       "engage": { "label": "互动", "description": "推送、应用内与首页广告" },
       "convert": { "label": "转化", "description": "结账广告与试用" }
+    },
+    "modal": {
+      "close": "关闭",
+      "audienceLabel": "受众",
+      "openLabel": "查看{label}广告位详情"
     }
   },
   "placements": {
@@ -156,6 +161,33 @@
       "coverage": "配送范围",
       "verticals": "行业类别",
       "scharge": "S-Charge站点"
+    }
+  },
+  "aiTargeting": {
+    "tagline": "AI驱动的智能定向",
+    "headline": "正确的广告,正确的人,正确的时刻",
+    "description": "Snoonu Ads运用机器学习,在正确的时刻把正确的广告呈现给正确的人,带来更高的互动和卓越的ROI。",
+    "features": {
+      "locationTargeting": {
+        "letter": "L",
+        "label": "位置定向",
+        "description": "邻里、城市或国家级地理定向,为卡塔尔与海湾地区提供超本地化精度。"
+      },
+      "behavioralData": {
+        "letter": "B",
+        "label": "行为数据",
+        "description": "根据用户在Snoonu上的浏览、订购或搜索行为进行再营销。"
+      },
+      "demographics": {
+        "letter": "D",
+        "label": "人口统计",
+        "description": "年龄、语言、设备类型等 — 在我们的应用受众中精准触达您的目标客户画像。"
+      },
+      "purchaseIntent": {
+        "letter": "I",
+        "label": "购买意向AI",
+        "description": "机器学习基于实时行为信号识别处于购买意向高峰的用户。"
+      }
     }
   },
   "results": {

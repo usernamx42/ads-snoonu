@@ -69,6 +69,11 @@
       "influence": { "label": "Influye", "description": "Influencers, video y co-marketing" },
       "engage": { "label": "Interactúa", "description": "Push, in-app y anuncios de homepage" },
       "convert": { "label": "Convierte", "description": "Anuncios en checkout y muestreo" }
+    },
+    "modal": {
+      "close": "Cerrar",
+      "audienceLabel": "Audiencia",
+      "openLabel": "Ver detalles del emplazamiento {label}"
     }
   },
   "placements": {
@@ -156,6 +161,33 @@
       "coverage": "Cobertura de Reparto",
       "verticals": "Verticales",
       "scharge": "Ubicaciones S-Charge"
+    }
+  },
+  "aiTargeting": {
+    "tagline": "Segmentación Inteligente con IA",
+    "headline": "El anuncio correcto, la persona correcta, el momento correcto",
+    "description": "Snoonu Ads usa machine learning para mostrar el anuncio correcto a la persona correcta en el momento correcto, impulsando mayor engagement y un ROI superior.",
+    "features": {
+      "locationTargeting": {
+        "letter": "L",
+        "label": "Segmentación por Ubicación",
+        "description": "Geo-targeting a nivel barrio, ciudad o país con precisión hiperlocal para Catar y el Golfo."
+      },
+      "behavioralData": {
+        "letter": "B",
+        "label": "Datos de Comportamiento",
+        "description": "Reorienta usuarios según lo que han navegado, pedido o buscado anteriormente en Snoonu."
+      },
+      "demographics": {
+        "letter": "D",
+        "label": "Demografía",
+        "description": "Edad, idioma, tipo de dispositivo y más: alcanza tu perfil exacto de cliente dentro de nuestra audiencia."
+      },
+      "purchaseIntent": {
+        "letter": "I",
+        "label": "IA de Intención de Compra",
+        "description": "El machine learning identifica usuarios con máxima intención de compra a partir de señales de comportamiento en tiempo real."
+      }
     }
   },
   "results": {

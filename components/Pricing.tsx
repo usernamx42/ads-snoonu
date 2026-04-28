@@ -21,9 +21,9 @@ const tierDefs: readonly TierDef[] = [
     key: "starter",
     price: "QAR 15,000",
     popular: false,
-    accent: "text-emerald-700",
-    buttonBg: "bg-emerald-700",
-    buttonHover: "hover:bg-emerald-800",
+    accent: "text-off-black",
+    buttonBg: "bg-off-black",
+    buttonHover: "hover:bg-off-black/90",
   },
   {
     key: "growth",
@@ -37,9 +37,9 @@ const tierDefs: readonly TierDef[] = [
     key: "enterprise",
     price: null,
     popular: false,
-    accent: "text-emerald-700",
-    buttonBg: "bg-emerald-700",
-    buttonHover: "hover:bg-emerald-800",
+    accent: "text-off-black",
+    buttonBg: "bg-off-black",
+    buttonHover: "hover:bg-off-black/90",
   },
 ] as const;
 
@@ -59,7 +59,7 @@ export default function Pricing() {
           />
         </ScrollReveal>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-[1fr_1.15fr_1fr] gap-5 items-stretch max-w-5xl mx-auto">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch max-w-6xl mx-auto">
           {tierDefs.map((tier, i) => {
             const features = tTiers.raw(`${tier.key}.features`) as string[];
             const price = tier.price ?? tTiers(`${tier.key}.priceCustom`);
@@ -69,7 +69,7 @@ export default function Pricing() {
                 <div
                   className={`relative rounded-2xl h-full flex flex-col hover:-translate-y-1.5 transition-transform duration-300 ${
                     tier.popular
-                      ? "bg-white border-2 border-brand-red shadow-[0_25px_60px_-15px_rgba(217,2,23,0.18)]"
+                      ? "bg-white border border-brand-red shadow-[0_25px_60px_-15px_rgba(217,2,23,0.18)]"
                       : "bg-white border border-zinc-200 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
                   }`}
                 >
@@ -79,13 +79,13 @@ export default function Pricing() {
                     </span>
                   )}
 
-                  {/* Header (centered) */}
-                  <div className="text-center px-7 pt-10 pb-7 md:px-8">
+                  {/* Header (centered, fixed height so CTAs align across cards) */}
+                  <div className="text-center px-7 pt-10 pb-7 md:px-8 min-h-[14rem] flex flex-col justify-start">
                     <h3 className="text-xl font-bold text-off-black tracking-tight">
                       {tTiers(`${tier.key}.name`)}
                     </h3>
                     <div className="mt-4 flex items-baseline justify-center gap-1">
-                      <span className={`text-4xl md:text-5xl font-black tracking-tight ${tier.accent}`}>
+                      <span className={`text-4xl md:text-5xl font-black tracking-tight whitespace-nowrap ${tier.accent}`}>
                         {price}
                       </span>
                     </div>
