@@ -336,7 +336,7 @@ export default function HowItWorks() {
             <HorizontalRibbedCone activeIndex={activeIndex} onHover={setHovered} />
           </div>
 
-          <div className="relative mt-12 max-w-5xl mx-auto">
+          <div className="relative mt-2 max-w-5xl mx-auto">
             {clickedIndex !== null && (
               <button
                 type="button"
@@ -346,7 +346,7 @@ export default function HowItWorks() {
               />
             )}
 
-            <div className="relative grid grid-cols-5 gap-4 pt-24 pb-32">
+            <div className="relative grid grid-cols-5 gap-4 pt-2 pb-16">
               {stages.map((stage, i) => {
                 const hover = clickedIndex === null && hovered === i;
                 const clicked = clickedIndex === i;
