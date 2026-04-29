@@ -79,6 +79,16 @@
     "headline": "Tus Anuncios, Donde Importa",
     "description": "Ubicaciones nativas en toda la experiencia Snoonu, online y offline.",
     "kpisLabel": "KPIs",
+    "heroAlt": "Mapa de las ubicaciones publicitarias online y offline de Snoonu — haz clic en una mitad para saltar a su sección",
+    "heroHint": "Haz clic en un área para saltar a sus ubicaciones",
+    "onlineJumpAria": "Saltar a Ubicaciones online",
+    "offlineJumpAria": "Saltar a Ubicaciones offline",
+    "onlineTagline": "Online",
+    "onlineTitle": "Ubicaciones Online",
+    "onlineSubtitle": "Superficies publicitarias nativas dentro de la app Snoonu — del descubrimiento al checkout.",
+    "offlineTagline": "Offline",
+    "offlineTitle": "Ubicaciones Offline",
+    "offlineSubtitle": "Medios físicos en todo Qatar — superficies impresas y de quiosco con audiencias cautivas.",
     "items": {
       "checkoutBanner": {
         "title": "Banner de Checkout",
@@ -129,6 +139,28 @@
           "Food Listing: te permite alcanzar a más de 10M de usuarios que navegan en Snoonu cada día"
         ],
         "kpis": ["Impresiones", "Tasa de victoria en subasta", "Clics / CTR", "Aumentos de venta en Snoonu"]
+      },
+      "magazines": {
+        "title": "Revistas Snoomart",
+        "alt": "Portada de la revista impresa Snoomart con ofertas de comestibles y un código QR",
+        "features": [
+          "Impresa mensualmente con distribución a nivel ciudad en Qatar",
+          "Ubicación destacada de producto y creatividades de marca a página completa",
+          "Los códigos QR impulsan la conversión en la app y pedidos rastreables",
+          "Co-marketing con los ciclos promocionales de Snoomart"
+        ],
+        "kpis": ["Distribución", "Escaneos QR", "Aumento de ventas en Snoomart"]
+      },
+      "scharge": {
+        "title": "Pantallas S-Charge",
+        "alt": "Quiosco Snoonu S-Charge para cargar el móvil con una pantalla promocional",
+        "features": [
+          "Pantallas con marca en estaciones S-Charge en sitios de alto tráfico peatonal",
+          "Audiencia cautiva mientras los usuarios cargan sus teléfonos (8–15 min de media)",
+          "QR / código corto que devuelve a los usuarios a la app Snoonu",
+          "Cobertura en centros comerciales, cafeterías y recintos de eventos"
+        ],
+        "kpis": ["Impresiones", "Tiempo de permanencia", "Escaneos QR", "Aperturas de app"]
       }
     }
   },

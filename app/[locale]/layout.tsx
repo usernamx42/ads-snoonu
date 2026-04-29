@@ -92,7 +92,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`${altform.variable} ${estedad.variable} ${notoSansSC.variable}`}
+      className={`scroll-smooth ${altform.variable} ${estedad.variable} ${notoSansSC.variable}`}
     >
       <body className={`antialiased ${bodyFontClass(locale)}`}>
         <NextIntlClientProvider>

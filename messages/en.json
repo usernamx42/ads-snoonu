@@ -78,6 +78,16 @@
     "headline": "Your Ads, Everywhere That Matters",
     "description": "Native placements across the entire Snoonu experience, online and offline.",
     "kpisLabel": "KPIs",
+    "heroAlt": "Map of Snoonu's online and offline ad placements — click a half to jump to its section",
+    "heroHint": "Click an area above to jump to its placements",
+    "onlineJumpAria": "Jump to Online placements",
+    "offlineJumpAria": "Jump to Offline placements",
+    "onlineTagline": "Online",
+    "onlineTitle": "Online Placements",
+    "onlineSubtitle": "Native ad surfaces inside the Snoonu app — from discovery to checkout.",
+    "offlineTagline": "Offline",
+    "offlineTitle": "Offline Placements",
+    "offlineSubtitle": "Physical media across Qatar — print and kiosk surfaces with captive audiences.",
     "items": {
       "checkoutBanner": {
         "title": "Checkout Banner",
@@ -128,6 +138,28 @@
           "Food Listing: allows you to reach up to 10M users browsing Snoonu on a daily basis"
         ],
         "kpis": ["Impressions", "Auction Win rate", "Clicks / CTR", "Sales uplifts on Snoonu"]
+      },
+      "magazines": {
+        "title": "Snoomart Magazines",
+        "alt": "Snoomart printed magazine cover featuring grocery offers and a QR code",
+        "features": [
+          "Printed monthly with city-wide distribution across Qatar",
+          "Featured product placement and full-page brand creatives",
+          "QR codes drive in-app conversion and trackable orders",
+          "Co-marketing with Snoomart promotional cycles"
+        ],
+        "kpis": ["Distribution", "QR Scans", "Sales uplift on Snoomart"]
+      },
+      "scharge": {
+        "title": "S-Charge Screens",
+        "alt": "Snoonu S-Charge phone-charging kiosk with a promotional screen",
+        "features": [
+          "Branded screens on S-Charge stations across high-foot-traffic venues",
+          "Captive audience while users charge their phones (avg 8–15 min dwell)",
+          "QR / short-code drives users back into the Snoonu app",
+          "Coverage across malls, cafés, and event venues"
+        ],
+        "kpis": ["Impressions", "Dwell time", "QR Scans", "App opens"]
       }
     }
   },

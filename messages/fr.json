@@ -79,6 +79,16 @@
     "headline": "Vos Publicités, Là Où Ça Compte",
     "description": "Emplacements natifs dans toute l'expérience Snoonu, en ligne et hors ligne.",
     "kpisLabel": "KPIs",
+    "heroAlt": "Carte des emplacements publicitaires Snoonu en ligne et hors ligne — cliquez sur une moitié pour accéder à sa section",
+    "heroHint": "Cliquez sur une zone pour accéder à ses emplacements",
+    "onlineJumpAria": "Accéder aux emplacements en ligne",
+    "offlineJumpAria": "Accéder aux emplacements hors ligne",
+    "onlineTagline": "En ligne",
+    "onlineTitle": "Emplacements en ligne",
+    "onlineSubtitle": "Surfaces publicitaires natives dans l'app Snoonu — de la découverte au checkout.",
+    "offlineTagline": "Hors ligne",
+    "offlineTitle": "Emplacements hors ligne",
+    "offlineSubtitle": "Médias physiques au Qatar — supports imprimés et bornes avec des audiences captives.",
     "items": {
       "checkoutBanner": {
         "title": "Bannière de Checkout",
@@ -129,6 +139,28 @@
           "Food Listing : permet d'atteindre jusqu'à 10M d'utilisateurs naviguant sur Snoonu chaque jour"
         ],
         "kpis": ["Impressions", "Taux de victoire", "Clics / CTR", "Hausses de ventes sur Snoonu"]
+      },
+      "magazines": {
+        "title": "Magazines Snoomart",
+        "alt": "Couverture du magazine imprimé Snoomart présentant des offres d'épicerie et un QR code",
+        "features": [
+          "Imprimé chaque mois avec une distribution à l'échelle des villes au Qatar",
+          "Mise en avant produit et créations de marque pleine page",
+          "Les QR codes génèrent de la conversion in-app et des commandes traçables",
+          "Co-marketing avec les cycles promotionnels Snoomart"
+        ],
+        "kpis": ["Distribution", "Scans QR", "Hausse des ventes Snoomart"]
+      },
+      "scharge": {
+        "title": "Écrans S-Charge",
+        "alt": "Borne de recharge Snoonu S-Charge avec un écran promotionnel",
+        "features": [
+          "Écrans de marque sur les bornes S-Charge dans des lieux à fort passage",
+          "Audience captive pendant que les utilisateurs rechargent leur téléphone (8–15 min en moyenne)",
+          "QR / code court qui ramène les utilisateurs vers l'app Snoonu",
+          "Couverture dans les centres commerciaux, cafés et lieux d'événements"
+        ],
+        "kpis": ["Impressions", "Temps passé", "Scans QR", "Ouvertures de l'app"]
       }
     }
   },

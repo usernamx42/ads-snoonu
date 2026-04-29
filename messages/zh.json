@@ -79,6 +79,16 @@
     "headline": "您的广告,出现在每一个重要的地方",
     "description": "在Snoonu的整个体验中提供原生广告位,线上线下都覆盖。",
     "kpisLabel": "关键指标",
+    "heroAlt": "Snoonu线上与线下广告位地图 — 点击其中一半即可跳转到对应版块",
+    "heroHint": "点击上方区域可跳转到对应广告位",
+    "onlineJumpAria": "跳转到线上广告位",
+    "offlineJumpAria": "跳转到线下广告位",
+    "onlineTagline": "线上",
+    "onlineTitle": "线上广告位",
+    "onlineSubtitle": "Snoonu应用内的原生广告位 — 从发现到结账的全流程。",
+    "offlineTagline": "线下",
+    "offlineTitle": "线下广告位",
+    "offlineSubtitle": "覆盖卡塔尔的实体媒介 — 触达驻足受众的印刷品与互动屏幕。",
     "items": {
       "checkoutBanner": {
         "title": "结账横幅",
@@ -129,6 +139,28 @@
           "美食列表:让您每天触达最多1000万浏览Snoonu的用户"
         ],
         "kpis": ["曝光量", "竞价胜出率", "点击 / CTR", "Snoonu销售提升"]
+      },
+      "magazines": {
+        "title": "Snoomart 杂志",
+        "alt": "Snoomart印刷杂志封面,展示生鲜优惠和二维码",
+        "features": [
+          "每月印刷,在卡塔尔多个城市分发",
+          "重点商品推荐与整版品牌创意",
+          "二维码可推动应用内转化和可追踪订单",
+          "与Snoomart的促销周期联合营销"
+        ],
+        "kpis": ["分发量", "二维码扫描", "Snoomart销售提升"]
+      },
+      "scharge": {
+        "title": "S-Charge 充电屏",
+        "alt": "带促销屏幕的Snoonu S-Charge手机充电亭",
+        "features": [
+          "在高人流场所的S-Charge充电站布放品牌屏幕",
+          "用户为手机充电时形成驻足受众(平均8–15分钟)",
+          "二维码 / 短代码可将用户引回Snoonu应用",
+          "覆盖商场、咖啡馆和活动场地"
+        ],
+        "kpis": ["曝光量", "停留时间", "二维码扫描", "应用打开次数"]
       }
     }
   },

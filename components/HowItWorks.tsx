@@ -7,7 +7,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const stageDefs = [
   { key: "discover",  image: "/ads-placement-images/category-banner.png",          audience: "1.5M", pct: 100 },
-  { key: "search",    image: "/ads-placement-images/search-banner.png",            audience: "850K", pct: 57 },
+  { key: "search",    image: "/new_search.png",                                    audience: "850K", pct: 57 },
   { key: "influence", image: "/ads-placement-images/food-sliders.png",             audience: "420K", pct: 28 },
   { key: "engage",    image: "/ads-placement-images/search-promoted-listings.png", audience: "210K", pct: 14 },
   { key: "convert",   image: "/ads-placement-images/checkout-banner.png",          audience: "95K",  pct: 6.3 },
