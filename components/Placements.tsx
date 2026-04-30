@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useState, type ComponentType } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { DeviceMobile, Storefront, type IconProps } from "@phosphor-icons/react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
@@ -132,8 +134,46 @@ function PlacementCard({
   );
 }
 
+type ChannelTab = "online" | "offline";
+
+function ChannelTabButton({
+  active,
+  onClick,
+  Icon,
+  label,
+  controls,
+}: {
+  active: boolean;
+  onClick: () => void;
+  Icon: ComponentType<IconProps>;
+  label: string;
+  controls: string;
+}) {
+  return (
+    <button
+      type="button"
+      role="tab"
+      aria-selected={active}
+      aria-controls={controls}
+      onClick={onClick}
+      className={`relative inline-flex items-center gap-2.5 px-6 md:px-7 py-3 rounded-full text-sm md:text-base font-bold tracking-tight transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 ${
+        active ? "bg-white text-off-black shadow-[0_4px_14px_-4px_rgba(0,0,0,0.18)]" : "text-white/85 hover:text-white"
+      }`}
+    >
+      <Icon size={20} weight={active ? "duotone" : "regular"} className={active ? "text-brand-red" : ""} />
+      <span>{label}</span>
+    </button>
+  );
+}
+
 export default function Placements() {
   const t = useTranslations("placements");
+  const [active, setActive] = useState<ChannelTab>("online");
+
+  const items = active === "online" ? placements : offlinePlacements;
+  const tagline = active === "online" ? t("onlineTagline") : t("offlineTagline");
+  const title = active === "online" ? t("onlineTitle") : t("offlineTitle");
+  const subtitle = active === "online" ? t("onlineSubtitle") : t("offlineSubtitle");
 
   return (
     <section id="placements" className="py-20 md:py-28 bg-off-white">
@@ -148,74 +188,52 @@ export default function Placements() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="mt-12 max-w-[1100px] mx-auto">
-            <div className="relative w-full overflow-hidden rounded-2xl">
-              <Image
-                src="/online_offline.png"
-                alt={t("heroAlt")}
-                width={1600}
-                height={820}
-                className="w-full h-auto block select-none"
-                sizes="(max-width: 768px) 100vw, 1100px"
-                priority={false}
+          <div className="mt-10 md:mt-12 flex justify-center">
+            <div
+              role="tablist"
+              aria-label={t("tabsLabel")}
+              className="inline-flex items-center gap-1 p-1.5 rounded-full bg-brand-red shadow-[0_12px_30px_-14px_rgba(217,2,23,0.6)]"
+            >
+              <ChannelTabButton
+                active={active === "online"}
+                onClick={() => setActive("online")}
+                Icon={DeviceMobile}
+                label={t("onlineTagline")}
+                controls="placements-panel"
               />
-              <a
-                href="#online-placements"
-                aria-label={t("onlineJumpAria")}
-                className="absolute inset-y-0 left-0 w-[62%] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-inset transition-colors hover:bg-white/5"
-              >
-                <span className="sr-only">{t("onlineJumpAria")}</span>
-              </a>
-              <a
-                href="#offline-placements"
-                aria-label={t("offlineJumpAria")}
-                className="absolute inset-y-0 right-0 w-[38%] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-inset transition-colors hover:bg-white/5"
-              >
-                <span className="sr-only">{t("offlineJumpAria")}</span>
-              </a>
+              <ChannelTabButton
+                active={active === "offline"}
+                onClick={() => setActive("offline")}
+                Icon={Storefront}
+                label={t("offlineTagline")}
+                controls="placements-panel"
+              />
             </div>
-            <p className="mt-3 text-center text-sm text-muted">{t("heroHint")}</p>
           </div>
         </ScrollReveal>
 
-        <div id="online-placements" className="mt-20 md:mt-24 scroll-mt-24">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-red mb-2">
-                {t("onlineTagline")}
-              </p>
-              <h3 className="text-2xl md:text-3xl font-black text-off-black tracking-tight">
-                {t("onlineTitle")}
-              </h3>
-              <p className="mt-2 text-base text-muted max-w-2xl mx-auto">{t("onlineSubtitle")}</p>
-            </div>
-          </ScrollReveal>
+        <div id="placements-panel" role="tabpanel" className="mt-14 md:mt-16">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+            >
+              <div className="text-center mb-12">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-red mb-2">{tagline}</p>
+                <h3 className="text-2xl md:text-3xl font-black text-off-black tracking-tight">{title}</h3>
+                <p className="mt-2 text-base text-muted max-w-2xl mx-auto">{subtitle}</p>
+              </div>
 
-          <div className="flex flex-col gap-20 md:gap-28" style={{ perspective: "1400px" }}>
-            {placements.map((p, i) => (
-              <PlacementCard key={p.key} placement={p} index={i} />
-            ))}
-          </div>
-        </div>
-
-        <div id="offline-placements" className="mt-24 md:mt-32 scroll-mt-24">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-red mb-2">
-                {t("offlineTagline")}
-              </p>
-              <h3 className="text-2xl md:text-3xl font-black text-off-black tracking-tight">
-                {t("offlineTitle")}
-              </h3>
-              <p className="mt-2 text-base text-muted max-w-2xl mx-auto">{t("offlineSubtitle")}</p>
-            </div>
-          </ScrollReveal>
-
-          <div className="flex flex-col gap-20 md:gap-28" style={{ perspective: "1400px" }}>
-            {offlinePlacements.map((p, i) => (
-              <PlacementCard key={p.key} placement={p} index={i} />
-            ))}
-          </div>
+              <div className="flex flex-col gap-20 md:gap-28" style={{ perspective: "1400px" }}>
+                {items.map((p, i) => (
+                  <PlacementCard key={p.key} placement={p} index={i} />
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>

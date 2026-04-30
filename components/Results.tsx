@@ -5,11 +5,21 @@ import { ArrowRight } from "@phosphor-icons/react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
-const metricDefs = [
-  { key: "ctr",  value: 3.8, suffix: "%", decimals: 1 },
-  { key: "cvr",  value: 6.5, suffix: "%", decimals: 1 },
-  { key: "roas", value: 4.7, suffix: "x", decimals: 1 },
-] as const;
+type StudyKey = "qsr" | "beverage" | "fmcg";
+
+interface CaseStudy {
+  key: StudyKey;
+  href: string;
+  metricValue: number;
+  metricSuffix: string;
+  metricDecimals: number;
+}
+
+const studies: CaseStudy[] = [
+  { key: "qsr",      href: "#", metricValue: 4.7,    metricSuffix: "x", metricDecimals: 1 },
+  { key: "beverage", href: "#", metricValue: 2.1,    metricSuffix: "M", metricDecimals: 1 },
+  { key: "fmcg",     href: "#", metricValue: 38,     metricSuffix: "%", metricDecimals: 0 },
+];
 
 export default function Results() {
   const t = useTranslations("results");
@@ -29,43 +39,47 @@ export default function Results() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.1}>
-          <div className="mt-12 rounded-2xl border border-zinc-200 bg-white overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300">
-            <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr]">
-              <div className="p-8 md:p-12">
-                <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-white bg-brand-red px-3 py-1 rounded-full mb-5">
-                  {t("caseStudy.tag")}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {studies.map((s, i) => (
+            <ScrollReveal key={s.key} delay={i * 0.08}>
+              <a
+                href={s.href}
+                aria-label={t(`studies.${s.key}.title`)}
+                className="group h-full flex flex-col rounded-2xl border border-zinc-200 bg-white p-7 md:p-8 shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:-translate-y-1 hover:border-brand-red/30 transition-all duration-300"
+              >
+                <span className="self-start text-[11px] font-bold uppercase tracking-wider text-white bg-brand-red px-3 py-1 rounded-full mb-5">
+                  {t(`studies.${s.key}.tag`)}
                 </span>
-                <h3 className="text-xl md:text-2xl font-bold text-off-black tracking-tight leading-tight">
-                  {t("caseStudy.title")}
-                </h3>
-                <p className="mt-4 text-base text-muted leading-relaxed max-w-lg">
-                  {t("caseStudy.body")}
-                </p>
-                <a
-                  href="#contact"
-                  className="mt-6 inline-flex items-center gap-2 hover:gap-3 text-base font-bold text-brand-red transition-all duration-200"
-                >
-                  {t("caseStudy.cta")} <ArrowRight size={18} weight="bold" />
-                </a>
-              </div>
 
-              <div className="p-8 md:p-12 flex flex-col justify-center gap-8 border-t lg:border-t-0 lg:border-s border-zinc-100 bg-off-white/50">
-                {metricDefs.map((m) => (
-                  <div key={m.key}>
-                    <div className={`text-3xl font-black tracking-tight ${m.suffix === "x" ? "text-brand-red" : "text-off-black"}`}>
-                      <AnimatedCounter target={m.value} suffix={m.suffix} decimals={m.decimals} />
-                    </div>
-                    <p className="text-base text-muted mt-1">{t(`metrics.${m.key}`)}</p>
+                <h3 className="text-lg md:text-xl font-bold text-off-black tracking-tight leading-snug">
+                  {t(`studies.${s.key}.title`)}
+                </h3>
+
+                <p className="mt-3 text-sm text-muted leading-relaxed">
+                  {t(`studies.${s.key}.body`)}
+                </p>
+
+                <div className="mt-6 pt-5 border-t border-zinc-100">
+                  <div className="text-4xl font-black tracking-tight text-brand-red">
+                    <AnimatedCounter
+                      target={s.metricValue}
+                      suffix={s.metricSuffix}
+                      decimals={s.metricDecimals}
+                    />
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
+                  <p className="mt-1 text-sm text-muted">{t(`studies.${s.key}.metricLabel`)}</p>
+                </div>
+
+                <span className="mt-6 inline-flex items-center gap-2 group-hover:gap-3 text-base font-bold text-brand-red transition-all duration-200">
+                  {t("ctaLabel")} <ArrowRight size={18} weight="bold" />
+                </span>
+              </a>
+            </ScrollReveal>
+          ))}
+        </div>
 
         <ScrollReveal delay={0.2}>
-          <p className="mt-8 text-base text-muted text-center">{t("footnote")}</p>
+          <p className="mt-10 text-base text-muted text-center">{t("footnote")}</p>
         </ScrollReveal>
       </div>
     </section>

@@ -9,7 +9,7 @@
     "howItWorks": "工作原理",
     "placements": "广告位",
     "calculator": "预算计算器",
-    "results": "效果",
+    "results": "案例研究",
     "cta": "开始投放",
     "menuOpen": "打开菜单",
     "menuClose": "关闭菜单"
@@ -79,10 +79,7 @@
     "headline": "您的广告,出现在每一个重要的地方",
     "description": "在Snoonu的整个体验中提供原生广告位,线上线下都覆盖。",
     "kpisLabel": "关键指标",
-    "heroAlt": "Snoonu线上与线下广告位地图 — 点击其中一半即可跳转到对应版块",
-    "heroHint": "点击上方区域可跳转到对应广告位",
-    "onlineJumpAria": "跳转到线上广告位",
-    "offlineJumpAria": "跳转到线下广告位",
+    "tabsLabel": "在线上与线下广告位之间切换",
     "onlineTagline": "线上",
     "onlineTitle": "线上广告位",
     "onlineSubtitle": "Snoonu应用内的原生广告位 — 从发现到结账的全流程。",
@@ -211,7 +208,7 @@
       "demographics": {
         "letter": "D",
         "label": "人口统计",
-        "description": "年龄、语言、设备类型等 — 在我们的应用受众中精准触达您的目标客户画像。"
+        "description": "年龄、语言、设备类型等,在我们的应用受众中精准触达您的目标客户画像。"
       },
       "purchaseIntent": {
         "letter": "I",
@@ -221,19 +218,29 @@
     }
   },
   "results": {
-    "tagline": "效果",
+    "tagline": "案例研究",
     "headline": "真实表现,真实收入",
     "description": "Snoonu上的每一个活动都以真实订单衡量,而非虚荣指标。",
-    "caseStudy": {
-      "tag": "搜索广告",
-      "title": "一家领先QSR品牌如何用Snoonu Ads实现4.7倍ROAS",
-      "body": "通过在高峰时段用赞助列表和推送通知定向高意向美食搜索者,该品牌将Snoonu变成了其第一数字获客渠道。",
-      "cta": "阅读完整案例"
-    },
-    "metrics": {
-      "ctr": "点击率",
-      "cvr": "转化率",
-      "roas": "广告投入回报"
+    "ctaLabel": "阅读完整案例",
+    "studies": {
+      "qsr": {
+        "tag": "搜索广告",
+        "title": "领先QSR品牌实现4.7倍ROAS",
+        "body": "针对高意向美食搜索的赞助列表,使Snoonu在高峰时段成为该品牌的第一数字获客渠道。",
+        "metricLabel": "广告投入回报"
+      },
+      "beverage": {
+        "tag": "横幅与推送",
+        "title": "高端饮品上市触达210万购物者",
+        "body": "首页横幅广告搭配高峰时段推送通知,在两周内推动了多哈范围内的产品认知和试用。",
+        "metricLabel": "经验证的曝光"
+      },
+      "fmcg": {
+        "tag": "赞助列表",
+        "title": "快消品牌每周订单增长38%",
+        "body": "品类赞助配合品牌轮播,使一个成熟的食品储备品牌在Snoomart商店内跃居品类领导者。",
+        "metricLabel": "每周订单增长"
+      }
     },
     "footnote": "更多案例即将推出。以上结果代表平台平均水平。"
   },

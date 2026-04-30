@@ -9,7 +9,7 @@
     "howItWorks": "Cómo Funciona",
     "placements": "Ubicaciones",
     "calculator": "Calculadora",
-    "results": "Resultados",
+    "results": "Casos de Éxito",
     "cta": "Empezar a Anunciar",
     "menuOpen": "Abrir menú",
     "menuClose": "Cerrar menú"
@@ -79,10 +79,7 @@
     "headline": "Tus Anuncios, Donde Importa",
     "description": "Ubicaciones nativas en toda la experiencia Snoonu, online y offline.",
     "kpisLabel": "KPIs",
-    "heroAlt": "Mapa de las ubicaciones publicitarias online y offline de Snoonu — haz clic en una mitad para saltar a su sección",
-    "heroHint": "Haz clic en un área para saltar a sus ubicaciones",
-    "onlineJumpAria": "Saltar a Ubicaciones online",
-    "offlineJumpAria": "Saltar a Ubicaciones offline",
+    "tabsLabel": "Cambia entre ubicaciones online y offline",
     "onlineTagline": "Online",
     "onlineTitle": "Ubicaciones Online",
     "onlineSubtitle": "Superficies publicitarias nativas dentro de la app Snoonu — del descubrimiento al checkout.",
@@ -221,19 +218,29 @@
     }
   },
   "results": {
-    "tagline": "Resultados",
+    "tagline": "Casos de Éxito",
     "headline": "Rendimiento Real, Ingresos Reales",
     "description": "Cada campaña en Snoonu se mide contra pedidos reales, no métricas de vanidad.",
-    "caseStudy": {
-      "tag": "Search Ads",
-      "title": "Cómo una marca QSR líder logró 4,7x ROAS con Snoonu Ads",
-      "body": "Al apuntar a buscadores de comida con alta intención mediante listados patrocinados y notificaciones push en horas pico, esta marca convirtió Snoonu en su canal #1 de adquisición digital.",
-      "cta": "Leer Caso Completo"
-    },
-    "metrics": {
-      "ctr": "Tasa de Clics",
-      "cvr": "Tasa de Conversión",
-      "roas": "Retorno sobre Inversión Publicitaria"
+    "ctaLabel": "Leer Caso Completo",
+    "studies": {
+      "qsr": {
+        "tag": "Search Ads",
+        "title": "Marca QSR líder logró 4,7x de ROAS",
+        "body": "Listados patrocinados sobre búsquedas de comida con alta intención convirtieron a Snoonu en el canal #1 de adquisición digital de esta marca durante horas pico.",
+        "metricLabel": "Retorno sobre Inversión Publicitaria"
+      },
+      "beverage": {
+        "tag": "Banners y Push",
+        "title": "Lanzamiento de bebida premium llegó a 2,1M de compradores",
+        "body": "Una toma de banner en homepage combinada con notificaciones push en horas pico impulsó el conocimiento del producto y el sampling en Doha en dos semanas.",
+        "metricLabel": "Impresiones Verificadas"
+      },
+      "fmcg": {
+        "tag": "Listados Patrocinados",
+        "title": "Marca FMCG aumentó pedidos semanales un 38%",
+        "body": "El patrocinio de categoría junto con sliders de marca llevó a una marca de despensa establecida a liderar su categoría dentro de la tienda Snoomart.",
+        "metricLabel": "Crecimiento Semanal de Pedidos"
+      }
     },
     "footnote": "Más casos de estudio próximamente. Los resultados anteriores son promedios de la plataforma."
   },

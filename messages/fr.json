@@ -9,7 +9,7 @@
     "howItWorks": "Comment ça Marche",
     "placements": "Emplacements",
     "calculator": "Calculateur",
-    "results": "Résultats",
+    "results": "Études de Cas",
     "cta": "Commencer la Publicité",
     "menuOpen": "Ouvrir le menu",
     "menuClose": "Fermer le menu"
@@ -79,10 +79,7 @@
     "headline": "Vos Publicités, Là Où Ça Compte",
     "description": "Emplacements natifs dans toute l'expérience Snoonu, en ligne et hors ligne.",
     "kpisLabel": "KPIs",
-    "heroAlt": "Carte des emplacements publicitaires Snoonu en ligne et hors ligne — cliquez sur une moitié pour accéder à sa section",
-    "heroHint": "Cliquez sur une zone pour accéder à ses emplacements",
-    "onlineJumpAria": "Accéder aux emplacements en ligne",
-    "offlineJumpAria": "Accéder aux emplacements hors ligne",
+    "tabsLabel": "Basculer entre les emplacements en ligne et hors ligne",
     "onlineTagline": "En ligne",
     "onlineTitle": "Emplacements en ligne",
     "onlineSubtitle": "Surfaces publicitaires natives dans l'app Snoonu — de la découverte au checkout.",
@@ -221,19 +218,29 @@
     }
   },
   "results": {
-    "tagline": "Résultats",
+    "tagline": "Études de Cas",
     "headline": "Performance Réelle, Revenus Réels",
     "description": "Chaque campagne sur Snoonu est mesurée par rapport aux commandes réelles, pas aux métriques de vanité.",
-    "caseStudy": {
-      "tag": "Search Ads",
-      "title": "Comment une marque QSR leader a atteint 4,7x ROAS avec Snoonu Ads",
-      "body": "En ciblant les chercheurs de nourriture à forte intention avec des listings sponsorisés et des notifications push aux heures de pointe, cette marque a fait de Snoonu son canal d'acquisition digital n°1.",
-      "cta": "Lire l'Étude Complète"
-    },
-    "metrics": {
-      "ctr": "Taux de Clics",
-      "cvr": "Taux de Conversion",
-      "roas": "Retour sur Dépense Publicitaire"
+    "ctaLabel": "Lire l'Étude Complète",
+    "studies": {
+      "qsr": {
+        "tag": "Search Ads",
+        "title": "Une marque QSR leader a atteint 4,7x de ROAS",
+        "body": "Des listings sponsorisés sur des recherches alimentaires à forte intention ont fait de Snoonu le canal d'acquisition digital n°1 de cette marque aux heures de pointe.",
+        "metricLabel": "Retour sur Dépense Publicitaire"
+      },
+      "beverage": {
+        "tag": "Bannières et Push",
+        "title": "Le lancement d'une boisson premium a touché 2,1M d'acheteurs",
+        "body": "Une prise de bannière en page d'accueil combinée à des notifications push aux heures de pointe a stimulé la notoriété produit et le sampling à Doha en deux semaines.",
+        "metricLabel": "Impressions Vérifiées"
+      },
+      "fmcg": {
+        "tag": "Listings Sponsorisés",
+        "title": "Une marque FMCG a augmenté les commandes hebdomadaires de 38%",
+        "body": "Le sponsoring de catégorie associé à des sliders de marque a hissé une marque d'épicerie établie au rang de leader de catégorie dans la boutique Snoomart.",
+        "metricLabel": "Hausse des Commandes Hebdo"
+      }
     },
     "footnote": "D'autres études de cas à venir. Les résultats ci-dessus représentent les moyennes de la plateforme."
   },

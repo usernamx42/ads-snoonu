@@ -8,7 +8,7 @@
     "howItWorks": "How It Works",
     "placements": "Placements",
     "calculator": "Calculator",
-    "results": "Results",
+    "results": "Case Studies",
     "cta": "Start Advertising",
     "menuOpen": "Open menu",
     "menuClose": "Close menu"
@@ -78,10 +78,7 @@
     "headline": "Your Ads, Everywhere That Matters",
     "description": "Native placements across the entire Snoonu experience, online and offline.",
     "kpisLabel": "KPIs",
-    "heroAlt": "Map of Snoonu's online and offline ad placements — click a half to jump to its section",
-    "heroHint": "Click an area above to jump to its placements",
-    "onlineJumpAria": "Jump to Online placements",
-    "offlineJumpAria": "Jump to Offline placements",
+    "tabsLabel": "Switch between online and offline placements",
     "onlineTagline": "Online",
     "onlineTitle": "Online Placements",
     "onlineSubtitle": "Native ad surfaces inside the Snoonu app — from discovery to checkout.",
@@ -195,7 +192,7 @@
   "aiTargeting": {
     "tagline": "AI-Powered Smart Targeting",
     "headline": "The right ad, the right person, the right moment",
-    "description": "Snoonu Ads uses machine learning to serve the right ad to the right person at the right moment — driving higher engagement and superior ROI.",
+    "description": "Snoonu Ads uses machine learning to serve the right ad to the right person at the right moment, driving higher engagement and superior ROI.",
     "features": {
       "locationTargeting": {
         "letter": "L",
@@ -210,7 +207,7 @@
       "demographics": {
         "letter": "D",
         "label": "Demographics",
-        "description": "Age, language, device type and more — reach your exact customer profile within our app audience."
+        "description": "Age, language, device type and more, reach your exact customer profile within our app audience."
       },
       "purchaseIntent": {
         "letter": "I",
@@ -220,19 +217,29 @@
     }
   },
   "results": {
-    "tagline": "Results",
+    "tagline": "Case Studies",
     "headline": "Real Performance, Real Revenue",
     "description": "Every campaign on Snoonu is measured against actual orders, not vanity metrics.",
-    "caseStudy": {
-      "tag": "Search Ads",
-      "title": "How a leading QSR brand drove 4.7x ROAS with Snoonu Ads",
-      "body": "By targeting high-intent food searchers with sponsored listings and push notifications during peak hours, this brand turned Snoonu into their #1 digital acquisition channel.",
-      "cta": "Read Full Story"
-    },
-    "metrics": {
-      "ctr": "Click-through Rate",
-      "cvr": "Conversion Rate",
-      "roas": "Return on Ad Spend"
+    "ctaLabel": "Read Full Story",
+    "studies": {
+      "qsr": {
+        "tag": "Search Ads",
+        "title": "Leading QSR brand drove 4.7x ROAS",
+        "body": "Sponsored listings against high-intent food searches turned Snoonu into this brand's number-one digital acquisition channel during peak hours.",
+        "metricLabel": "Return on Ad Spend"
+      },
+      "beverage": {
+        "tag": "Banners & Push",
+        "title": "Premium beverage launch reached 2.1M shoppers",
+        "body": "A homepage banner takeover paired with peak-hour push notifications drove product awareness and sampling across Doha in two weeks.",
+        "metricLabel": "Verified Impressions"
+      },
+      "fmcg": {
+        "tag": "Sponsored Listings",
+        "title": "FMCG brand grew weekly orders by 38%",
+        "body": "Category sponsorship combined with branded sliders pushed an established pantry brand to category leader inside the Snoomart store.",
+        "metricLabel": "Weekly Order Lift"
+      }
     },
     "footnote": "More case studies launching soon. Results above represent platform averages."
   },
